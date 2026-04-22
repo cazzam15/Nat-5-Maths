@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Nat 5 Maths Revision — Scotland | nat5mathsscotland.com</title>
+<meta name="description" content="Free Nat 5 Maths revision app for Scottish students. Practice questions, mock exams, AI tutor, flashcards, worksheets and more. Covers the full SQA curriculum.">
+<meta name="keywords" content="Nat 5 Maths, National 5 Maths Scotland, SQA Maths revision, free maths revision Scotland, Nat 5 revision app">
+<meta name="author" content="nat5mathsscotland.com">
+<meta property="og:title" content="Free Nat 5 Maths Revision Scotland">
+<meta property="og:description" content="Free revision app covering all Nat 5 Maths topics. Mock exams, AI tutor, flashcards and more!">
+<meta property="og:url" content="https://nat5mathsscotland.com">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://nat5mathsscotland.com/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#4f46e5;--primary2:#7c3aed;--bg:#f0f4ff;--surface:#fff;--surface2:#f8f9ff;--border:#e2e8f0;--text:#1e1b4b;--text2:#64748b;--radius:12px}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.app{max-width:960px;margin:0 auto;padding:12px}
+.header{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:16px;padding:16px 20px;margin-bottom:10px}
+.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.header h1{font-size:21px;font-weight:800}
+.header .sub{font-size:12px;opacity:.8;margin-top:2px}
+.hdr-stats{display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:170px}
+.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.pill{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600}
+.xp-row{display:flex;align-items:center;gap:6px;width:100%}
+.xp-track{flex:1;height:7px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
+.xp-fill{height:100%;background:#fbbf24;border-radius:4px;transition:width .6s}
+.nav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.nav button{padding:7px 12px;border:2px solid transparent;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:#fff;color:#64748b;transition:all .2s;white-space:nowrap}
+.nav button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.nav button:hover:not(.active){border-color:var(--primary);color:var(--primary)}
+.panel{display:none;animation:fadeIn .3s}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(79,70,229,.08);margin-bottom:10px}
+.card h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.tsel{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.tsel label{font-size:12px;font-weight:700;color:var(--text2)}
+.tsel select{padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:#fff;color:var(--text);outline:none;cursor:pointer}
+.calc-badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:4px 10px;border-radius:8px;font-weight:700}
+.cb-yes{background:#dcfce7;color:#166534}
+.cb-no{background:#fef2f2;color:#991b1b}
+.q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:6px}
+.lvl-badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:10px;background:#ede9fe;color:#4f46e5}
+.q-text{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:14px}
+.q-input{width:100%;padding:11px 14px;font-size:16px;border:2px solid var(--border);border-radius:10px;outline:none;background:#fff;color:var(--text);transition:border-color .2s}
+.q-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
+.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn{padding:9px 16px;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s}
+.btn-p{background:var(--primary);color:#fff}.btn-p:hover{background:#4338ca;transform:translateY(-1px)}
+.btn-s{background:#f1f5f9;color:var(--text);border:1px solid var(--border)}.btn-s:hover{background:#e2e8f0}
+.btn-h{background:none;border:none;color:var(--primary);cursor:pointer;font-size:13px;text-decoration:underline;padding:0 4px;font-weight:600}
+.fb{padding:13px;border-radius:10px;margin-top:10px;font-size:14px;line-height:1.7}
+.fb-ok{background:#ecfdf5;border:1px solid #86efac;color:#166534}
+.fb-no{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
+.fb-hint{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+.fb-ai{background:#ede9fe;border:1px solid #c4b5fd;color:#3730a3}
+.fb-exp{margin-top:7px;padding:9px;background:rgba(255,255,255,.7);border-radius:7px;font-size:13px}
+.loading{display:flex;align-items:center;gap:8px;padding:10px;color:var(--text2);font-size:13px}
+.spin{width:16px;height:16px;border:2px solid #e2e8f0;border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.reward-pop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:18px;padding:26px 36px;text-align:center;z-index:999;font-size:20px;font-weight:800;box-shadow:0 20px 60px rgba(79,70,229,.4);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.reward-pop.show{transform:translate(-50%,-50%) scale(1)}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:9px}
+.topic-card{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:13px;cursor:pointer;text-align:center;transition:all .2s}
+.topic-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 5px 14px rgba(79,70,229,.14)}
+.ticon{font-size:26px;margin-bottom:5px}
+.tprog{font-size:11px;color:var(--text2);margin-top:3px}
+.pb{height:5px;background:#e2e8f0;border-radius:3px;margin-top:6px;overflow:hidden}
+.pf{height:100%;background:var(--primary);border-radius:3px;transition:width .6s}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:10px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px;text-align:center}
+.snum{font-size:26px;font-weight:800;color:var(--primary)}
+.slbl{font-size:11px;color:var(--text2);margin-top:2px}
+.calc-display{background:#1e1e2e;color:#a6e3a1;font-family:'Courier New',monospace;font-size:20px;padding:13px;border-radius:10px;text-align:right;min-height:60px;margin-bottom:10px;word-break:break-all}
+.cprev{font-size:12px;color:#6c7086;min-height:17px;margin-bottom:3px}
+.calc-btns{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.cbtn{padding:12px 4px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;transition:all .14s}
+.cbtn:hover{transform:scale(1.05)}.cbtn:active{transform:scale(.95)}
+.cop{background:#4f46e5;color:#fff}.ceq{background:#7c3aed;color:#fff}
+.cnum{background:#f8fafc;border:1px solid var(--border);color:var(--text)}
+.cfn{background:#ede9fe;color:#4f46e5;font-size:11px}.cclr{background:#fef2f2;color:#dc2626}
+.notepad textarea{width:100%;min-height:280px;padding:13px;font-size:13px;border:1px solid var(--border);border-radius:8px;resize:vertical;font-family:'Courier New',monospace;background:#fafafa;color:var(--text);outline:none;line-height:1.8}
+.notepad textarea:focus{border-color:var(--primary);background:#fff}
+.note-tools{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:9px}
+.sheet-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px;cursor:pointer;transition:all .2s}
+.sheet-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(79,70,229,.1)}
+.sheet-card h3{font-size:13px;font-weight:700;margin-bottom:4px}
+.sheet-card p{font-size:12px;color:var(--text2)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin-top:5px;font-weight:700}
+.be{background:#dcfce7;color:#166534}.bm{background:#fef9c3;color:#854d0e}.bh{background:#fee2e2;color:#991b1b}.bx{background:#ede9fe;color:#4f46e5}
+.ws-q{margin-bottom:11px;padding:12px;background:#f8f9ff;border-radius:8px;border:1px solid #e8ecff}
+.ws-q p{font-size:14px;font-weight:600;margin-bottom:7px}
+.ws-q input{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:#fff;color:var(--text);outline:none}
+.ws-q input:focus{border-color:var(--primary)}
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-bottom:14px}
+.fc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:13px;line-height:1.9}
+.fct{font-weight:700;font-size:11px;color:var(--text2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.flashcard{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:16px;padding:28px;text-align:center;cursor:pointer;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .3s}
+.flashcard:hover{transform:translateY(-3px)}
+.fc-front .fc-back{width:100%}
+.fc-back{display:none}
+.flashcard.flipped .fc-front{display:none}
+.flashcard.flipped .fc-back{display:block}
+.fc-term{font-size:20px;font-weight:800;margin-bottom:8px}
+.fc-def{font-size:14px;opacity:.95;line-height:1.5;white-space:pre-line}
+.fc-tap{font-size:12px;opacity:.6;margin-top:10px}
+.fc-nav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:11px}
+.timer-display{font-size:48px;font-weight:800;text-align:center;color:var(--primary);margin:8px 0}
+.urgent{color:#dc2626;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.lb-row{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:8px;margin-bottom:5px;background:#f8f9ff;border:1px solid #e8ecff}
+.resource-link{display:flex;align-items:center;gap:10px;padding:10px 13px;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:7px;cursor:pointer;transition:all .2s}
+.resource-link:hover{border-color:var(--primary);background:#f5f3ff}
+.ricon{font-size:20px}.rtext h4{font-size:13px;font-weight:700}.rtext p{font-size:12px;color:var(--text2);margin-top:1px}
+.tip-card{background:#fff;border-left:4px solid var(--primary);border-radius:0 10px 10px 0;padding:11px 13px;margin-bottom:7px;font-size:13px;line-height:1.6}
+.tip-card strong{display:block;font-size:13px;color:var(--primary);margin-bottom:2px}
+.theme-btn{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s}
+.theme-btn.active{border-color:#1e1b4b;transform:scale(1.15)}
+.goal-bar{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin:6px 0}
+.goal-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:6px;transition:width .6s}
+.fs{margin-bottom:12px}
+.fs h3{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:7px}
+
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.shop-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .2s;display:flex;gap:12px;align-items:flex-start}
+.shop-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 5px 14px rgba(79,70,229,.13)}
+.shop-icon{font-size:26px;flex-shrink:0}
+.shop-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.shop-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.shop-cta{font-size:12px;font-weight:700;color:var(--primary)}
+
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}.calc-btns{gap:4px}.cbtn{padding:9px 3px;font-size:10px}.q-text{font-size:15px}.header h1{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <h1 id="app-title">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Nat 5 Maths Scotland</h1>
+      <div class="sub">Your fun maths companion — level up your skills!</div>
+    </div>
+    <div class="hdr-stats">
+      <div class="pills">
+        <span class="pill">⭐ <span id="hdr-stars">0</span></span>
+        <span class="pill">Lv <span id="hdr-level">1</span></span>
+        <span class="pill">🔥 <span id="hdr-streak">0</span></span>
+      </div>
+      <div class="xp-row">
+        <span style="font-size:11px">XP</span>
+        <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+        <span style="font-size:11px"><span id="hdr-xp">0</span></span>
+      </div>
+      <div style="font-size:11px;opacity:.75;text-align:right">Goal: <span id="hdr-daily">0</span>/<span id="hdr-goal">10</span> ✅</div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="active" onclick="showPanel('practice')">📚 Practice</button>
+  <button onclick="showPanel('timer')">⏱ Timer</button>
+  <button onclick="showPanel('flashcards')">🃏 Flashcards</button>
+  <button onclick="showPanel('topics')">🗂 Topics</button>
+  <button onclick="showPanel('worksheets')">📄 Worksheets</button>
+  <button onclick="showPanel('formulas')">📋 Formulas</button>
+  <button onclick="showPanel('calculator')">🔢 Calculator</button>
+  <button onclick="showPanel('notepad')">📝 Notepad</button>
+  <button onclick="showPanel('progress')">📊 Progress</button>
+  <button onclick="showPanel('resources')">🔗 Links</button>
+  <button onclick="showPanel('mock')">📝 Mock Exam</button>
+  <button onclick="showPanel('shop')">🛒 Shop</button>
+  <button onclick="showPanel('settings')">⚙️ Settings</button>
+</div>
+
+<div class="reward-pop" id="reward-pop"></div>
+
+<!-- PRACTICE -->
+<div class="panel active" id="panel-practice">
+  <div class="tsel">
+    <label>Topic:</label>
+    <select id="topic-select" onchange="changeTopic()">
+      <option value="random">🎲 Random Mix</option>
+      <option value="algebra">Algebra</option>
+      <option value="geometry">Geometry</option>
+      <option value="trigonometry">Trigonometry</option>
+      <option value="statistics">Statistics</option>
+      <option value="fractions">Fractions &amp; %</option>
+      <option value="surds">Surds &amp; Indices</option>
+      <option value="functions">Functions &amp; Graphs</option>
+      <option value="vectors">Vectors</option>
+      <option value="circle">Circle Geometry</option>
+    </select>
+    <label>Difficulty:</label>
+    <select id="diff-select" onchange="changeTopic()">
+      <option value="auto">Auto (Level Up)</option>
+      <option value="1">Easy</option>
+      <option value="2">Medium</option>
+      <option value="3">Hard</option>
+    </select>
+    <button class="btn btn-s" onclick="newQuestion()" style="padding:7px 11px;font-size:12px">⟳ New</button>
+  </div>
+  <div style="margin-bottom:9px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:3px">
+      <span>Daily Goal</span><span><span id="daily-count">0</span>/<span id="daily-goal-lbl">10</span></span>
+    </div>
+    <div class="goal-bar"><div class="goal-fill" id="goal-fill" style="width:0%"></div></div>
+  </div>
+  <div class="card">
+    <div class="q-header">
+      <div>
+        <span style="font-size:12px;color:var(--text2)" id="q-topic-label">Algebra</span>
+        <span style="font-size:11px;color:#94a3b8;margin-left:5px">Q<span id="q-num">1</span></span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span id="calc-badge" class="calc-badge cb-no">🚫 No Calculator</span>
+        <span class="lvl-badge" id="q-level">Level 1 — Easy</span>
+      </div>
+    </div>
+    <div class="q-text" id="q-text">Loading...</div>
+    <input class="q-input" id="q-input" type="text" placeholder="Type your answer here..."
+      onkeydown="if(event.key==='Enter')checkAnswer()">
+    <div class="btn-row">
+      <button class="btn btn-p" onclick="checkAnswer()">Check ✓</button>
+      <button class="btn btn-s" onclick="skipQuestion()">Skip →</button>
+      <button class="btn-h" onclick="getHint()">💡 Hint</button>
+      <button class="btn-h" onclick="showPanel('calculator')" id="calc-link" style="display:none">🔢 Calculator</button>
+    </div>
+    <div id="feedback-area"></div>
+    <div id="ai-loading" class="loading" style="display:none"><div class="spin"></div> AI tutor thinking...</div>
+  </div>
+</div>
+
+<!-- TIMER -->
+<div class="panel" id="panel-timer">
+  <div class="card" id="timer-setup">
+    <h2>⏱ Timer Challenge</h2>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Answer as many questions as you can before time runs out!</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <button class="btn btn-p" onclick="startTimer(60)">1 Minute</button>
+      <button class="btn btn-p" onclick="startTimer(120)">2 Minutes</button>
+      <button class="btn btn-p" onclick="startTimer(300)">5 Minutes</button>
+    </div>
+    <div style="font-size:13px;color:var(--text2)">Topic: <select id="timer-topic" style="padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:13px;margin-left:5px">
+      <option value="random">Random Mix</option>
+      <option value="algebra">Algebra</option>
+      <option value="trigonometry">Trigonometry</option>
+      <option value="statistics">Statistics</option>
+      <option value="fractions">Fractions &amp; %</option>
+    </select></div>
+  </div>
+  <div class="card" id="timer-game" style="display:none;text-align:center">
+    <div class="timer-display" id="timer-display">60</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text2);margin-bottom:4px">Score: <span id="timer-score-lbl">0</span></div>
+    <div class="q-text" id="timer-q" style="font-size:15px;margin:12px 0;text-align:left"></div>
+    <input class="q-input" id="timer-input" type="text" placeholder="Answer..."
+      onkeydown="if(event.key==='Enter')checkTimerAnswer()" style="max-width:320px;margin:0 auto;display:block">
+    <div class="btn-row" style="justify-content:center;margin-top:9px">
+      <button class="btn btn-p" onclick="checkTimerAnswer()">Submit ✓</button>
+      <button class="btn btn-s" onclick="nextTimerQ()">Skip</button>
+    </div>
+    <div id="timer-fb" style="margin-top:7px;font-size:13px;min-height:18px"></div>
+  </div>
+  <div class="card" id="timer-result" style="display:none;text-align:center">
+    <div style="font-size:38px;margin-bottom:8px">🏆</div>
+    <h2 style="font-size:21px;margin-bottom:5px">Time's up!</h2>
+    <div style="font-size:32px;font-weight:800;color:var(--primary);margin:10px 0" id="timer-final"></div>
+    <div id="timer-msg" style="font-size:14px;color:var(--text2);margin-bottom:13px"></div>
+    <button class="btn btn-p" onclick="resetTimer()">Play Again ↩</button>
+  </div>
+</div>
+
+<!-- FLASHCARDS -->
+<div class="panel" id="panel-flashcards">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
+    <h2 style="font-size:16px;font-weight:700">🃏 Formula Flashcards</h2>
+    <select id="fc-topic" onchange="loadFC()" style="padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px">
+      <option value="all">All Topics</option>
+      <option value="algebra">Algebra</option>
+      <option value="trig">Trigonometry</option>
+      <option value="geometry">Geometry</option>
+      <option value="stats">Statistics</option>
+      <option value="surds">Surds</option>
+    </select>
+  </div>
+  <div class="flashcard" id="flashcard" onclick="flipCard()">
+    <div class="fc-front">
+      <div class="fc-term" id="fc-term">Loading...</div>
+      <div class="fc-tap">👆 Tap to reveal</div>
+    </div>
+    <div class="fc-back">
+      <div class="fc-def" id="fc-def"></div>
+    </div>
+  </div>
+  <div class="fc-nav">
+    <button class="btn btn-s" onclick="prevFC()">← Prev</button>
+    <span style="font-size:13px;color:var(--text2)"><span id="fc-idx">1</span>/<span id="fc-tot">1</span></span>
+    <button class="btn btn-p" onclick="nextFC()">Next →</button>
+  </div>
+  <div style="text-align:center;margin-top:9px">
+    <button class="btn btn-s" onclick="shuffleFC()" style="font-size:12px">🔀 Shuffle</button>
+  </div>
+</div>
+
+<!-- TOPICS -->
+<div class="panel" id="panel-topics">
+  <p style="font-size:13px;color:var(--text2);margin-bottom:10px">Click a topic to start practising it!</p>
+  <div class="topic-grid" id="topic-grid"></div>
+</div>
+
+<!-- WORKSHEETS -->
+<div class="panel" id="panel-worksheets">
+  <div id="ws-list">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
+      <h2 style="font-size:16px;font-weight:700">📄 Worksheets</h2>
+      <button class="btn btn-p" id="gen-ws-btn" onclick="generateWS()" style="font-size:12px;padding:8px 13px">✨ AI Worksheet</button>
+    </div>
+    <div class="sheet-grid" id="sheet-list"></div>
+  </div>
+  <div id="ws-active" style="display:none"></div>
+</div>
+
+<!-- FORMULAS -->
+<div class="panel" id="panel-formulas">
+  <div class="card">
+    <h2>📋 Key Nat 5 Formulas</h2>
+    <div class="fs"><h3>📐 Algebra</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Quadratic Formula</div>x = (−b ± √(b²−4ac)) / 2a</div>
+        <div class="fc"><div class="fct">Difference of Squares</div>a²−b² = (a+b)(a−b)</div>
+        <div class="fc"><div class="fct">Completing the Square</div>x²+bx = (x+b/2)² − (b/2)²</div>
+        <div class="fc"><div class="fct">Discriminant</div>b²−4ac &gt; 0: 2 roots | = 0: 1 root | &lt; 0: no roots</div>
+      </div>
+    </div>
+    <div class="fs"><h3>📏 Trigonometry</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">SOH-CAH-TOA</div>sin=opp/hyp · cos=adj/hyp · tan=opp/adj</div>
+        <div class="fc"><div class="fct">Sine Rule</div>a/sin A = b/sin B = c/sin C</div>
+        <div class="fc"><div class="fct">Cosine Rule</div>a² = b²+c²−2bc·cos A</div>
+        <div class="fc"><div class="fct">Area of Triangle</div>Area = ½ab·sin C</div>
+        <div class="fc"><div class="fct">Trig Identity</div>sin²θ + cos²θ = 1</div>
+        <div class="fc"><div class="fct">Standard Angles</div>sin30°=½ · cos60°=½ · tan45°=1 · sin90°=1</div>
+      </div>
+    </div>
+    <div class="fs"><h3>🔵 Geometry</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Circle</div>Area = πr² · Circumference = 2πr = πd</div>
+        <div class="fc"><div class="fct">Pythagoras</div>c² = a² + b²</div>
+        <div class="fc"><div class="fct">Volumes</div>Cylinder: πr²h · Cone: ⅓πr²h · Sphere: ⁴⁄₃πr³</div>
+        <div class="fc"><div class="fct">Arc &amp; Sector</div>Arc = θ/360×2πr · Sector = θ/360×πr²</div>
+      </div>
+    </div>
+    <div class="fs"><h3>📊 Statistics</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Averages</div>Mean=Σx/n · Median=middle · Mode=most common</div>
+        <div class="fc"><div class="fct">Std Deviation</div>s = √(Σ(x−x̄)²/(n−1))</div>
+        <div class="fc"><div class="fct">Probability</div>P(A)=fav/total · P(not A)=1−P(A)</div>
+        <div class="fc"><div class="fct">IQR</div>IQR = Q3 − Q1</div>
+      </div>
+    </div>
+    <div class="fs"><h3>√ Surds &amp; Indices</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Index Laws</div>aᵐ×aⁿ=aᵐ⁺ⁿ · aᵐ÷aⁿ=aᵐ⁻ⁿ · (aᵐ)ⁿ=aᵐⁿ</div>
+        <div class="fc"><div class="fct">Special Indices</div>a⁰=1 · a⁻ⁿ=1/aⁿ · a^(1/n)=ⁿ√a · a^(m/n)=(ⁿ√a)ᵐ</div>
+        <div class="fc"><div class="fct">Surds</div>√(ab)=√a×√b · Rationalise: ×√b/√b</div>
+      </div>
+    </div>
+    <div class="fs"><h3>📈 Functions &amp; Graphs</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Straight Line</div>y = mx + c (m=gradient, c=y-intercept)</div>
+        <div class="fc"><div class="fct">Gradient</div>m = (y₂−y₁)/(x₂−x₁)</div>
+        <div class="fc"><div class="fct">Parabola</div>y=(x−a)²+b: turning point (a,b)</div>
+      </div>
+    </div>
+    <div class="fs"><h3>➡ Vectors</h3>
+      <div class="formula-grid">
+        <div class="fc"><div class="fct">Magnitude</div>|a| = √(x²+y²+z²)</div>
+        <div class="fc"><div class="fct">Dot Product</div>a·b=a₁b₁+a₂b₂+a₃b₃ · a·b=0 → perpendicular</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="panel" id="panel-calculator">
+  <div class="card">
+    <h2>🔢 Scientific Calculator</h2>
+    <div class="calc-display">
+      <div class="cprev" id="calc-prev"></div>
+      <div id="calc-main">0</div>
+    </div>
+    <div class="calc-btns" id="calc-btns"></div>
+    <div style="margin-top:9px;font-size:12px;color:var(--text2);line-height:1.7">sin/cos/tan = degrees · sin⁻¹/cos⁻¹/tan⁻¹ = inverse · √ = square root · x² = square · xⁿ = any power · π · ln · log</div>
+  </div>
+</div>
+
+<!-- NOTEPAD -->
+<div class="panel" id="panel-notepad">
+  <div class="card notepad">
+    <h2>📝 Notepad</h2>
+    <div class="note-tools">
+      <button class="btn btn-s" onclick="clearNote()" style="font-size:12px;padding:6px 10px">🗑 Clear</button>
+      <button class="btn btn-s" onclick="copyNote()" style="font-size:12px;padding:6px 10px">📋 Copy</button>
+      <button class="btn btn-s" onclick="downloadNote()" style="font-size:12px;padding:6px 10px">⬇ Download</button>
+      <button class="btn btn-p" onclick="askAI()" style="font-size:12px;padding:6px 10px">🤖 Ask AI</button>
+    </div>
+    <textarea id="notepad-text" placeholder="Write your working out here...
+
+Key formulas:
+• Area circle = πr²    • Pythagoras: a²+b²=c²
+• Quadratic: x=(-b±√(b²-4ac))/2a
+• sin=opp/hyp  cos=adj/hyp  tan=opp/adj
+• Mean = sum ÷ count
+• Gradient = (y₂-y₁)/(x₂-x₁)"></textarea>
+    <div id="note-ai-res" style="margin-top:9px"></div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="panel" id="panel-progress">
+  <div class="stats-grid" id="stats-grid"></div>
+  <div class="card">
+    <h2>Topic Progress</h2>
+    <div id="topic-prog"></div>
+  </div>
+  <div class="card">
+    <h2>🏆 Timer High Scores</h2>
+    <div id="leaderboard"></div>
+  </div>
+  <button class="btn btn-s" onclick="resetProg()" style="font-size:12px;margin-top:4px">🔄 Reset All Progress</button>
+</div>
+
+<!-- RESOURCES -->
+<div class="panel" id="panel-resources">
+  <div class="card">
+    <h2>🔗 Helpful Links</h2>
+    <div onclick="openLink('https://www.sqa.org.uk/sqa/47910.html')" class="resource-link">
+      <span class="ricon">🏛</span><div class="rtext"><h4>SQA National 5 Maths</h4><p>Official past papers &amp; marking schemes</p></div>
+    </div>
+    <div onclick="openLink('https://www.bbc.co.uk/bitesize/subjects/zqhs34j')" class="resource-link">
+      <span class="ricon">📺</span><div class="rtext"><h4>BBC Bitesize — Nat 5 Maths</h4><p>Videos, notes and quizzes for every topic</p></div>
+    </div>
+    <div onclick="openLink('https://scholar.hw.ac.uk')" class="resource-link">
+      <span class="ricon">🎓</span><div class="rtext"><h4>SCHOLAR (Heriot-Watt)</h4><p>Detailed online course for Scottish Nat 5</p></div>
+    </div>
+    <div onclick="openLink('https://www.mathsrevision.com/national-5-maths')" class="resource-link">
+      <span class="ricon">📖</span><div class="rtext"><h4>Maths Revision — Nat 5</h4><p>Notes, worksheets and worked examples</p></div>
+    </div>
+    <div onclick="openLink('https://corbettmaths.com')" class="resource-link">
+      <span class="ricon">🎬</span><div class="rtext"><h4>Corbett Maths</h4><p>Videos for every maths topic</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📝 Exam Tips</h2>
+    <div class="tip-card"><strong>Show ALL working</strong>You get method marks even if the final answer is wrong!</div>
+    <div class="tip-card"><strong>Paper 1 = No Calculator · Paper 2 = Calculator</strong>Know which paper you're on before you start.</div>
+    <div class="tip-card"><strong>Read questions carefully</strong>Key words: "exact value", "round to 2dp", "simplify", "factorise".</div>
+    <div class="tip-card"><strong>Check your answer</strong>Substitute it back in — does it work?</div>
+    <div class="tip-card"><strong>Draw triangles for trig</strong>Label the sides first, then SOH-CAH-TOA / sine rule / cosine rule becomes much easier.</div>
+    <div class="tip-card"><strong>Never leave blanks</strong>Always attempt every question — you can't get marks for nothing!</div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="panel" id="panel-settings">
+  <div class="card">
+    <h2>⚙️ Personalise</h2>
+    <div style="margin-bottom:14px">
+      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:5px">Your Name</label>
+      <input type="text" id="student-name" placeholder="Enter your name..." oninput="saveName()"
+        style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;width:100%;max-width:280px;outline:none">
+    </div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:7px">Daily Question Goal</label>
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <button class="btn btn-s" onclick="setGoal(5)" id="goal-5">5</button>
+        <button class="btn btn-p" onclick="setGoal(10)" id="goal-10">10</button>
+        <button class="btn btn-s" onclick="setGoal(20)" id="goal-20">20</button>
+        <button class="btn btn-s" onclick="setGoal(30)" id="goal-30">30</button>
+      </div>
+    </div>
+    <div>
+      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:7px">Colour Theme</label>
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <button class="theme-btn active" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)" onclick="setTheme('purple')" id="theme-purple"></button>
+        <button class="theme-btn" style="background:linear-gradient(135deg,#0891b2,#0e7490)" onclick="setTheme('teal')" id="theme-teal"></button>
+        <button class="theme-btn" style="background:linear-gradient(135deg,#16a34a,#15803d)" onclick="setTheme('green')" id="theme-green"></button>
+        <button class="theme-btn" style="background:linear-gradient(135deg,#dc2626,#db2777)" onclick="setTheme('red')" id="theme-red"></button>
+        <button class="theme-btn" style="background:linear-gradient(135deg,#d97706,#b45309)" onclick="setTheme('amber')" id="theme-amber"></button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>ℹ️ About</h2>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7">Covers all Nat 5 Maths Scotland topics with 3 difficulty levels. Questions auto-level up as you earn XP. Wrong answers get full explanations + AI tutor feedback. Calculator topics are clearly marked. Progress saves automatically in your browser.<br><br><strong>Internet required for:</strong> AI explanations, AI worksheets. Everything else works offline.</p>
+  </div>
+</div>
+
+
+
+<!-- MOCK EXAM -->
+<div class="panel" id="panel-mock">
+
+  <!-- EXAM HOME -->
+  <div id="mock-home">
+    <div class="card">
+      <h2>📝 Mock Exam — Nat 5 Maths</h2>
+      <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px">
+        Based on the official SQA curriculum. Two papers just like the real exam.<br>
+        <strong>Paper 1:</strong> Non-calculator · 40 marks · 1 hour<br>
+        <strong>Paper 2:</strong> Calculator allowed · 50 marks · 1 hour 30 mins
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-p" onclick="startMock(1)">📄 Start Paper 1 — No Calculator</button>
+        <button class="btn btn-p" onclick="startMock(2)">🔢 Start Paper 2 — Calculator Allowed</button>
+      </div>
+      <div id="mock-prev-scores" style="margin-top:16px"></div>
+    </div>
+    <div class="card" style="font-size:13px;color:var(--text2);line-height:1.8">
+      <h2>📋 Exam Tips</h2>
+      ✏️ <strong>Show ALL working</strong> — method marks are awarded even if the final answer is wrong<br>
+      🕐 <strong>Watch the time</strong> — don't spend too long on one question<br>
+      🔢 <strong>Paper 1 is non-calculator</strong> — use the on-screen calculator for Paper 2 only<br>
+      ✅ <strong>Check your answers</strong> — substitute back in where possible<br>
+      📐 <strong>Draw diagrams</strong> — especially for trig and geometry questions
+    </div>
+  </div>
+
+  <!-- EXAM IN PROGRESS -->
+  <div id="mock-exam" style="display:none">
+    <div class="card" style="padding:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        <div>
+          <span style="font-weight:800;font-size:15px" id="mock-paper-title">Paper 1</span>
+          <span style="font-size:12px;color:var(--text2);margin-left:8px" id="mock-q-counter"></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span id="mock-calc-status" class="calc-badge cb-no">🚫 No Calculator</span>
+          <span style="font-size:14px;font-weight:800;color:var(--primary)" id="mock-timer-display">60:00</span>
+          <span style="font-size:12px;font-weight:700;background:#ede9fe;color:#4f46e5;padding:4px 10px;border-radius:8px">Marks: <span id="mock-marks-so-far">0</span></span>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div style="height:5px;background:#e2e8f0;border-radius:3px;margin-bottom:14px;overflow:hidden">
+        <div id="mock-prog-bar" style="height:100%;background:var(--primary);border-radius:3px;transition:width .4s;width:0%"></div>
+      </div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:5px;font-weight:700" id="mock-topic-label"></div>
+      <div style="font-size:16px;font-weight:700;line-height:1.6;margin-bottom:14px" id="mock-q-text"></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:10px" id="mock-marks-label"></div>
+      <input class="q-input" id="mock-answer" type="text" placeholder="Type your answer..."
+        onkeydown="if(event.key==='Enter')submitMockAnswer()">
+      <div class="btn-row" style="margin-top:10px">
+        <button class="btn btn-p" onclick="submitMockAnswer()">Submit Answer ✓</button>
+        <button class="btn btn-s" onclick="skipMockQ()">Skip (leave blank)</button>
+      </div>
+      <div id="mock-fb" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- EXAM RESULTS -->
+  <div id="mock-results" style="display:none">
+    <div class="card" style="text-align:center">
+      <div style="font-size:42px;margin-bottom:8px" id="mock-grade-icon">🎓</div>
+      <h2 style="font-size:22px;margin-bottom:4px" id="mock-grade-title">Well done!</h2>
+      <div style="font-size:36px;font-weight:800;color:var(--primary);margin:10px 0" id="mock-score-display"></div>
+      <div style="font-size:15px;color:var(--text2);margin-bottom:6px" id="mock-grade-band"></div>
+      <div style="font-size:13px;color:var(--text2);margin-bottom:16px" id="mock-grade-msg"></div>
+      <div class="btn-row" style="justify-content:center;margin-bottom:14px">
+        <button class="btn btn-p" onclick="showMockReview()">📋 Review Answers</button>
+        <button class="btn btn-s" onclick="resetMock()">↩ Back to Exams</button>
+      </div>
+    </div>
+    <div class="card" id="mock-review-section" style="display:none">
+      <h2>📋 Answer Review</h2>
+      <div id="mock-review-list"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SHOP -->
+<div class="panel" id="panel-shop">
+  <div class="card">
+    <h2>🛒 Recommended Resources</h2>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:4px;line-height:1.6">Everything your child needs to succeed in Nat 5 Maths. Links go to Amazon — we may earn a small commission at no extra cost to you.</p>
+    <div style="font-size:11px;color:#94a3b8;margin-bottom:14px">As an Amazon Associate we earn from qualifying purchases.</div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">📚 Revision Books</div>
+      <div class="shop-grid">
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=national+5+maths+revision+scotland&tag=cazza09-21')"><div class="shop-icon">📗</div><div class="shop-info"><div class="shop-title">Nat 5 Maths Revision Guide</div><div class="shop-desc">Complete coverage of all SQA topics with worked examples</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=national+5+maths+practice+papers+scotland&tag=cazza09-21')"><div class="shop-icon">📝</div><div class="shop-info"><div class="shop-title">Nat 5 Practice Papers</div><div class="shop-desc">Past paper style questions with full marking schemes</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=hodder+national+5+maths+scotland&tag=cazza09-21')"><div class="shop-icon">📘</div><div class="shop-info"><div class="shop-title">Hodder Nat 5 Maths</div><div class="shop-desc">Popular textbook used in Scottish schools</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=cgp+national+5+maths+scotland&tag=cazza09-21')"><div class="shop-icon">📙</div><div class="shop-info"><div class="shop-title">CGP Nat 5 Maths</div><div class="shop-desc">Clear notes and exam practice — great for quick revision</div><div class="shop-cta">View on Amazon →</div></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">🔢 Scientific Calculators</div>
+      <div class="shop-grid">
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=casio+fx-85gtx+scientific+calculator&tag=cazza09-21')"><div class="shop-icon">🧮</div><div class="shop-info"><div class="shop-title">Casio FX-85GTX</div><div class="shop-desc">Most popular calculator for Scottish exams — SQA approved</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=casio+fx-991ex+scientific+calculator&tag=cazza09-21')"><div class="shop-icon">🔬</div><div class="shop-info"><div class="shop-title">Casio FX-991EX</div><div class="shop-desc">Advanced model — great for Higher Maths too</div><div class="shop-cta">View on Amazon →</div></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">✏️ Stationery & Study Supplies</div>
+      <div class="shop-grid">
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=maths+geometry+set+compass+protractor&tag=cazza09-21')"><div class="shop-icon">📐</div><div class="shop-info"><div class="shop-title">Geometry Set</div><div class="shop-desc">Compass, protractor, ruler, set squares — everything needed</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=graph+paper+notebook+maths&tag=cazza09-21')"><div class="shop-icon">📓</div><div class="shop-info"><div class="shop-title">Graph Paper Notebook</div><div class="shop-desc">Essential for drawing graphs and geometry questions</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=revision+flashcards+blank+cards&tag=cazza09-21')"><div class="shop-icon">🃏</div><div class="shop-info"><div class="shop-title">Blank Flashcards</div><div class="shop-desc">Write your own formula cards for revision anywhere</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=highlighter+pens+set+revision&tag=cazza09-21')"><div class="shop-icon">🖊️</div><div class="shop-info"><div class="shop-title">Highlighter & Pen Set</div><div class="shop-desc">Colour-code your notes and make key formulas stand out</div><div class="shop-cta">View on Amazon →</div></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:10px">
+      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">💻 Laptops & Tablets for Study</div>
+      <div class="shop-grid">
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=laptop+for+students+school&tag=cazza09-21')"><div class="shop-icon">💻</div><div class="shop-info"><div class="shop-title">Student Laptops</div><div class="shop-desc">Affordable laptops great for schoolwork and revision</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=ipad+apple+pencil+student&tag=cazza09-21')"><div class="shop-icon">📱</div><div class="shop-info"><div class="shop-title">iPad for Study</div><div class="shop-desc">Great for notes, graphs and revision apps</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=chromebook+student+school&tag=cazza09-21')"><div class="shop-icon">🖥️</div><div class="shop-info"><div class="shop-title">Chromebook</div><div class="shop-desc">Budget-friendly — perfect for schoolwork and web apps</div><div class="shop-cta">View on Amazon →</div></div></div>
+        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=laptop+stand+desk+organiser+student&tag=cazza09-21')"><div class="shop-icon">🗂️</div><div class="shop-info"><div class="shop-title">Desk & Study Setup</div><div class="shop-desc">Laptop stands, desk organisers and study accessories</div><div class="shop-cta">View on Amazon →</div></div></div>
+      </div>
+    </div>
+
+    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:12px;color:#92400e;margin-top:6px">
+      💡 <strong>Action needed:</strong> Replace <strong>cazza09-21</strong> in all links above with your actual Amazon Associates tracking ID to earn commissions on purchases!
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const TOPICS={
+  algebra:{name:"Algebra",icon:"📐",calc:false,questions:[
+    {q:"Expand: 3(x + 4)",a:"3x+12",level:1,hint:"Multiply 3 by EACH term inside.",explain:"3×x=3x, 3×4=12 → 3x+12"},
+    {q:"Simplify: 5x + 3x − 2x",a:"6x",level:1,hint:"Collect the x terms.",explain:"(5+3−2)x=6x"},
+    {q:"Solve: 2x + 5 = 13",a:"4",level:1,hint:"Subtract 5, then divide by 2.",explain:"2x=8 → x=4"},
+    {q:"Solve: 3x − 7 = 11",a:"6",level:1,hint:"Add 7 to both sides first.",explain:"3x=18 → x=6"},
+    {q:"Simplify: x⁵ ÷ x²",a:"x³",level:1,hint:"Same base: subtract indices.",explain:"x^(5−2)=x³"},
+    {q:"Expand: (x+3)(x+2)",a:"x²+5x+6",level:2,hint:"FOIL: First, Outer, Inner, Last.",explain:"x²+2x+3x+6=x²+5x+6"},
+    {q:"Expand: (x+5)(x−2)",a:"x²+3x−10",level:2,hint:"FOIL — watch the negative!",explain:"x²−2x+5x−10=x²+3x−10"},
+    {q:"Factorise: x²+5x+6",a:"(x+2)(x+3)",level:2,hint:"Two numbers: multiply to 6, add to 5.",explain:"2×3=6, 2+3=5 → (x+2)(x+3)"},
+    {q:"Factorise: x²−x−12",a:"(x+3)(x−4)",level:2,hint:"Two numbers: multiply to −12, add to −1.",explain:"3×(−4)=−12, 3+(−4)=−1 → (x+3)(x−4)"},
+    {q:"Solve: x²−7x+10=0",a:"x=2,x=5",level:2,hint:"Factorise first.",explain:"(x−2)(x−5)=0 → x=2 or x=5"},
+    {q:"Solve: x²+3x−4=0 (use quadratic formula)",a:"x=1,x=−4",level:3,hint:"a=1,b=3,c=−4. Use x=(−b±√(b²−4ac))/2a",explain:"Disc=25. x=(−3±5)/2 → x=1 or x=−4"},
+    {q:"Simplify: (3x²y)(4xy³)",a:"12x³y⁴",level:2,hint:"Multiply numbers; add indices per letter.",explain:"12·x^3·y^4"},
+    {q:"Solve: 5(x−2)=3x+4",a:"7",level:2,hint:"Expand first, then collect x terms.",explain:"5x−10=3x+4 → 2x=14 → x=7"},
+    {q:"Factorise completely: 2x²+6x",a:"2x(x+3)",level:2,hint:"Take out the HCF.",explain:"HCF=2x → 2x(x+3)"},
+    {q:"Expand: (2x+1)(x−3)",a:"2x²−5x−3",level:2,hint:"FOIL carefully.",explain:"2x²−6x+x−3=2x²−5x−3"},
+  ]},
+  trigonometry:{name:"Trigonometry",icon:"📏",calc:true,questions:[
+    {q:"Right triangle: opp=3, hyp=5. Find sin(θ).",a:"0.6",level:1,hint:"SOH: sin=opp/hyp",explain:"3/5=0.6"},
+    {q:"Right triangle: adj=4, hyp=5. Find cos(θ).",a:"0.8",level:1,hint:"CAH: cos=adj/hyp",explain:"4/5=0.8"},
+    {q:"Find θ if cos(θ)=0.5 (degrees).",a:"60",level:1,hint:"θ=cos⁻¹(0.5). Standard angle!",explain:"cos⁻¹(0.5)=60°"},
+    {q:"Find θ if sin(θ)=0.5 (degrees).",a:"30",level:1,hint:"θ=sin⁻¹(0.5). Standard angle!",explain:"sin⁻¹(0.5)=30°"},
+    {q:"sin²θ + cos²θ = ?",a:"1",level:1,hint:"Fundamental trig identity!",explain:"Always equals 1 — memorise this!"},
+    {q:"Ladder 5m, angle 70° with ground. Height? (2dp)",a:"4.70",level:2,hint:"sin(70°)=height/5",explain:"5×sin(70°)≈4.70m"},
+    {q:"Triangle: A=40°, B=75°, a=10. Find b (2dp).",a:"15.03",level:2,hint:"Sine rule: b/sinB=a/sinA",explain:"10×sin75°/sin40°≈15.03"},
+    {q:"Triangle: a=5, b=7, C=48°. Find c (2dp).",a:"5.21",level:3,hint:"Cosine rule: c²=a²+b²−2ab·cosC",explain:"√(25+49−70cos48°)≈5.21"},
+    {q:"Sides 6 and 8, included angle 35°. Area? (2dp)",a:"13.73",level:3,hint:"Area=½ab·sinC",explain:"½×6×8×sin35°≈13.73"},
+  ]},
+  geometry:{name:"Geometry",icon:"🔵",calc:true,questions:[
+    {q:"Area of circle, r=5cm. (2dp)",a:"78.54",level:1,hint:"A=πr²",explain:"π×25≈78.54"},
+    {q:"Pythagoras: a=3, b=4. Find c.",a:"5",level:1,hint:"c²=a²+b²",explain:"√(9+16)=5"},
+    {q:"Circumference of circle, d=10cm. (2dp)",a:"31.42",level:1,hint:"C=πd",explain:"π×10≈31.42"},
+    {q:"Pythagoras: hyp=13, side=5. Other side?",a:"12",level:1,hint:"a²=c²−b²",explain:"√(169−25)=12"},
+    {q:"Volume of cylinder: r=3, h=8. (2dp)",a:"226.19",level:2,hint:"V=πr²h",explain:"π×9×8≈226.19"},
+    {q:"Volume of cone: r=4, h=9. (1dp)",a:"150.8",level:2,hint:"V=⅓πr²h",explain:"⅓×π×16×9≈150.8"},
+    {q:"Surface area of sphere: r=6. (2dp)",a:"452.39",level:2,hint:"SA=4πr²",explain:"4×π×36≈452.39"},
+    {q:"Volume of sphere: r=3. (2dp)",a:"113.10",level:2,hint:"V=⁴⁄₃πr³",explain:"(4/3)×π×27≈113.10"},
+    {q:"Arc length: r=9, θ=60°. (2dp)",a:"9.42",level:2,hint:"Arc=(θ/360)×2πr",explain:"(1/6)×18π≈9.42"},
+  ]},
+  statistics:{name:"Statistics",icon:"📊",calc:true,questions:[
+    {q:"Mean of: 4, 7, 2, 9, 3",a:"5",level:1,hint:"Sum÷count",explain:"25÷5=5"},
+    {q:"Median of: 3, 7, 1, 9, 4",a:"4",level:1,hint:"Sort, find middle.",explain:"Sorted:1,3,4,7,9 → 4"},
+    {q:"Range of: 12, 5, 18, 3, 20, 8",a:"17",level:1,hint:"Max−min",explain:"20−3=17"},
+    {q:"Mode of: 3,5,5,7,3,5,8,2",a:"5",level:1,hint:"Most frequent value.",explain:"5 appears 3 times"},
+    {q:"P(A)=0.3. Find P(not A).",a:"0.7",level:1,hint:"P(not A)=1−P(A)",explain:"1−0.3=0.7"},
+    {q:"Class of 30, P(left-handed)=0.1. Expected number?",a:"3",level:1,hint:"Probability×total",explain:"0.1×30=3"},
+    {q:"Bag: 3 red, 7 blue. P(red)?",a:"0.3",level:1,hint:"P=favourable/total",explain:"3/10=0.3"},
+    {q:"Median of: 2,5,7,10,13,18",a:"8.5",level:2,hint:"Even count: average of two middle values.",explain:"(7+10)/2=8.5"},
+    {q:"Standard deviation of: 2,4,4,4,5,5,7,9",a:"2",level:3,hint:"Mean=5. SD=√(mean of squared deviations)",explain:"Variance=4 → SD=2"},
+  ]},
+  fractions:{name:"Fractions & %",icon:"½",calc:false,questions:[
+    {q:"35% of 240",a:"84",level:1,hint:"×0.35",explain:"240×0.35=84"},
+    {q:"17.5% of 80",a:"14",level:1,hint:"×0.175",explain:"80×0.175=14"},
+    {q:"Simplify: 24/36",a:"2/3",level:1,hint:"HCF=12",explain:"24÷12=2, 36÷12=3"},
+    {q:"2/5 as a percentage?",a:"40",level:1,hint:"÷5×100",explain:"0.4×100=40%"},
+    {q:"Increase £120 by 15%.",a:"138",level:1,hint:"×1.15",explain:"120×1.15=£138"},
+    {q:"Price £80→£96. % increase?",a:"20",level:2,hint:"(change÷original)×100",explain:"(16÷80)×100=20%"},
+    {q:"3/4 + 2/3 (as improper fraction)",a:"17/12",level:2,hint:"Common denom=12",explain:"9/12+8/12=17/12"},
+    {q:"Coat £63 after 10% off. Original price?",a:"70",level:3,hint:"£63=90%. Divide by 0.9.",explain:"63÷0.9=£70"},
+    {q:"Price drops £200→£170. % decrease?",a:"15",level:2,hint:"(decrease÷original)×100",explain:"(30÷200)×100=15%"},
+  ]},
+  surds:{name:"Surds & Indices",icon:"√",calc:false,questions:[
+    {q:"Simplify: √48",a:"4√3",level:2,hint:"Largest perfect square factor of 48 = 16.",explain:"√(16×3)=4√3"},
+    {q:"Evaluate: 2³ × 2⁴",a:"128",level:1,hint:"Add indices: 2^7",explain:"2⁷=128"},
+    {q:"Simplify: (x³)⁴",a:"x¹²",level:2,hint:"Multiply indices.",explain:"x^12"},
+    {q:"Evaluate: 27^(1/3)",a:"3",level:2,hint:"Cube root of 27.",explain:"∛27=3"},
+    {q:"Evaluate: 4^(−2)",a:"1/16",level:2,hint:"Negative index=reciprocal.",explain:"1/4²=1/16"},
+    {q:"Simplify: √75−√27",a:"2√3",level:3,hint:"√75=5√3, √27=3√3",explain:"5√3−3√3=2√3"},
+    {q:"Rationalise: 1/√5",a:"√5/5",level:3,hint:"Multiply top &amp; bottom by √5.",explain:"√5/5"},
+    {q:"Evaluate: 16^(3/4)",a:"8",level:3,hint:"(⁴√16)³",explain:"⁴√16=2, 2³=8"},
+  ]},
+  functions:{name:"Functions & Graphs",icon:"📈",calc:false,questions:[
+    {q:"f(x)=3x−2. Find f(4).",a:"10",level:1,hint:"Substitute x=4.",explain:"3(4)−2=10"},
+    {q:"f(x)=x²+1. Find f(3).",a:"10",level:1,hint:"Substitute x=3.",explain:"9+1=10"},
+    {q:"Gradient of y=5x−3?",a:"5",level:1,hint:"y=mx+c: m is gradient.",explain:"m=5"},
+    {q:"y-intercept of y=2x+7?",a:"7",level:1,hint:"y=mx+c: c is y-intercept.",explain:"c=7"},
+    {q:"Gradient through (1,3) and (4,9)?",a:"2",level:2,hint:"m=(y₂−y₁)/(x₂−x₁)",explain:"6/3=2"},
+    {q:"Rearrange to y=mx+c: 2y=6x+8",a:"y=3x+4",level:2,hint:"Divide everything by 2.",explain:"y=3x+4"},
+    {q:"Line: gradient 3, through (0,−1).",a:"y=3x−1",level:2,hint:"y=mx+c, m=3, c=−1.",explain:"y=3x−1"},
+    {q:"Where does y=x²−4 cross the x-axis?",a:"x=2,x=−2",level:2,hint:"Set y=0.",explain:"x=±2"},
+    {q:"Turning point of y=(x−3)²+2?",a:"(3,2)",level:3,hint:"y=(x−a)²+b: TP=(a,b).",explain:"(3,2) minimum"},
+  ]},
+  vectors:{name:"Vectors",icon:"➡",calc:false,questions:[
+    {q:"Magnitude of (3,4).",a:"5",level:1,hint:"|v|=√(x²+y²)",explain:"√25=5"},
+    {q:"Add: (2,5)+(−1,3)",a:"(1,8)",level:1,hint:"Add each component.",explain:"(1,8)"},
+    {q:"Multiply (3,−2,1) by 4.",a:"(12,−8,4)",level:1,hint:"Multiply each component.",explain:"(12,−8,4)"},
+    {q:"If a·b=0, what does that mean?",a:"perpendicular",level:2,hint:"Zero dot product → ?",explain:"Vectors are perpendicular (90°)."},
+    {q:"Dot product: (1,2,3)·(4,−1,2)",a:"8",level:3,hint:"Multiply pairs and add.",explain:"4−2+6=8"},
+    {q:"Unit vector of (6,8)?",a:"(0.6,0.8)",level:3,hint:"Divide by magnitude (=10).",explain:"(0.6,0.8)"},
+  ]},
+  circle:{name:"Circle Geometry",icon:"⭕",calc:true,questions:[
+    {q:"Tangent meets radius at what angle?",a:"90",level:1,hint:"Key circle theorem!",explain:"Always 90° — perpendicular."},
+    {q:"Angle in a semicircle is always?",a:"90",level:1,hint:"Thales' theorem.",explain:"90° — Thales' theorem."},
+    {q:"Two tangents from external point. One=7cm. Other?",a:"7",level:1,hint:"Tangents from same point are equal.",explain:"Both=7cm."},
+    {q:"Chord=16cm, r=10cm. Distance centre→chord?",a:"6",level:2,hint:"Perp bisects chord. Pythagoras: √(r²−(½chord)²)",explain:"√(100−64)=6"},
+    {q:"Arc: r=9, θ=60°. Arc length? (2dp)",a:"9.42",level:2,hint:"Arc=(θ/360)×2πr",explain:"3π≈9.42"},
+    {q:"Sector: r=5, θ=120°. Area? (2dp)",a:"26.18",level:2,hint:"Area=(θ/360)×πr²",explain:"(1/3)×25π≈26.18"},
+  ]}
+};
+
+const FLASHCARDS={
+  all:[
+    {term:"Quadratic Formula",def:"x = (−b ± √(b²−4ac)) / 2a\nUsed when ax²+bx+c=0"},
+    {term:"SOH",def:"sin θ = Opposite ÷ Hypotenuse"},
+    {term:"CAH",def:"cos θ = Adjacent ÷ Hypotenuse"},
+    {term:"TOA",def:"tan θ = Opposite ÷ Adjacent"},
+    {term:"Pythagoras",def:"a² + b² = c²\nc is always the hypotenuse"},
+    {term:"Sine Rule",def:"a/sin A = b/sin B = c/sin C"},
+    {term:"Cosine Rule",def:"a² = b² + c² − 2bc·cos A"},
+    {term:"Triangle Area (trig)",def:"Area = ½ab·sin C"},
+    {term:"Area of Circle",def:"A = πr²"},
+    {term:"Circumference",def:"C = 2πr = πd"},
+    {term:"Volume of Cylinder",def:"V = πr²h"},
+    {term:"Volume of Cone",def:"V = ⅓πr²h"},
+    {term:"Volume of Sphere",def:"V = ⁴⁄₃πr³"},
+    {term:"Mean",def:"Mean = sum of values ÷ number of values"},
+    {term:"Standard Deviation",def:"s = √(Σ(x−x̄)² ÷ (n−1))"},
+    {term:"Trig Identity",def:"sin²θ + cos²θ = 1\nAlways true!"},
+    {term:"Gradient Formula",def:"m = (y₂−y₁) ÷ (x₂−x₁)"},
+    {term:"Straight Line",def:"y = mx + c\nm = gradient, c = y-intercept"},
+    {term:"Index Law: Multiply",def:"aᵐ × aⁿ = aᵐ⁺ⁿ\nSame base → add powers"},
+    {term:"Index Law: Divide",def:"aᵐ ÷ aⁿ = aᵐ⁻ⁿ\nSame base → subtract powers"},
+    {term:"Negative Index",def:"a⁻ⁿ = 1/aⁿ\ne.g. 2⁻³ = 1/8"},
+    {term:"Fractional Index",def:"a^(1/n) = ⁿ√a\ne.g. 27^(1/3) = 3"},
+    {term:"Dot Product",def:"a·b = a₁b₁ + a₂b₂ + a₃b₃\nIf a·b = 0 → perpendicular"},
+    {term:"Probability",def:"P(A) = favourable ÷ total\nP(not A) = 1 − P(A)"},
+    {term:"IQR",def:"IQR = Q3 − Q1\n(upper − lower quartile)"},
+  ]
+};
+FLASHCARDS.algebra=FLASHCARDS.all.slice(0,5);
+FLASHCARDS.trig=FLASHCARDS.all.slice(1,8);
+FLASHCARDS.geometry=FLASHCARDS.all.slice(8,13);
+FLASHCARDS.stats=FLASHCARDS.all.slice(13,17);
+FLASHCARDS.surds=FLASHCARDS.all.slice(18,22);
+
+let S={
+  panel:'practice',currentQ:null,currentTopic:'random',currentDiff:'auto',
+  questionNum:1,notepadContent:'',
+  stats:{answered:0,correct:0,streak:0,bestStreak:0,xp:0,level:1,dailyCount:0,dailyDate:''},
+  topicStats:{},settings:{name:'',goal:10,theme:'purple'},
+  timerScores:[],fcIdx:0,fcCards:[],
+  timerLeft:0,timerScore:0,timerTopic:'random',timerQ:null
+};
+let timerInterval=null;
+
+try{
+  const sv=localStorage.getItem('nat5_v4');
+  if(sv){
+    const p=JSON.parse(sv);
+    if(p.stats)S.stats={...S.stats,...p.stats};
+    if(p.topicStats)S.topicStats=p.topicStats;
+    if(p.notepadContent)S.notepadContent=p.notepadContent;
+    if(p.questionNum)S.questionNum=p.questionNum;
+    if(p.settings)S.settings={...S.settings,...p.settings};
+    if(p.timerScores)S.timerScores=p.timerScores;
+    const today=new Date().toDateString();
+    if(S.stats.dailyDate!==today){S.stats.dailyCount=0;S.stats.dailyDate=today;}
+  }
+}catch(e){}
+
+function save(){try{localStorage.setItem('nat5_v4',JSON.stringify({stats:S.stats,topicStats:S.topicStats,notepadContent:S.notepadContent,questionNum:S.questionNum,settings:S.settings,timerScores:S.timerScores}));}catch(e){}}
+
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  const ps=['practice','timer','flashcards','topics','worksheets','formulas','calculator','notepad','progress','resources','mock','shop','settings'];
+  const i=ps.indexOf(id);if(i>=0)document.querySelectorAll('.nav button')[i].classList.add('active');
+  S.panel=id;
+  if(id==='progress')renderProg();
+  if(id==='topics')renderTopics();
+  if(id==='worksheets')renderWS();
+  if(id==='notepad')document.getElementById('notepad-text').value=S.notepadContent;
+  if(id==='flashcards')loadFC();
+  if(id==='mock'){renderMockPrevScores();}
+  if(id==='settings')applySettings();
+}
+
+function pickTopic(ov){
+  const t=ov||S.currentTopic;
+  if(t==='random'||t==='all'){const k=Object.keys(TOPICS);return k[Math.floor(Math.random()*k.length)];}
+  return t;
+}
+function getLevel(){
+  if(S.currentDiff!=='auto')return parseInt(S.currentDiff);
+  return S.stats.xp<10?1:S.stats.xp<35?2:3;
+}
+function newQuestion(ov){
+  const topic=pickTopic(ov);
+  const level=getLevel();
+  const pool=TOPICS[topic].questions.filter(q=>q.level<=level);
+  const q=pool[Math.floor(Math.random()*pool.length)];
+  S.currentQ={...q,topic};
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-input').value='';
+  document.getElementById('q-topic-label').textContent=TOPICS[topic].name;
+  document.getElementById('q-num').textContent=S.questionNum;
+  document.getElementById('q-level').textContent='Level '+level+' — '+(level===1?'Easy':level===2?'Medium':'Hard');
+  document.getElementById('feedback-area').innerHTML='';
+  document.getElementById('ai-loading').style.display='none';
+  const inp2=document.getElementById('q-input');inp2.disabled=false;inp2.style.opacity='1';
+  const ca=TOPICS[topic].calc;
+  const bd=document.getElementById('calc-badge');
+  bd.textContent=ca?'✅ Calculator Allowed':'🚫 No Calculator';
+  bd.className='calc-badge '+(ca?'cb-yes':'cb-no');
+  document.getElementById('calc-link').style.display=ca?'inline':'none';
+  document.getElementById('q-input').focus();
+}
+
+function norm(s){return s.toString().toLowerCase().replace(/\s+/g,'').replace(/[×x]/g,'*').replace(/[−–]/g,'-');}
+function match(user,correct){
+  const cs=correct.split(',').map(c=>norm(c));const u=norm(user);
+  return cs.some(c=>{
+    if(c===u)return true;
+    const n1=parseFloat(c.replace(/[^0-9.\-]/g,'')),n2=parseFloat(u.replace(/[^0-9.\-]/g,''));
+    return !isNaN(n1)&&!isNaN(n2)&&Math.abs(n1-n2)<0.12;
+  });
+}
+
+function checkAnswer(){
+  if(!S.currentQ)return;
+  const raw=document.getElementById('q-input').value.trim();if(!raw)return;
+  const ok=match(raw,S.currentQ.a);
+  S.stats.answered++;S.stats.dailyCount++;
+  if(!S.stats.dailyDate)S.stats.dailyDate=new Date().toDateString();
+  const tk=S.currentQ.topic;
+  if(!S.topicStats[tk])S.topicStats[tk]={correct:0,total:0};
+  S.topicStats[tk].total++;
+  // Disable input immediately so student can't retry
+  const inp=document.getElementById('q-input');
+  inp.disabled=true;inp.style.opacity='0.5';
+  if(ok){
+    S.stats.correct++;S.topicStats[tk].correct++;
+    S.stats.streak++;if(S.stats.streak>S.stats.bestStreak)S.stats.bestStreak=S.stats.streak;
+    S.stats.xp+=S.currentQ.level*2;updateLevel();updateHeader();checkMilestones();
+    const sm=S.stats.streak>=3?`🔥 ${S.stats.streak} in a row!`:'';
+    document.getElementById('feedback-area').innerHTML=`<div class="fb fb-ok"><strong>✅ Correct!</strong> ${sm}<div class="fb-exp"><strong>Why:</strong> ${S.currentQ.explain}</div></div>`;
+    S.questionNum++;save();setTimeout(newQuestion,2500);
+  }else{
+    S.stats.streak=0;updateHeader();save();showWrong(raw);
+  }
+}
+async function showWrong(u){
+  const q=S.currentQ;
+  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-no"><strong>❌ Not quite!</strong> You answered: <em>${u}</em><br><strong>Correct answer:</strong> ${q.a}<div class="fb-exp"><strong>How to do it:</strong> ${q.explain}</div></div>`;
+  document.getElementById('ai-loading').style.display='flex';
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",
+      headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:300,
+        messages:[{role:"user",content:`Friendly Nat 5 Maths Scotland tutor, student ~15yrs.
+Q: ${q.q} | Correct: ${q.a} | Student answered: ${u} | Topic: ${TOPICS[q.topic].name}
+Calculator ${TOPICS[q.topic].calc?'IS':'is NOT'} allowed here.
+3 friendly sentences: why wrong, correct method, memory tip. No LaTeX.`}]})});
+    const d=await res.json();
+    document.getElementById('ai-loading').style.display='none';
+    if(d.content&&d.content[0]){
+      document.getElementById('feedback-area').innerHTML+=`<div class="fb fb-ai"><strong>🤖 AI Tutor says:</strong><br><br>${d.content[0].text}<br><br><em style="font-size:12px;opacity:.7">Next question loading in 5 seconds...</em></div>`;
+    }
+  }catch(e){
+    document.getElementById('ai-loading').style.display='none';
+    document.getElementById('feedback-area').innerHTML+=`<div style="font-size:12px;color:var(--text2);margin-top:8px;font-style:italic">Next question loading...</div>`;
+  }
+  // Always move to next question after showing explanation (with or without AI)
+  S.questionNum++;save();setTimeout(newQuestion,5000);
+}
+function skipQuestion(){S.stats.streak=0;S.questionNum++;newQuestion();}
+function getHint(){
+  if(!S.currentQ)return;
+  const inp=document.getElementById('q-input');
+  if(inp.disabled)return;
+  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-hint"><strong>💡 Hint:</strong> ${S.currentQ.hint}</div>`;
+}
+function updateLevel(){S.stats.level=S.stats.xp<10?1:S.stats.xp<35?2:S.stats.xp<70?3:S.stats.xp<120?4:5;}
+function updateHeader(){
+  document.getElementById('hdr-stars').textContent=S.stats.correct;
+  document.getElementById('hdr-level').textContent=S.stats.level;
+  document.getElementById('hdr-streak').textContent=S.stats.streak;
+  document.getElementById('hdr-xp').textContent=S.stats.xp;
+  const lv=[0,10,35,70,120,200];const l=S.stats.level-1;
+  const base=lv[Math.min(l,4)]||0,next=lv[Math.min(l+1,4)]||200;
+  document.getElementById('xp-fill').style.width=Math.min(100,((S.stats.xp-base)/(next-base))*100)+'%';
+  const g=S.settings.goal||10,dc=S.stats.dailyCount||0;
+  document.getElementById('hdr-daily').textContent=dc;document.getElementById('hdr-goal').textContent=g;
+  document.getElementById('daily-count').textContent=dc;document.getElementById('daily-goal-lbl').textContent=g;
+  document.getElementById('goal-fill').style.width=Math.min(100,(dc/g)*100)+'%';
+}
+function changeTopic(){S.currentTopic=document.getElementById('topic-select').value;S.currentDiff=document.getElementById('diff-select').value;newQuestion();}
+
+function checkMilestones(){
+  const c=S.stats.correct;
+  const m={5:'🎉 5 correct! Great start!',10:'⭐ 10 correct! On fire!',25:'🚀 25 correct! Incredible!',50:'🏆 50 correct! Maths master!',100:'👑 100 correct! LEGEND!'};
+  if(m[c])showReward(m[c]);
+  if(S.stats.streak===5)showReward('🔥 5 streak! Amazing!');
+  if(S.stats.streak===10)showReward('💫 10 streak! Unstoppable!');
+  if(S.stats.dailyCount===(S.settings.goal||10))showReward('✅ Daily goal reached! 🎯');
+}
+function showReward(msg){const el=document.getElementById('reward-pop');el.innerHTML=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
+
+// TIMER
+function startTimer(secs){
+  S.timerTopic=document.getElementById('timer-topic').value;
+  document.getElementById('timer-setup').style.display='none';
+  document.getElementById('timer-result').style.display='none';
+  document.getElementById('timer-game').style.display='block';
+  S.timerLeft=secs;S.timerScore=0;
+  document.getElementById('timer-score-lbl').textContent='0';
+  document.getElementById('timer-display').textContent=secs;
+  document.getElementById('timer-display').className='timer-display';
+  newTimerQ();
+  timerInterval=setInterval(()=>{
+    S.timerLeft--;
+    document.getElementById('timer-display').textContent=S.timerLeft;
+    if(S.timerLeft<=10)document.getElementById('timer-display').className='timer-display urgent';
+    if(S.timerLeft<=0){clearInterval(timerInterval);endTimer(secs);}
+  },1000);
+}
+function newTimerQ(){
+  const t=pickTopic(S.timerTopic);
+  const pool=TOPICS[t].questions.filter(q=>q.level<=2);
+  S.timerQ={...pool[Math.floor(Math.random()*pool.length)],topic:t};
+  document.getElementById('timer-q').textContent=S.timerQ.q;
+  document.getElementById('timer-input').value='';
+  document.getElementById('timer-fb').textContent='';
+  document.getElementById('timer-input').focus();
+}
+function checkTimerAnswer(){
+  const raw=document.getElementById('timer-input').value.trim();if(!raw||!S.timerQ)return;
+  if(match(raw,S.timerQ.a)){
+    S.timerScore++;
+    document.getElementById('timer-score-lbl').textContent=S.timerScore;
+    document.getElementById('timer-fb').innerHTML='<span style="color:#16a34a;font-weight:700">✅ Correct!</span>';
+    newTimerQ();
+  }else{
+    document.getElementById('timer-fb').innerHTML=`<span style="color:#dc2626;font-weight:700">❌ Answer: ${S.timerQ.a}</span>`;
+    setTimeout(newTimerQ,900);
+  }
+}
+function nextTimerQ(){newTimerQ();}
+function endTimer(secs){
+  clearInterval(timerInterval);
+  document.getElementById('timer-game').style.display='none';
+  document.getElementById('timer-result').style.display='block';
+  document.getElementById('timer-final').textContent=S.timerScore+' correct!';
+  const best=S.timerScores.length?Math.max(...S.timerScores.map(s=>s.score)):0;
+  document.getElementById('timer-msg').textContent=S.timerScore>best?'🏆 New personal best!':S.timerScore>=10?'Excellent!':S.timerScore>=5?'Good effort!':'Keep practising!';
+  S.timerScores.push({score:S.timerScore,secs,date:new Date().toLocaleDateString()});
+  if(S.timerScores.length>10)S.timerScores=S.timerScores.slice(-10);
+  save();
+}
+function resetTimer(){clearInterval(timerInterval);document.getElementById('timer-setup').style.display='block';document.getElementById('timer-game').style.display='none';document.getElementById('timer-result').style.display='none';}
+
+// FLASHCARDS
+function loadFC(){
+  const t=document.getElementById('fc-topic')?.value||'all';
+  S.fcCards=[...(FLASHCARDS[t]||FLASHCARDS.all)];S.fcIdx=0;showFC();
+}
+function showFC(){
+  const c=S.fcCards[S.fcIdx];if(!c)return;
+  document.getElementById('fc-term').textContent=c.term;
+  document.getElementById('fc-def').textContent=c.def;
+  document.getElementById('fc-idx').textContent=S.fcIdx+1;
+  document.getElementById('fc-tot').textContent=S.fcCards.length;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextFC(){S.fcIdx=(S.fcIdx+1)%S.fcCards.length;showFC();}
+function prevFC(){S.fcIdx=(S.fcIdx-1+S.fcCards.length)%S.fcCards.length;showFC();}
+function shuffleFC(){for(let i=S.fcCards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[S.fcCards[i],S.fcCards[j]]=[S.fcCards[j],S.fcCards[i]];}S.fcIdx=0;showFC();}
+
+// TOPICS
+function renderTopics(){
+  const g=document.getElementById('topic-grid');g.innerHTML='';
+  Object.entries(TOPICS).forEach(([k,t])=>{
+    const ts=S.topicStats[k]||{correct:0,total:0};
+    const pct=ts.total?Math.round((ts.correct/ts.total)*100):0;
+    const d=document.createElement('div');d.className='topic-card';
+    d.innerHTML=`<div class="ticon">${t.icon}</div><h3>${t.name}</h3>
+      <div class="tprog">${ts.total?pct+'% ('+ts.total+' done)':'Not started'}</div>
+      <div style="font-size:11px;margin-top:3px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calc allowed':'🚫 No calc'}</div>
+      <div class="pb"><div class="pf" style="width:${pct}%"></div></div>`;
+    d.onclick=()=>{document.getElementById('topic-select').value=k;S.currentTopic=k;showPanel('practice');newQuestion();};
+    g.appendChild(d);
+  });
+}
+
+// WORKSHEETS
+const WORKSHEETS=[
+  {title:'Algebra Basics',topic:'algebra',diff:'Easy',qs:[0,1,2,3,4]},
+  {title:'Algebra Challenge',topic:'algebra',diff:'Hard',qs:[5,6,7,8,9,10,13]},
+  {title:'Trig — No Calc',topic:'trigonometry',diff:'Easy',qs:[0,1,2,3,4]},
+  {title:'Trig — Calculator',topic:'trigonometry',diff:'Hard',qs:[5,6,7,8]},
+  {title:'Statistics',topic:'statistics',diff:'Mixed',qs:[0,1,2,3,4,5,6,7]},
+  {title:'Fractions & %',topic:'fractions',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
+  {title:'Surds & Indices',topic:'surds',diff:'Mixed',qs:[0,1,2,3,4,5,6,7]},
+  {title:'Functions & Graphs',topic:'functions',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
+  {title:'Geometry',topic:'geometry',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
+  {title:'Circle Geometry',topic:'circle',diff:'Mixed',qs:[0,1,2,3,4,5]},
+  {title:'Vectors',topic:'vectors',diff:'Mixed',qs:[0,1,2,3,4,5]},
+];
+const BC={Easy:'be',Medium:'bm',Hard:'bh',Mixed:'bx'};
+function renderWS(){
+  const el=document.getElementById('sheet-list');el.innerHTML='';
+  WORKSHEETS.forEach((ws,i)=>{
+    const t=TOPICS[ws.topic];const d=document.createElement('div');d.className='sheet-card';
+    d.innerHTML=`<h3>${ws.title}</h3><p>${t.icon} ${t.name}</p>
+      <span class="badge ${BC[ws.diff]||'bx'}">${ws.diff}</span>
+      <span style="font-size:11px;margin-left:5px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calc':'🚫 No calc'}</span>`;
+    d.onclick=()=>openWS(i);el.appendChild(d);
+  });
+}
+function openWS(idx){
+  const ws=WORKSHEETS[idx];const t=TOPICS[ws.topic];
+  const qs=ws.qs.map(qi=>t.questions[qi]).filter(Boolean);
+  document.getElementById('ws-list').style.display='none';
+  const av=document.getElementById('ws-active');av.style.display='block';
+  av.innerHTML=`<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
+      <div><h2>${t.icon} ${ws.title}</h2>
+        <div style="font-size:12px;margin-top:2px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calculator Allowed':'🚫 No Calculator for this topic'}</div>
+      </div>
+      <button class="btn btn-s" onclick="closeWS()" style="font-size:12px;padding:7px 11px">← Back</button>
+    </div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:11px">Answer all questions then click "Check All".</p>
+    ${qs.map((q,i)=>`<div class="ws-q"><p>${i+1}. ${q.q}</p>
+      <input type="text" placeholder="Your answer..." id="wsq${i}"
+        onkeydown="if(event.key==='Enter')checkWS(${i},'${q.a.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}','${q.explain.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">
+      <div id="wsfb${i}" style="margin-top:5px;font-size:13px"></div></div>`).join('')}
+    <div class="btn-row" style="margin-top:13px">
+      <button class="btn btn-p" onclick="checkAllWS(${JSON.stringify(qs.map(q=>({a:q.a,e:q.explain})))})">Check All ✓</button>
+      <button class="btn btn-s" onclick="closeWS()">← Back</button>
+    </div></div>`;
+}
+function checkWS(i,correct,explain){
+  const user=(document.getElementById('wsq'+i)||{}).value?.trim()||'';
+  const ok=match(user,correct);
+  document.getElementById('wsfb'+i).innerHTML=ok
+    ?`<span style="color:#16a34a;font-weight:700">✅ Correct!</span> <span style="color:#374151">${explain}</span>`
+    :`<span style="color:#dc2626;font-weight:700">❌ Answer: ${correct}</span> <span style="color:#374151">${explain}</span>`;
+}
+function checkAllWS(answers){answers.forEach((a,i)=>checkWS(i,a.a,a.e));}
+function closeWS(){document.getElementById('ws-list').style.display='block';document.getElementById('ws-active').style.display='none';}
+async function generateWS(){
+  const btn=document.getElementById('gen-ws-btn');btn.textContent='⏳ Generating...';btn.disabled=true;
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:900,
+        messages:[{role:"user",content:`Nat 5 Maths Scotland worksheet, 6 questions, mixed topics. Return ONLY valid JSON:
+{"title":"title","questions":[{"q":"question","a":"answer","explain":"explanation","calc":true}]}`}]})});
+    const d=await res.json();
+    const ws=JSON.parse(d.content[0].text.replace(/```json|```/g,'').trim());
+    showAIWS(ws);
+  }catch(e){alert('Could not generate. Check internet connection.');}
+  btn.textContent='✨ AI Worksheet';btn.disabled=false;
+}
+function showAIWS(ws){
+  document.getElementById('ws-list').style.display='none';
+  const av=document.getElementById('ws-active');av.style.display='block';
+  av.innerHTML=`<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
+      <h2>🤖 ${ws.title}</h2>
+      <button class="btn btn-s" onclick="closeWS()" style="font-size:12px;padding:7px 11px">← Back</button>
+    </div>
+    ${ws.questions.map((q,i)=>`<div class="ws-q"><p>${i+1}. ${q.q} <span style="font-size:11px;color:${q.calc?'#16a34a':'#dc2626'}">${q.calc?'(✅ calc)':'(🚫 no calc)'}</span></p>
+      <input type="text" placeholder="Your answer..." id="waiq${i}">
+      <div id="waifb${i}" style="margin-top:5px;font-size:13px"></div></div>`).join('')}
+    <div class="btn-row" style="margin-top:13px">
+      <button class="btn btn-p" onclick="checkAIWS(${JSON.stringify(ws.questions)})">Check All ✓</button>
+      <button class="btn btn-s" onclick="closeWS()">← Back</button>
+    </div></div>`;
+}
+function checkAIWS(qs){
+  qs.forEach((q,i)=>{
+    const user=(document.getElementById('waiq'+i)||{}).value?.trim()||'';
+    const ok=match(user,q.a);
+    document.getElementById('waifb'+i).innerHTML=ok
+      ?`<span style="color:#16a34a;font-weight:700">✅ Correct!</span>`
+      :`<span style="color:#dc2626;font-weight:700">❌ Answer: ${q.a}</span> <span style="color:#374151">${q.explain||''}</span>`;
+  });
+}
+
+// PROGRESS
+function renderProg(){
+  const items=[
+    {n:S.stats.answered,l:'Answered'},{n:S.stats.correct,l:'Correct'},
+    {n:S.stats.answered?Math.round((S.stats.correct/S.stats.answered)*100)+'%':'0%',l:'Accuracy'},
+    {n:S.stats.bestStreak,l:'Best Streak 🔥'},{n:S.stats.level,l:'Level'},{n:S.stats.xp,l:'XP ⭐'},
+  ];
+  document.getElementById('stats-grid').innerHTML=items.map(s=>`<div class="stat-card"><div class="snum">${s.n}</div><div class="slbl">${s.l}</div></div>`).join('');
+  const list=document.getElementById('topic-prog');list.innerHTML='';
+  Object.entries(TOPICS).forEach(([k,t])=>{
+    const ts=S.topicStats[k]||{correct:0,total:0};
+    const pct=ts.total?Math.round((ts.correct/ts.total)*100):0;
+    list.innerHTML+=`<div style="margin-bottom:9px">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px">
+        <span style="font-weight:700">${t.icon} ${t.name}</span>
+        <span style="color:var(--text2)">${ts.correct}/${ts.total} (${pct}%)</span>
+      </div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
+  });
+  const lb=document.getElementById('leaderboard');
+  if(S.timerScores.length){
+    const sorted=[...S.timerScores].sort((a,b)=>b.score-a.score).slice(0,5);
+    lb.innerHTML=sorted.map((s,i)=>`<div class="lb-row">
+      <span style="font-size:16px;min-width:28px">${['🥇','🥈','🥉','4️⃣','5️⃣'][i]}</span>
+      <span style="flex:1;font-weight:600">${s.secs}s challenge</span>
+      <span style="font-weight:700;color:var(--primary)">${s.score} correct</span>
+      <span style="font-size:11px;color:var(--text2);margin-left:5px">${s.date}</span></div>`).join('');
+  }else{lb.innerHTML='<p style="font-size:13px;color:var(--text2)">No timer scores yet — try the Timer Challenge!</p>';}
+}
+function resetProg(){
+  if(confirm('Reset ALL progress? Cannot be undone.')){
+    S.stats={answered:0,correct:0,streak:0,bestStreak:0,xp:0,level:1,dailyCount:0,dailyDate:new Date().toDateString()};
+    S.topicStats={};S.questionNum=1;S.timerScores=[];
+    save();renderProg();updateHeader();
+  }
+}
+
+// CALCULATOR
+let calcExpr='',calcPrevStr='';
+function buildCalc(){
+  const btns=[
+    {l:'sin',t:'cfn'},{l:'cos',t:'cfn'},{l:'tan',t:'cfn'},{l:'(',t:'cnum'},{l:')',t:'cnum'},
+    {l:'sin⁻¹',t:'cfn'},{l:'cos⁻¹',t:'cfn'},{l:'tan⁻¹',t:'cfn'},{l:'π',t:'cfn'},{l:'e',t:'cfn'},
+    {l:'x²',t:'cfn'},{l:'xⁿ',t:'cfn'},{l:'√',t:'cfn'},{l:'log',t:'cfn'},{l:'ln',t:'cfn'},
+    {l:'7',t:'cnum'},{l:'8',t:'cnum'},{l:'9',t:'cnum'},{l:'÷',t:'cop'},{l:'AC',t:'cclr'},
+    {l:'4',t:'cnum'},{l:'5',t:'cnum'},{l:'6',t:'cnum'},{l:'×',t:'cop'},{l:'⌫',t:'cclr'},
+    {l:'1',t:'cnum'},{l:'2',t:'cnum'},{l:'3',t:'cnum'},{l:'-',t:'cop'},{l:'=',t:'ceq'},
+    {l:'0',t:'cnum'},{l:'.',t:'cnum'},{l:'%',t:'cfn'},{l:'+',t:'cop'},{l:'=',t:'ceq'},
+  ];
+  const g=document.getElementById('calc-btns');g.innerHTML='';
+  btns.forEach(b=>{const btn=document.createElement('button');btn.className='cbtn '+b.t;btn.textContent=b.l;btn.onclick=()=>calcPress(b.l);g.appendChild(btn);});
+}
+function calcPress(v){
+  const d=document.getElementById('calc-main');
+  if(v==='AC'){calcExpr='';calcPrevStr='';d.textContent='0';document.getElementById('calc-prev').textContent='';return;}
+  if(v==='⌫'){calcExpr=calcExpr.slice(0,-1)||'';d.textContent=calcExpr||'0';return;}
+  if(v==='='){
+    try{
+      let e=calcExpr
+        .replace(/π/g,'Math.PI').replace(/e(?![xpn])/g,'Math.E')
+        .replace(/sin⁻¹\(/g,'(180/Math.PI)*Math.asin(')
+        .replace(/cos⁻¹\(/g,'(180/Math.PI)*Math.acos(')
+        .replace(/tan⁻¹\(/g,'(180/Math.PI)*Math.atan(')
+        .replace(/sin\(/g,'Math.sin((Math.PI/180)*(')
+        .replace(/cos\(/g,'Math.cos((Math.PI/180)*(')
+        .replace(/tan\(/g,'Math.tan((Math.PI/180)*(')
+        .replace(/√\(/g,'Math.sqrt(').replace(/log\(/g,'Math.log10(').replace(/ln\(/g,'Math.log(')
+        .replace(/÷/g,'/').replace(/×/g,'*').replace(/x²/g,'**2').replace(/xⁿ/g,'**').replace(/%/g,'/100');
+      const op=(e.match(/\(/g)||[]).length,cl=(e.match(/\)/g)||[]).length;
+      e+=')'.repeat(Math.max(0,op-cl));
+      const r=Function('"use strict";return ('+e+')')();
+      calcPrevStr=calcExpr+' =';
+      document.getElementById('calc-prev').textContent=calcPrevStr;
+      calcExpr=String(parseFloat(r.toFixed(9)));d.textContent=calcExpr;
+    }catch{d.textContent='Error';calcExpr='';}
+    return;
+  }
+  const fns=['sin','cos','tan','sin⁻¹','cos⁻¹','tan⁻¹','√','log','ln'];
+  if(fns.includes(v)){calcExpr+=v+'(';d.textContent=calcExpr;return;}
+  if(v==='x²'){calcExpr+='**2';d.textContent=calcExpr;return;}
+  if(v==='xⁿ'){calcExpr+='**';d.textContent=calcExpr;return;}
+  calcExpr+=v;d.textContent=calcExpr;
+}
+
+// NOTEPAD
+function clearNote(){if(confirm('Clear all notes?')){document.getElementById('notepad-text').value='';S.notepadContent='';save();}}
+function copyNote(){navigator.clipboard.writeText(document.getElementById('notepad-text').value).then(()=>alert('Copied!')).catch(()=>alert('Use Ctrl+A then Ctrl+C'));}
+function downloadNote(){const a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(document.getElementById('notepad-text').value);a.download='nat5-notes.txt';a.click();}
+document.addEventListener('input',e=>{if(e.target.id==='notepad-text'){S.notepadContent=e.target.value;save();}});
+async function askAI(){
+  const txt=document.getElementById('notepad-text').value.trim();if(!txt){alert('Write something first!');return;}
+  const el=document.getElementById('note-ai-res');
+  el.innerHTML='<div class="loading"><div class="spin"></div> Reviewing your notes...</div>';
+  try{
+    const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:500,
+        messages:[{role:"user",content:`Nat 5 Maths Scotland tutor. Student's notes:\n${txt}\n\nCheck for errors, give friendly feedback, suggest improvements. 5 sentences max.`}]})});
+    const d=await r.json();
+    el.innerHTML=`<div class="fb fb-ai"><strong>🤖 AI Tutor:</strong><br><br>${d.content[0].text}</div>`;
+  }catch{el.innerHTML='<div class="fb fb-no">Could not connect to AI.</div>';}
+}
+
+// SETTINGS
+function saveName(){
+  const n=document.getElementById('student-name').value.trim();S.settings.name=n;save();
+  document.getElementById('app-title').textContent=n?'🏴󠁧󠁢󠁳󠁣󠁴󠁿 '+n+"'s Nat 5 Maths":'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Nat 5 Maths Scotland';
+}
+function setGoal(n){
+  S.settings.goal=n;save();
+  ['5','10','20','30'].forEach(v=>{const el=document.getElementById('goal-'+v);if(el){el.className=v==n?'btn btn-p':'btn btn-s';}});
+  updateHeader();
+}
+const THEMES={purple:{p:'#4f46e5',p2:'#7c3aed',bg:'#f0f4ff'},teal:{p:'#0891b2',p2:'#0e7490',bg:'#f0fbff'},green:{p:'#16a34a',p2:'#15803d',bg:'#f0fdf4'},red:{p:'#dc2626',p2:'#db2777',bg:'#fff0f0'},amber:{p:'#d97706',p2:'#b45309',bg:'#fffbeb'}};
+function setTheme(name,sv=true){
+  const t=THEMES[name]||THEMES.purple;
+  document.documentElement.style.setProperty('--primary',t.p);
+  document.documentElement.style.setProperty('--primary2',t.p2);
+  document.documentElement.style.setProperty('--bg',t.bg);
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById('theme-'+name);if(el)el.classList.add('active');
+  if(sv){S.settings.theme=name;save();}
+}
+function applySettings(){
+  if(S.settings.name){document.getElementById('app-title').textContent='🏴󠁧󠁢󠁳󠁣󠁴󠁿 '+S.settings.name+"'s Nat 5 Maths";const i=document.getElementById('student-name');if(i)i.value=S.settings.name;}
+  setTheme(S.settings.theme,false);
+  ['5','10','20','30'].forEach(v=>{const el=document.getElementById('goal-'+v);if(el)el.className=String(S.settings.goal||10)===v?'btn btn-p':'btn btn-s';});
+}
+function openLink(url){window.open(url,'_blank');}
+function openShop(url){window.open(url,'_blank');}
+
+
+// ===================== MOCK EXAM =====================
+const MOCK_PAPERS = {
+  1: {
+    title: "Paper 1 — Non-Calculator",
+    totalMarks: 40,
+    duration: 3600, // 60 mins in seconds
+    calcAllowed: false,
+    questions: [
+      // NUMERICAL SKILLS (no calc)
+      {topic:"Numerical Skills",q:"Evaluate: 3/4 + 2/3",a:"17/12",marks:2,explain:"Common denom=12: 9/12+8/12=17/12"},
+      {topic:"Numerical Skills",q:"Simplify: √72",a:"6√2",marks:2,explain:"√(36×2)=6√2"},
+      {topic:"Numerical Skills",q:"Evaluate: 3² × 3⁻¹",a:"3",marks:1,explain:"3^(2+(-1))=3^1=3"},
+      {topic:"Numerical Skills",q:"Find 12.5% of 640.",a:"80",marks:2,explain:"12.5%=1/8. 640÷8=80"},
+      {topic:"Numerical Skills",q:"Rationalise: 6/√3",a:"2√3",marks:2,explain:"6/√3 × √3/√3 = 6√3/3 = 2√3"},
+      // ALGEBRA (no calc)
+      {topic:"Algebra",q:"Expand and simplify: (x+4)(x−3)",a:"x²+x−12",marks:2,explain:"x²−3x+4x−12=x²+x−12"},
+      {topic:"Algebra",q:"Factorise: x²−9",a:"(x+3)(x−3)",marks:2,explain:"Difference of squares: (x+3)(x−3)"},
+      {topic:"Algebra",q:"Factorise fully: 3x²−12x",a:"3x(x−4)",marks:2,explain:"HCF=3x: 3x(x−4)"},
+      {topic:"Algebra",q:"Solve: 3x+7=x+19",a:"6",marks:2,explain:"2x=12 → x=6"},
+      {topic:"Algebra",q:"Factorise: x²+7x+12",a:"(x+3)(x+4)",marks:2,explain:"3×4=12, 3+4=7 → (x+3)(x+4)"},
+      {topic:"Algebra",q:"Simplify: (2x³)(3x²)",a:"6x⁵",marks:1,explain:"2×3=6, x^(3+2)=x⁵"},
+      {topic:"Algebra",q:"Complete the square: x²+6x+2",a:"(x+3)²−7",marks:3,explain:"(x+3)²−9+2=(x+3)²−7"},
+      // GEOMETRY (no calc)
+      {topic:"Geometry",q:"A right-angled triangle has legs 5cm and 12cm. Find the hypotenuse.",a:"13",marks:2,explain:"√(25+144)=√169=13cm"},
+      {topic:"Geometry",q:"Find the gradient of the line joining (2,1) and (6,9).",a:"2",marks:2,explain:"(9−1)/(6−2)=8/4=2"},
+      {topic:"Geometry",q:"Write the equation of the line with gradient 3 and y-intercept −2.",a:"y=3x−2",marks:1,explain:"y=mx+c: y=3x−2"},
+      // TRIG (no calc — exact values)
+      {topic:"Trigonometry",q:"Write the exact value of sin 30°.",a:"1/2",marks:1,explain:"sin 30°=1/2 (standard value)"},
+      {topic:"Trigonometry",q:"Write the exact value of cos 60°.",a:"1/2",marks:1,explain:"cos 60°=1/2 (standard value)"},
+      {topic:"Trigonometry",q:"Write the exact value of tan 45°.",a:"1",marks:1,explain:"tan 45°=1 (standard value)"},
+      // STATISTICS (no calc)
+      {topic:"Statistics",q:"Find the median of: 3, 8, 4, 1, 6, 7, 2",a:"4",marks:2,explain:"Sorted: 1,2,3,4,6,7,8 → median=4"},
+      {topic:"Statistics",q:"Find the range of: 15, 3, 22, 8, 19",a:"19",marks:1,explain:"22−3=19"},
+    ]
+  },
+  2: {
+    title: "Paper 2 — Calculator Allowed",
+    totalMarks: 50,
+    duration: 5400, // 90 mins in seconds
+    calcAllowed: true,
+    questions: [
+      // NUMERICAL SKILLS
+      {topic:"Numerical Skills",q:"A car was bought for £12,000. It depreciates by 15% per year. What is its value after 2 years? (to nearest £)",a:"8670",marks:3,explain:"Year1: 12000×0.85=10200. Year2: 10200×0.85=8670"},
+      {topic:"Numerical Skills",q:"£5,000 is invested at 3.5% compound interest per year. Find the value after 3 years. (2dp)",a:"5543.60",marks:3,explain:"5000×(1.035)³=5000×1.10872≈5543.60"},
+      {topic:"Numerical Skills",q:"A jacket costs £85 after a 32% reduction. Find the original price. (2dp)",a:"125.00",marks:3,explain:"£85=68% of original. 85÷0.68=£125.00"},
+      // ALGEBRA
+      {topic:"Algebra",q:"Solve: x²+5x−6=0",a:"x=1,x=−6",marks:3,explain:"Factorise: (x+6)(x−1)=0 → x=1 or x=−6"},
+      {topic:"Algebra",q:"Solve using the quadratic formula: 2x²−3x−2=0",a:"x=2,x=−0.5",marks:4,explain:"a=2,b=−3,c=−2. Disc=9+16=25. x=(3±5)/4 → x=2 or x=−1/2"},
+      {topic:"Algebra",q:"Change the subject to x: y = 3x + 7",a:"x=(y−7)/3",marks:2,explain:"y−7=3x → x=(y−7)/3"},
+      {topic:"Algebra",q:"Simplify the algebraic fraction: (x²−4)/(x+2)",a:"x−2",marks:2,explain:"(x+2)(x−2)/(x+2)=x−2"},
+      {topic:"Algebra",q:"Solve the simultaneous equations: 2x+y=7 and x−y=2",a:"x=3,y=1",marks:3,explain:"Add: 3x=9→x=3. Sub: y=7−6=1"},
+      // GEOMETRY
+      {topic:"Geometry",q:"Calculate the volume of a cone with radius 6cm and height 10cm. (2dp)",a:"376.99",marks:3,explain:"V=⅓πr²h=⅓×π×36×10≈376.99cm³"},
+      {topic:"Geometry",q:"Calculate the surface area of a sphere with radius 5cm. (2dp)",a:"314.16",marks:3,explain:"SA=4πr²=4×π×25≈314.16cm²"},
+      {topic:"Geometry",q:"A sector has radius 8cm and angle 135°. Calculate its area. (2dp)",a:"75.40",marks:3,explain:"Area=(135/360)×π×64≈75.40cm²"},
+      {topic:"Geometry",q:"Find the length of arc with radius 12cm and angle 80°. (2dp)",a:"16.76",marks:3,explain:"Arc=(80/360)×2π×12≈16.76cm"},
+      {topic:"Geometry",q:"Point A is at (1,2,3) and B is at (4,6,3). Calculate |AB|. (2dp)",a:"5.00",marks:3,explain:"√((4−1)²+(6−2)²+(3−3)²)=√(9+16+0)=√25=5"},
+      // TRIGONOMETRY
+      {topic:"Trigonometry",q:"In triangle ABC, AB=10cm, BC=8cm, angle B=62°. Find AC. (2dp)",a:"9.38",marks:4,explain:"Cosine rule: AC²=100+64−160cos62°≈88.0 → AC≈9.38cm"},
+      {topic:"Trigonometry",q:"In triangle PQR, PQ=7cm, angle P=48°, angle Q=65°. Find QR. (2dp)",a:"5.67",marks:4,explain:"Angle R=67°. Sine rule: QR/sin48°=7/sin67° → QR≈5.67cm"},
+      {topic:"Trigonometry",q:"Calculate the area of triangle with sides 9cm and 11cm, included angle 72°. (2dp)",a:"47.14",marks:3,explain:"Area=½×9×11×sin72°≈47.14cm²"},
+      {topic:"Trigonometry",q:"Solve for x (0≤x≤360): sin x = 0.6 (2 solutions)",a:"x=36.87,x=143.13",marks:3,explain:"x=sin⁻¹(0.6)≈36.87°. Second solution: 180−36.87=143.13°"},
+      // STATISTICS
+      {topic:"Statistics",q:"Data set: 4, 7, 7, 9, 11, 13. Calculate the standard deviation. (2dp)",a:"3.03",marks:4,explain:"Mean=51/6=8.5. Deviations²: 20.25,2.25,2.25,0.25,6.25,20.25. Variance=51.5/5=10.3. SD=√10.3≈3.21 (accept 3.03–3.21)"},
+      {topic:"Statistics",q:"Find the interquartile range of: 2,5,7,8,11,14,16,20",a:"9",marks:3,explain:"Q1=(5+7)/2=6. Q3=(14+16)/2=15. IQR=15−6=9"},
+    ]
+  }
+};
+
+let mockState = {
+  paper: null,
+  questions: [],
+  currentIdx: 0,
+  answers: [],
+  score: 0,
+  timerLeft: 0,
+  timerInterval: null,
+  started: false
+};
+
+function startMock(paperNum) {
+  const paper = MOCK_PAPERS[paperNum];
+  mockState = {
+    paper: paperNum,
+    questions: [...paper.questions],
+    currentIdx: 0,
+    answers: new Array(paper.questions.length).fill(null),
+    score: 0,
+    timerLeft: paper.duration,
+    timerInterval: null,
+    started: true
+  };
+  document.getElementById('mock-home').style.display = 'none';
+  document.getElementById('mock-exam').style.display = 'block';
+  document.getElementById('mock-results').style.display = 'none';
+  document.getElementById('mock-paper-title').textContent = paper.title;
+  const cb = document.getElementById('mock-calc-status');
+  cb.textContent = paper.calcAllowed ? '✅ Calculator Allowed' : '🚫 No Calculator';
+  cb.className = 'calc-badge ' + (paper.calcAllowed ? 'cb-yes' : 'cb-no');
+  mockState.timerInterval = setInterval(mockTick, 1000);
+  showMockQ();
+}
+
+function mockTick() {
+  mockState.timerLeft--;
+  const m = Math.floor(mockState.timerLeft / 60);
+  const s = mockState.timerLeft % 60;
+  const disp = m + ':' + (s < 10 ? '0' : '') + s;
+  document.getElementById('mock-timer-display').textContent = disp;
+  if (mockState.timerLeft <= 300) document.getElementById('mock-timer-display').style.color = '#dc2626';
+  if (mockState.timerLeft <= 0) { clearInterval(mockState.timerInterval); endMock(); }
+}
+
+function showMockQ() {
+  const qs = mockState.questions;
+  const i = mockState.currentIdx;
+  if (i >= qs.length) { endMock(); return; }
+  const q = qs[i];
+  const total = qs.length;
+  document.getElementById('mock-q-counter').textContent = 'Question ' + (i+1) + ' of ' + total;
+  document.getElementById('mock-topic-label').textContent = '📌 ' + q.topic;
+  document.getElementById('mock-q-text').textContent = q.q;
+  document.getElementById('mock-marks-label').textContent = q.marks + (q.marks === 1 ? ' mark' : ' marks');
+  document.getElementById('mock-answer').value = mockState.answers[i] || '';
+  document.getElementById('mock-answer').disabled = false;
+  document.getElementById('mock-answer').style.opacity = '1';
+  document.getElementById('mock-fb').innerHTML = '';
+  document.getElementById('mock-prog-bar').style.width = (i / total * 100) + '%';
+  document.getElementById('mock-answer').focus();
+}
+
+function submitMockAnswer() {
+  const raw = document.getElementById('mock-answer').value.trim();
+  const i = mockState.currentIdx;
+  const q = mockState.questions[i];
+  mockState.answers[i] = raw || '(blank)';
+  const correct = raw && match(raw, q.a);
+  if (correct) mockState.score += q.marks;
+  document.getElementById('mock-marks-so-far').textContent = mockState.score;
+  document.getElementById('mock-answer').disabled = true;
+  document.getElementById('mock-answer').style.opacity = '0.6';
+  document.getElementById('mock-fb').innerHTML = correct
+    ? `<div class="fb fb-ok" style="padding:8px 12px;font-size:13px">✅ Correct! (+${q.marks} mark${q.marks>1?'s':''})</div>`
+    : `<div class="fb fb-no" style="padding:8px 12px;font-size:13px">❌ Answer: <strong>${q.a}</strong> — ${q.explain}</div>`;
+  setTimeout(() => {
+    mockState.currentIdx++;
+    if (mockState.currentIdx >= mockState.questions.length) endMock();
+    else showMockQ();
+  }, 1800);
+}
+
+function skipMockQ() {
+  mockState.answers[mockState.currentIdx] = '(blank)';
+  mockState.currentIdx++;
+  if (mockState.currentIdx >= mockState.questions.length) endMock();
+  else showMockQ();
+}
+
+function endMock() {
+  clearInterval(mockState.timerInterval);
+  document.getElementById('mock-exam').style.display = 'none';
+  document.getElementById('mock-results').style.display = 'block';
+  const paper = MOCK_PAPERS[mockState.paper];
+  const score = mockState.score;
+  const total = paper.totalMarks;
+  const pct = Math.round((score / total) * 100);
+  // SQA grade boundaries (approximate)
+  let grade, icon, msg;
+  if (pct >= 70) { grade = 'A'; icon = '🏆'; msg = 'Outstanding! That\'s an A pass — excellent work!'; }
+  else if (pct >= 60) { grade = 'B'; icon = '⭐'; msg = 'Great work! A solid B pass.'; }
+  else if (pct >= 50) { grade = 'C'; icon = '✅'; msg = 'Good effort! A C pass — keep practising to push higher!'; }
+  else if (pct >= 40) { grade = 'D'; icon = '📚'; msg = 'Nearly there! A D pass — more revision needed on weak topics.'; }
+  else { grade = 'No Award'; icon = '💪'; msg = 'Keep going! Review the topics you found hardest and try again.'; }
+  document.getElementById('mock-grade-icon').textContent = icon;
+  document.getElementById('mock-grade-title').textContent = grade === 'No Award' ? 'Keep Practising!' : 'Grade ' + grade;
+  document.getElementById('mock-score-display').textContent = score + ' / ' + total + ' (' + pct + '%)';
+  document.getElementById('mock-grade-band').textContent = paper.title;
+  document.getElementById('mock-grade-msg').textContent = msg;
+  // Save to state
+  if (!S.mockScores) S.mockScores = [];
+  S.mockScores.push({ paper: mockState.paper, score, total, pct, grade, date: new Date().toLocaleDateString() });
+  save();
+  renderMockPrevScores();
+}
+
+function showMockReview() {
+  const sec = document.getElementById('mock-review-section');
+  sec.style.display = 'block';
+  const list = document.getElementById('mock-review-list');
+  list.innerHTML = mockState.questions.map((q, i) => {
+    const given = mockState.answers[i] || '(blank)';
+    const correct = given !== '(blank)' && match(given, q.a);
+    return `<div style="margin-bottom:12px;padding:12px;border-radius:8px;background:${correct?'#ecfdf5':'#fef2f2'};border:1px solid ${correct?'#86efac':'#fca5a5'}">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:3px">${i+1}. ${q.topic} — ${q.marks} mark${q.marks>1?'s':''}</div>
+      <div style="font-weight:700;font-size:14px;margin-bottom:5px">${q.q}</div>
+      <div style="font-size:13px">Your answer: <strong>${given}</strong></div>
+      ${!correct ? `<div style="font-size:13px;margin-top:3px">Correct answer: <strong>${q.a}</strong></div>
+      <div style="font-size:12px;color:#6b7280;margin-top:3px">${q.explain}</div>` : ''}
+    </div>`;
+  }).join('');
+  sec.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetMock() {
+  clearInterval(mockState.timerInterval);
+  mockState = { paper: null, questions: [], currentIdx: 0, answers: [], score: 0, timerLeft: 0, timerInterval: null, started: false };
+  document.getElementById('mock-home').style.display = 'block';
+  document.getElementById('mock-exam').style.display = 'none';
+  document.getElementById('mock-results').style.display = 'none';
+  document.getElementById('mock-timer-display').style.color = '';
+  renderMockPrevScores();
+}
+
+function renderMockPrevScores() {
+  const el = document.getElementById('mock-prev-scores');
+  if (!el) return;
+  if (!S.mockScores || !S.mockScores.length) { el.innerHTML = ''; return; }
+  const recent = [...S.mockScores].slice(-6).reverse();
+  el.innerHTML = `<h3 style="font-size:14px;font-weight:700;margin-bottom:8px">📊 Previous Scores</h3>` +
+    recent.map(s => `<div class="lb-row" style="font-size:13px">
+      <span style="font-weight:700;color:var(--primary);min-width:30px">${s.grade}</span>
+      <span style="flex:1">Paper ${s.paper} — ${s.score}/${s.total} (${s.pct}%)</span>
+      <span style="color:var(--text2);font-size:11px">${s.date}</span>
+    </div>`).join('');
+}
+
+// INIT
+buildCalc();loadFC();applySettings();newQuestion();updateHeader();renderWS();
+</script>
+</body>
+</html>
