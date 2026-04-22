@@ -12,6 +12,13 @@
 <meta property="og:url" content="https://nat5mathsscotland.com">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://nat5mathsscotland.com/">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4f46e5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nat 5 Maths">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--primary:#4f46e5;--primary2:#7c3aed;--bg:#f0f4ff;--surface:#fff;--surface2:#f8f9ff;--border:#e2e8f0;--text:#1e1b4b;--text2:#64748b;--radius:12px}
@@ -137,6 +144,22 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
 </style>
 </head>
 <body>
+
+<!-- PWA Install Banner -->
+<div id="install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:14px 16px;z-index:1000;align-items:center;gap:12px;justify-content:space-between;box-shadow:0 -4px 20px rgba(79,70,229,.3)">
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="font-size:24px">📱</span>
+    <div>
+      <div style="font-weight:800;font-size:14px">Install Nat 5 Maths App</div>
+      <div style="font-size:12px;opacity:.85">Add to your home screen for quick access!</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="install-btn" style="background:#fff;color:#4f46e5;border:none;padding:8px 16px;border-radius:8px;font-weight:800;font-size:13px;cursor:pointer">Install ✓</button>
+    <button id="dismiss-install" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer">✕</button>
+  </div>
+</div>
+
 <div class="app">
 
 <div class="header">
@@ -1473,6 +1496,44 @@ function renderMockPrevScores() {
       <span style="color:var(--text2);font-size:11px">${s.date}</span>
     </div>`).join('');
 }
+
+
+// PWA Service Worker Registration
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(err){
+      console.log('SW failed: ', err);
+    });
+  });
+}
+
+// PWA Install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show install banner after 30 seconds
+  setTimeout(() => {
+    const banner = document.getElementById('install-banner');
+    if(banner) banner.style.display = 'flex';
+  }, 30000);
+});
+document.addEventListener('click', function(e){
+  if(e.target.id === 'install-btn'){
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        document.getElementById('install-banner').style.display = 'none';
+      });
+    }
+  }
+  if(e.target.id === 'dismiss-install'){
+    document.getElementById('install-banner').style.display = 'none';
+  }
+});
 
 // INIT
 buildCalc();loadFC();applySettings();newQuestion();updateHeader();renderWS();
