@@ -208,6 +208,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
     <select id="topic-select" onchange="changeTopic()">
       <optgroup label="🏴󠁧󠁢󠁳󠁣󠁴󠁿 National 5">
         <option value="random">🎲 Random Mix (Nat 5)</option>
+        <option value="smart">🧠 Smart Mix (Nat 5) — targets your weak topics</option>
         <option value="algebra">Algebra</option>
         <option value="geometry">Geometry</option>
         <option value="trigonometry">Trigonometry</option>
@@ -224,6 +225,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
       </optgroup>
       <optgroup label="🎓 Higher">
         <option value="random_h">🎲 Random Mix (Higher)</option>
+        <option value="smart_h">🧠 Smart Mix (Higher) — targets your weak topics</option>
         <option value="h_straight">The Straight Line</option>
         <option value="h_functions">Composite &amp; Inverse Functions</option>
         <option value="h_poly">Polynomials &amp; Quadratics</option>
@@ -551,15 +553,17 @@ Key formulas:
   <!-- EXAM HOME -->
   <div id="mock-home">
     <div class="card">
-      <h2>📝 Mock Exam — Nat 5 Maths</h2>
+      <h2>📝 Mock Exams</h2>
       <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px">
-        Based on the official SQA curriculum. Two papers just like the real exam.<br>
-        <strong>Paper 1:</strong> Non-calculator · 40 marks · 1 hour<br>
-        <strong>Paper 2:</strong> Calculator allowed · 50 marks · 1 hour 30 mins
+        Based on the official SQA curriculum. Papers just like the real exam.<br>
+        <strong>Nat 5 Paper 1:</strong> Non-calculator · 40 marks · 1 hour<br>
+        <strong>Nat 5 Paper 2:</strong> Calculator allowed · 50 marks · 1 hour 30 mins<br>
+        <strong>🎓 Higher Paper:</strong> Non-calculator · 40 marks · 1 hour
       </p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-p" onclick="startMock(1)">📄 Start Paper 1 — No Calculator</button>
-        <button class="btn btn-p" onclick="startMock(2)">🔢 Start Paper 2 — Calculator Allowed</button>
+        <button class="btn btn-p" onclick="startMock(1)">📄 Nat 5 Paper 1 — No Calculator</button>
+        <button class="btn btn-p" onclick="startMock(2)">🔢 Nat 5 Paper 2 — Calculator Allowed</button>
+        <button class="btn btn-p" onclick="startMock(3)">🎓 Higher Paper — No Calculator</button>
       </div>
       <div id="mock-prev-scores" style="margin-top:16px"></div>
     </div>
@@ -999,6 +1003,31 @@ FLASHCARDS.trig=FLASHCARDS.all.slice(1,8);
 FLASHCARDS.geometry=FLASHCARDS.all.slice(8,13);
 FLASHCARDS.stats=FLASHCARDS.all.slice(13,17);
 FLASHCARDS.surds=FLASHCARDS.all.slice(18,22);
+FLASHCARDS.higher=[
+  {term:"Differentiation: Power Rule",def:"f(x) = xⁿ → f′(x) = nxⁿ⁻¹\nMultiply by the power, drop the power by 1"},
+  {term:"Derivatives of Trig",def:"d/dx (sin x) = cos x\nd/dx (cos x) = −sin x\n(x in radians!)"},
+  {term:"Chain Rule",def:"d/dx f(g(x)) = f′(g(x)) × g′(x)\nDifferentiate outside, multiply by derivative of inside"},
+  {term:"Stationary Points",def:"Solve f′(x) = 0\nThen use a nature table to classify (max / min / inflection)"},
+  {term:"Integration: Power Rule",def:"∫xⁿ dx = xⁿ⁺¹/(n+1) + C\nRaise the power by 1, divide by the new power"},
+  {term:"Integrals of Trig",def:"∫sin x dx = −cos x + C\n∫cos x dx = sin x + C"},
+  {term:"Area Between Curves",def:"Area = ∫(upper − lower) dx\nbetween the points of intersection"},
+  {term:"Gradient & Angle",def:"m = tan θ\nθ is the angle the line makes with the positive x-axis"},
+  {term:"Perpendicular Lines",def:"m₁ × m₂ = −1\nFlip the fraction and change the sign"},
+  {term:"Distance Formula",def:"d = √((x₂−x₁)² + (y₂−y₁)²)"},
+  {term:"Circle (centre-radius form)",def:"(x−a)² + (y−b)² = r²\nCentre (a,b), radius r"},
+  {term:"Circle (general form)",def:"x² + y² + 2gx + 2fy + c = 0\nCentre (−g,−f), radius √(g²+f²−c)"},
+  {term:"Recurrence Relations",def:"uₙ₊₁ = auₙ + b\nLimit exists if −1 < a < 1:\nL = b/(1−a)"},
+  {term:"Addition Formulae",def:"sin(A±B) = sinA cosB ± cosA sinB\ncos(A±B) = cosA cosB ∓ sinA sinB"},
+  {term:"Double Angle Formulae",def:"sin 2A = 2 sinA cosA\ncos 2A = cos²A − sin²A = 2cos²A − 1 = 1 − 2sin²A"},
+  {term:"Radians",def:"180° = π radians\ndegrees → radians: × π/180"},
+  {term:"Discriminant",def:"b² − 4ac\n> 0: two real roots · = 0: equal roots · < 0: no real roots"},
+  {term:"Remainder & Factor Theorem",def:"Dividing f(x) by (x−h): remainder = f(h)\nIf f(h) = 0 then (x−h) is a factor"},
+  {term:"Composite Functions",def:"f(g(x)) — apply g first, then f\nWork from the inside out"},
+  {term:"Laws of Logarithms",def:"log a + log b = log ab\nlog a − log b = log(a/b)\nn·log a = log aⁿ"},
+  {term:"Logs & Exponentials",def:"y = aˣ ⟺ x = logₐy\nlogₐa = 1, logₐ1 = 0"},
+  {term:"Magnitude of a Vector",def:"|a| = √(a₁² + a₂² + a₃²)"},
+  {term:"Scalar (Dot) Product",def:"a·b = |a||b|cos θ = a₁b₁ + a₂b₂ + a₃b₃\na·b = 0 → perpendicular"},
+];
 
 let S={
   panel:'practice',currentQ:null,currentTopic:'random',currentDiff:'auto',
@@ -1043,10 +1072,19 @@ function showPanel(id){
   if(id==='settings')applySettings();
 }
 
+// Smart Mix: pick topics weighted by weakness — low accuracy = seen more often.
+// Topics with under 3 attempts get a medium weight so everything gets covered.
+function weightedPick(keys){
+  const w=keys.map(k=>{const ts=S.topicStats[k];if(!ts||ts.total<3)return 2;return 0.5+3*(1-ts.correct/ts.total);});
+  let r=Math.random()*w.reduce((a,b)=>a+b,0);
+  for(let i=0;i<keys.length;i++){r-=w[i];if(r<=0)return keys[i];}
+  return keys[keys.length-1];
+}
 function pickTopic(ov){
   const t=ov||S.currentTopic;
   if(t==='random'||t==='all'){const k=Object.keys(TOPICS).filter(x=>!TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
   if(t==='random_h'){const k=Object.keys(TOPICS).filter(x=>TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
+  if(t==='smart'||t==='smart_h'){return weightedPick(Object.keys(TOPICS).filter(x=>!!TOPICS[x].higher===(t==='smart_h')));}
   return t;
 }
 function getLevel(){
@@ -1427,7 +1465,8 @@ function openShop(url){window.open(url,'_blank');}
 // ===================== MOCK EXAM =====================
 const MOCK_PAPERS = {
   1: {
-    title: "Paper 1 — Non-Calculator",
+    title: "Nat 5 Paper 1 — Non-Calculator",
+    short: "Nat 5 P1",
     totalMarks: 40,
     duration: 3600, // 60 mins in seconds
     calcAllowed: false,
@@ -1460,7 +1499,8 @@ const MOCK_PAPERS = {
     ]
   },
   2: {
-    title: "Paper 2 — Calculator Allowed",
+    title: "Nat 5 Paper 2 — Calculator Allowed",
+    short: "Nat 5 P2",
     totalMarks: 50,
     duration: 5400, // 90 mins in seconds
     calcAllowed: true,
@@ -1487,8 +1527,47 @@ const MOCK_PAPERS = {
       {topic:"Trigonometry",q:"Calculate the area of triangle with sides 9cm and 11cm, included angle 72°. (2dp)",a:"47.14",marks:3,explain:"Area=½×9×11×sin72°≈47.14cm²"},
       {topic:"Trigonometry",q:"Solve for x (0≤x≤360): sin x = 0.6 (2 solutions)",a:"x=36.87,x=143.13",marks:3,explain:"x=sin⁻¹(0.6)≈36.87°. Second solution: 180−36.87=143.13°"},
       // STATISTICS
-      {topic:"Statistics",q:"Data set: 4, 7, 7, 9, 11, 13. Calculate the standard deviation. (2dp)",a:"3.03",marks:4,explain:"Mean=51/6=8.5. Deviations²: 20.25,2.25,2.25,0.25,6.25,20.25. Variance=51.5/5=10.3. SD=√10.3≈3.21 (accept 3.03–3.21)"},
+      {topic:"Statistics",q:"Data set: 4, 7, 7, 9, 11, 13. Calculate the standard deviation. (2dp)",a:"3.21,3.2",marks:4,explain:"Mean=51/6=8.5. Deviations²: 20.25,2.25,2.25,0.25,6.25,20.25. Variance=51.5/5=10.3. SD=√10.3≈3.21"},
       {topic:"Statistics",q:"Find the interquartile range of: 2,5,7,8,11,14,16,20",a:"9",marks:3,explain:"Q1=(5+7)/2=6. Q3=(14+16)/2=15. IQR=15−6=9"},
+    ]
+  },
+  3: {
+    title: "Higher Paper — Non-Calculator",
+    short: "Higher",
+    totalMarks: 40,
+    duration: 3600,
+    calcAllowed: false,
+    questions: [
+      // STRAIGHT LINE
+      {topic:"The Straight Line",q:"Write the gradient of a line perpendicular to y = 2x + 3.",a:"-1/2,-0.5",marks:2,explain:"Perpendicular gradients multiply to −1: m = −1/2"},
+      {topic:"The Straight Line",q:"Calculate the distance between (1,2) and (4,6).",a:"5",marks:2,explain:"√((4−1)²+(6−2)²)=√(9+16)=√25=5"},
+      // FUNCTIONS
+      {topic:"Functions",q:"f(x) = x² + 1 and g(x) = 3x. Evaluate f(g(2)).",a:"37",marks:2,explain:"g(2)=6, then f(6)=36+1=37"},
+      {topic:"Functions",q:"Find the inverse of f(x) = 2x − 4.",a:"(x+4)/2,x/2+2",marks:3,explain:"y=2x−4 → x=(y+4)/2 → f⁻¹(x)=(x+4)/2"},
+      // POLYNOMIALS
+      {topic:"Polynomials",q:"Find the remainder when f(x) = x³ − 2x² + x − 1 is divided by (x − 2).",a:"1",marks:2,explain:"Remainder theorem: f(2)=8−8+2−1=1"},
+      {topic:"Polynomials",q:"Find the discriminant of x² + 4x + 5 = 0.",a:"-4",marks:2,explain:"b²−4ac=16−20=−4 (no real roots)"},
+      // RECURRENCE
+      {topic:"Recurrence Relations",q:"uₙ₊₁ = 0.5uₙ + 10. Find the limit as n → ∞.",a:"20",marks:2,explain:"L=b/(1−a)=10/(1−0.5)=20"},
+      // DIFFERENTIATION
+      {topic:"Differentiation",q:"Differentiate: x³ − 4x",a:"3x²-4",marks:2,explain:"Power rule: 3x²−4"},
+      {topic:"Differentiation",q:"f(x) = 2x³. Evaluate f′(2).",a:"24",marks:2,explain:"f′(x)=6x², f′(2)=6×4=24"},
+      {topic:"Differentiation",q:"Find the x-coordinate of the stationary point of y = x² − 6x + 1.",a:"3,x=3",marks:3,explain:"dy/dx=2x−6=0 → x=3"},
+      // INTEGRATION
+      {topic:"Integration",q:"Integrate: ∫6x² dx",a:"2x³+c,2x³",marks:2,explain:"6x³/3 + C = 2x³ + C"},
+      {topic:"Integration",q:"Evaluate: ∫₀² 3x² dx",a:"8",marks:2,explain:"[x³]₀² = 8 − 0 = 8"},
+      // TRIG
+      {topic:"Trig (Radians)",q:"Convert 150° to radians. (in terms of π)",a:"5π/6,5pi/6",marks:1,explain:"150×π/180 = 5π/6"},
+      {topic:"Trig (Radians)",q:"Write the exact value of sin(π/3).",a:"√3/2",marks:1,explain:"π/3 = 60°, sin 60° = √3/2"},
+      {topic:"Trig Formulae",q:"sin A = 3/5 and cos A = 4/5 (A acute). Evaluate sin 2A.",a:"24/25,0.96",marks:3,explain:"sin2A=2sinAcosA=2×(3/5)×(4/5)=24/25"},
+      // CIRCLE
+      {topic:"The Circle",q:"Find the radius of the circle x² + y² − 4x + 6y − 12 = 0.",a:"5",marks:3,explain:"g=−2, f=3, c=−12. r=√(4+9+12)=√25=5"},
+      {topic:"The Circle",q:"Write the centre of the circle (x−3)² + (y+1)² = 16.",a:"(3,-1)",marks:1,explain:"Centre (3,−1), radius 4"},
+      // VECTORS
+      {topic:"Vectors in 3D",q:"Calculate the magnitude of vector (2,−1,2).",a:"3",marks:2,explain:"√(4+1+4)=√9=3"},
+      // LOGS
+      {topic:"Logs & Exponentials",q:"Evaluate: log₂32",a:"5",marks:1,explain:"2⁵=32 → log₂32=5"},
+      {topic:"Logs & Exponentials",q:"Solve: log₄x = 3",a:"64,x=64",marks:2,explain:"x=4³=64"},
     ]
   }
 };
@@ -1645,7 +1724,7 @@ function renderMockPrevScores() {
   el.innerHTML = `<h3 style="font-size:14px;font-weight:700;margin-bottom:8px">📊 Previous Scores</h3>` +
     recent.map(s => `<div class="lb-row" style="font-size:13px">
       <span style="font-weight:700;color:var(--primary);min-width:30px">${s.grade}</span>
-      <span style="flex:1">Paper ${s.paper} — ${s.score}/${s.total} (${s.pct}%)</span>
+      <span style="flex:1">${(MOCK_PAPERS[s.paper]&&MOCK_PAPERS[s.paper].short)||'Paper '+s.paper} — ${s.score}/${s.total} (${s.pct}%)</span>
       <span style="color:var(--text2);font-size:11px">${s.date}</span>
     </div>`).join('');
 }
