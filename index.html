@@ -166,7 +166,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <div class="header-inner">
     <div>
       <h1 id="app-title">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Nat 5 Maths Scotland</h1>
-      <div class="sub">Your fun maths companion — level up your skills!</div>
+      <div class="sub">Your fun maths companion — now with 🎓 Higher Maths!</div>
     </div>
     <div class="hdr-stats">
       <div class="pills">
@@ -207,16 +207,35 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <div class="tsel">
     <label>Topic:</label>
     <select id="topic-select" onchange="changeTopic()">
-      <option value="random">🎲 Random Mix</option>
-      <option value="algebra">Algebra</option>
-      <option value="geometry">Geometry</option>
-      <option value="trigonometry">Trigonometry</option>
-      <option value="statistics">Statistics</option>
-      <option value="fractions">Fractions &amp; %</option>
-      <option value="surds">Surds &amp; Indices</option>
-      <option value="functions">Functions &amp; Graphs</option>
-      <option value="vectors">Vectors</option>
-      <option value="circle">Circle Geometry</option>
+      <optgroup label="🏴󠁧󠁢󠁳󠁣󠁴󠁿 National 5">
+        <option value="random">🎲 Random Mix (Nat 5)</option>
+        <option value="algebra">Algebra</option>
+        <option value="geometry">Geometry</option>
+        <option value="trigonometry">Trigonometry</option>
+        <option value="statistics">Statistics</option>
+        <option value="fractions">Fractions, % &amp; Interest</option>
+        <option value="surds">Surds &amp; Indices</option>
+        <option value="standardform">Standard Form &amp; Rounding</option>
+        <option value="simultaneous">Simultaneous Equations</option>
+        <option value="algfrac">Algebraic Fractions &amp; Formulae</option>
+        <option value="similarity">Similarity &amp; Scale</option>
+        <option value="functions">Functions &amp; Graphs</option>
+        <option value="vectors">Vectors</option>
+        <option value="circle">Circle Geometry</option>
+      </optgroup>
+      <optgroup label="🎓 Higher">
+        <option value="random_h">🎲 Random Mix (Higher)</option>
+        <option value="h_straight">The Straight Line</option>
+        <option value="h_functions">Composite &amp; Inverse Functions</option>
+        <option value="h_poly">Polynomials &amp; Quadratics</option>
+        <option value="h_recur">Recurrence Relations</option>
+        <option value="h_diff">Differentiation</option>
+        <option value="h_int">Integration</option>
+        <option value="h_trig">Trig: Radians &amp; Formulae</option>
+        <option value="h_circle">The Circle</option>
+        <option value="h_vectors">Vectors in 3D</option>
+        <option value="h_logs">Logs &amp; Exponentials</option>
+      </optgroup>
     </select>
     <label>Difficulty:</label>
     <select id="diff-select" onchange="changeTopic()">
@@ -269,11 +288,16 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
       <button class="btn btn-p" onclick="startTimer(300)">5 Minutes</button>
     </div>
     <div style="font-size:13px;color:var(--text2)">Topic: <select id="timer-topic" style="padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:13px;margin-left:5px">
-      <option value="random">Random Mix</option>
+      <option value="random">Random Mix (Nat 5)</option>
       <option value="algebra">Algebra</option>
       <option value="trigonometry">Trigonometry</option>
       <option value="statistics">Statistics</option>
       <option value="fractions">Fractions &amp; %</option>
+      <option value="simultaneous">Simultaneous Equations</option>
+      <option value="standardform">Standard Form</option>
+      <option value="random_h">🎓 Random Mix (Higher)</option>
+      <option value="h_diff">🎓 Differentiation</option>
+      <option value="h_logs">🎓 Logs &amp; Exponentials</option>
     </select></div>
   </div>
   <div class="card" id="timer-game" style="display:none;text-align:center">
@@ -302,12 +326,13 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
     <h2 style="font-size:16px;font-weight:700">🃏 Formula Flashcards</h2>
     <select id="fc-topic" onchange="loadFC()" style="padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px">
-      <option value="all">All Topics</option>
+      <option value="all">All Nat 5</option>
       <option value="algebra">Algebra</option>
       <option value="trig">Trigonometry</option>
       <option value="geometry">Geometry</option>
       <option value="stats">Statistics</option>
       <option value="surds">Surds</option>
+      <option value="higher">🎓 Higher</option>
     </select>
   </div>
   <div class="flashcard" id="flashcard" onclick="flipCard()">
@@ -676,6 +701,11 @@ const TOPICS={
     {q:"Solve: 5(x−2)=3x+4",a:"7",level:2,hint:"Expand first, then collect x terms.",explain:"5x−10=3x+4 → 2x=14 → x=7"},
     {q:"Factorise completely: 2x²+6x",a:"2x(x+3)",level:2,hint:"Take out the HCF.",explain:"HCF=2x → 2x(x+3)"},
     {q:"Expand: (2x+1)(x−3)",a:"2x²−5x−3",level:2,hint:"FOIL carefully.",explain:"2x²−6x+x−3=2x²−5x−3"},
+    {q:"Factorise: x²−49",a:"(x+7)(x−7),(x−7)(x+7)",level:2,hint:"Difference of squares: a²−b²=(a+b)(a−b)",explain:"x²−49=x²−7²=(x+7)(x−7)"},
+    {q:"Complete the square: x²+6x+2=(x+3)²+k. Find k.",a:"−7",level:3,hint:"(x+3)²=x²+6x+9, so adjust the constant.",explain:"x²+6x+2=(x+3)²−9+2=(x+3)²−7 → k=−7"},
+    {q:"Find the discriminant of x²+4x+1=0.",a:"12",level:3,hint:"Discriminant = b²−4ac",explain:"16−4(1)(1)=12"},
+    {q:"x²−6x+9=0: how many real roots?",a:"1",level:2,hint:"Work out b²−4ac first.",explain:"b²−4ac=36−36=0 → one repeated root"},
+    {q:"Solve 3x+2>11. Smallest whole number solution?",a:"4",level:2,hint:"Solve like an equation: 3x>9.",explain:"x>3, so smallest whole number is 4"},
   ]},
   trigonometry:{name:"Trigonometry",icon:"📏",calc:true,questions:[
     {q:"Right triangle: opp=3, hyp=5. Find sin(θ).",a:"0.6",level:1,hint:"SOH: sin=opp/hyp",explain:"3/5=0.6"},
@@ -687,6 +717,12 @@ const TOPICS={
     {q:"Triangle: A=40°, B=75°, a=10. Find b (2dp).",a:"15.03",level:2,hint:"Sine rule: b/sinB=a/sinA",explain:"10×sin75°/sin40°≈15.03"},
     {q:"Triangle: a=5, b=7, C=48°. Find c (2dp).",a:"5.21",level:3,hint:"Cosine rule: c²=a²+b²−2ab·cosC",explain:"√(25+49−70cos48°)≈5.21"},
     {q:"Sides 6 and 8, included angle 35°. Area? (2dp)",a:"13.73",level:3,hint:"Area=½ab·sinC",explain:"½×6×8×sin35°≈13.73"},
+    {q:"Bearing of B from A is 065°. Bearing of A from B?",a:"245",level:2,hint:"Back bearing: add 180° (or subtract if over 360°).",explain:"065+180=245°"},
+    {q:"y=3sin(2x)°: what is the amplitude?",a:"3",level:1,hint:"Amplitude = the number in front of sin.",explain:"y=a·sin(bx) has amplitude a → 3"},
+    {q:"y=3sin(2x)°: what is the period in degrees?",a:"180",level:2,hint:"Period = 360÷b",explain:"360÷2=180°"},
+    {q:"Solve sin(x°)=0.5 for 90<x<180.",a:"150",level:2,hint:"Second quadrant: 180−first answer.",explain:"sin30°=0.5 → 180−30=150°"},
+    {q:"tan θ = sin θ ÷ ?",a:"cosθ,cos",level:1,hint:"Key identity linking sin, cos, tan.",explain:"tanθ=sinθ/cosθ"},
+    {q:"Walk 5km north then 12km east. Distance from start?",a:"13",level:2,hint:"Right angle → Pythagoras.",explain:"√(25+144)=√169=13km"},
   ]},
   geometry:{name:"Geometry",icon:"🔵",calc:true,questions:[
     {q:"Area of circle, r=5cm. (2dp)",a:"78.54",level:1,hint:"A=πr²",explain:"π×25≈78.54"},
@@ -709,8 +745,11 @@ const TOPICS={
     {q:"Bag: 3 red, 7 blue. P(red)?",a:"0.3",level:1,hint:"P=favourable/total",explain:"3/10=0.3"},
     {q:"Median of: 2,5,7,10,13,18",a:"8.5",level:2,hint:"Even count: average of two middle values.",explain:"(7+10)/2=8.5"},
     {q:"Standard deviation of: 2,4,4,4,5,5,7,9",a:"2",level:3,hint:"Mean=5. SD=√(mean of squared deviations)",explain:"Variance=4 → SD=2"},
+    {q:"Q1=10, Q3=22. Semi-interquartile range?",a:"6",level:2,hint:"SIQR=(Q3−Q1)÷2",explain:"(22−10)÷2=6"},
+    {q:"Data: 2,4,6,8,10,12,14. Find Q1 (lower quartile).",a:"4",level:2,hint:"Median of the lower half (below the middle value).",explain:"Lower half: 2,4,6 → middle is 4"},
+    {q:"Mean of 5 numbers is 8. Four of them are 6,7,9,10. Fifth?",a:"8",level:2,hint:"Total must be 5×8=40.",explain:"40−(6+7+9+10)=40−32=8"},
   ]},
-  fractions:{name:"Fractions & %",icon:"½",calc:false,questions:[
+  fractions:{name:"Fractions, % & Interest",icon:"½",calc:false,questions:[
     {q:"35% of 240",a:"84",level:1,hint:"×0.35",explain:"240×0.35=84"},
     {q:"17.5% of 80",a:"14",level:1,hint:"×0.175",explain:"80×0.175=14"},
     {q:"Simplify: 24/36",a:"2/3",level:1,hint:"HCF=12",explain:"24÷12=2, 36÷12=3"},
@@ -720,6 +759,9 @@ const TOPICS={
     {q:"3/4 + 2/3 (as improper fraction)",a:"17/12",level:2,hint:"Common denom=12",explain:"9/12+8/12=17/12"},
     {q:"Coat £63 after 10% off. Original price?",a:"70",level:3,hint:"£63=90%. Divide by 0.9.",explain:"63÷0.9=£70"},
     {q:"Price drops £200→£170. % decrease?",a:"15",level:2,hint:"(decrease÷original)×100",explain:"(30÷200)×100=15%"},
+    {q:"House worth £150 000 appreciates by 2% in a year. New value (£)?",a:"153000",level:1,hint:"Appreciation: ×1.02",explain:"150000×1.02=£153 000"},
+    {q:"£1000 at 5% compound interest for 2 years. Total (£)?",a:"1102.50,1102.5",level:2,hint:"Multiply by 1.05 twice.",explain:"1000×1.05²=£1102.50"},
+    {q:"Car worth £12 000 depreciates 10% per year. Value after 2 years (£)?",a:"9720",level:2,hint:"Depreciation: ×0.9 each year.",explain:"12000×0.9²=£9720"},
   ]},
   surds:{name:"Surds & Indices",icon:"√",calc:false,questions:[
     {q:"Simplify: √48",a:"4√3",level:2,hint:"Largest perfect square factor of 48 = 16.",explain:"√(16×3)=4√3"},
@@ -757,6 +799,174 @@ const TOPICS={
     {q:"Chord=16cm, r=10cm. Distance centre→chord?",a:"6",level:2,hint:"Perp bisects chord. Pythagoras: √(r²−(½chord)²)",explain:"√(100−64)=6"},
     {q:"Arc: r=9, θ=60°. Arc length? (2dp)",a:"9.42",level:2,hint:"Arc=(θ/360)×2πr",explain:"3π≈9.42"},
     {q:"Sector: r=5, θ=120°. Area? (2dp)",a:"26.18",level:2,hint:"Area=(θ/360)×πr²",explain:"(1/3)×25π≈26.18"},
+  ]},
+  standardform:{name:"Standard Form & Rounding",icon:"🔬",calc:false,questions:[
+    {q:"Write 3.2×10⁴ as an ordinary number.",a:"32000",level:1,hint:"Move the decimal point 4 places right.",explain:"3.2×10⁴=32 000"},
+    {q:"Write 6.7×10⁻³ as an ordinary number.",a:"0.0067",level:1,hint:"Negative power: move decimal point 3 places left.",explain:"6.7×10⁻³=0.0067"},
+    {q:"45 000 = 4.5×10ⁿ. Find n.",a:"4",level:1,hint:"Count how many places the point moves.",explain:"45 000=4.5×10⁴ → n=4"},
+    {q:"Speed of light is 300 000 000 m/s = 3×10ⁿ. Find n.",a:"8",level:1,hint:"Count the zeros.",explain:"300 000 000=3×10⁸"},
+    {q:"Round 3.4682 to 2 significant figures.",a:"3.5",level:1,hint:"First 2 digits, then check the next one.",explain:"3.4682 → 3.5 (the 6 rounds the 4 up)"},
+    {q:"0.00052 = 5.2×10ⁿ. Find n.",a:"−4",level:2,hint:"Small numbers → negative power.",explain:"0.00052=5.2×10⁻⁴ → n=−4"},
+    {q:"Round 28 462 to 3 significant figures.",a:"28500",level:2,hint:"First 3 digits: 284 — check the 4th.",explain:"28 462 → 28 500 (6 rounds the 4 up)"},
+    {q:"(2×10³)×(4×10⁵) = 8×10ⁿ. Find n.",a:"8",level:2,hint:"Multiply numbers, ADD the powers.",explain:"2×4=8, 10³×10⁵=10⁸ → n=8"},
+    {q:"(6×10⁷)÷(3×10²) = 2×10ⁿ. Find n.",a:"5",level:2,hint:"Divide numbers, SUBTRACT the powers.",explain:"6÷3=2, 10⁷÷10²=10⁵ → n=5"},
+    {q:"Round 0.037846 to 2 significant figures.",a:"0.038",level:2,hint:"Leading zeros don't count as sig figs.",explain:"First sig figs are 3 and 7 → 0.038"},
+  ]},
+  simultaneous:{name:"Simultaneous Equations",icon:"⚖️",calc:false,questions:[
+    {q:"x+y=10 and x−y=4. Find x.",a:"7",level:1,hint:"Add the two equations to eliminate y.",explain:"2x=14 → x=7"},
+    {q:"x+y=10 and x−y=4. Find y.",a:"3",level:1,hint:"Find x first (=7), then substitute.",explain:"7+y=10 → y=3"},
+    {q:"2x+y=7 and x=2. Find y.",a:"3",level:1,hint:"Substitute x=2 into the first equation.",explain:"4+y=7 → y=3"},
+    {q:"3x+2y=12 and x+2y=8. Find x.",a:"2",level:2,hint:"Subtract the equations to eliminate y.",explain:"2x=4 → x=2"},
+    {q:"3x+2y=12 and x+2y=8. Find y.",a:"3",level:2,hint:"x=2, substitute back in.",explain:"2+2y=8 → 2y=6 → y=3"},
+    {q:"5x+2y=16 and 3x+2y=12. Find x.",a:"2",level:2,hint:"Same y coefficients — subtract!",explain:"2x=4 → x=2"},
+    {q:"2x+3y=13 and x−y=4. Find x.",a:"5",level:2,hint:"From 2nd equation x=y+4. Substitute.",explain:"2(y+4)+3y=13 → 5y=5 → y=1, x=5"},
+    {q:"2x+3y=13 and x−y=4. Find y.",a:"1",level:2,hint:"Substitute x=y+4 into the first equation.",explain:"2y+8+3y=13 → y=1"},
+    {q:"Lines y=2x+1 and y=x+5 cross where x = ?",a:"4",level:3,hint:"Set 2x+1=x+5.",explain:"2x+1=x+5 → x=4"},
+    {q:"4 pens + 2 rulers cost 260p; 2 pens + 2 rulers cost 180p. One pen costs (pence)?",a:"40",level:3,hint:"Subtract: 2 pens = 80p.",explain:"2 pens=260−180=80p → one pen 40p"},
+  ]},
+  algfrac:{name:"Algebraic Fractions & Formulae",icon:"🔀",calc:false,questions:[
+    {q:"Change the subject to x: y = x + 5",a:"x=y−5",level:1,hint:"Subtract 5 from both sides.",explain:"x=y−5"},
+    {q:"Change the subject to x: y = 3x",a:"x=y/3",level:1,hint:"Divide both sides by 3.",explain:"x=y/3"},
+    {q:"Change the subject to x: y = 2x − 3",a:"x=(y+3)/2",level:2,hint:"Add 3, then divide by 2.",explain:"y+3=2x → x=(y+3)/2"},
+    {q:"v=u+at. Find a when v=20, u=8, t=3.",a:"4",level:1,hint:"Rearrange: a=(v−u)/t",explain:"(20−8)/3=4"},
+    {q:"P=2L+2W. Find W when P=26, L=8.",a:"5",level:1,hint:"Rearrange: W=(P−2L)/2",explain:"(26−16)/2=5"},
+    {q:"Simplify: 2/x + 3/x",a:"5/x",level:1,hint:"Same denominator — just add the tops.",explain:"(2+3)/x=5/x"},
+    {q:"Simplify: (x²−9)/(x+3)",a:"x−3",level:2,hint:"Factorise the top: difference of squares.",explain:"(x+3)(x−3)/(x+3)=x−3"},
+    {q:"Simplify: (x²−4)/(x−2)",a:"x+2",level:2,hint:"x²−4=(x+2)(x−2)",explain:"(x+2)(x−2)/(x−2)=x+2"},
+    {q:"Simplify: 2/(x+1) + 3/(x+1)",a:"5/(x+1)",level:2,hint:"Same denominator.",explain:"(2+3)/(x+1)=5/(x+1)"},
+    {q:"Simplify: 3/x × x/6",a:"1/2,0.5",level:2,hint:"Multiply tops and bottoms — the x cancels.",explain:"3x/6x=1/2"},
+    {q:"a/3 ÷ a/6 = ?",a:"2",level:2,hint:"Dividing = multiply by the flipped fraction.",explain:"a/3 × 6/a = 6/3 = 2"},
+  ]},
+  similarity:{name:"Similarity & Scale",icon:"🔍",calc:true,questions:[
+    {q:"Similar triangles, scale factor 3. Small side 4cm → matching large side?",a:"12",level:1,hint:"Multiply by the scale factor.",explain:"4×3=12cm"},
+    {q:"Photo 6cm wide enlarged to 15cm wide. Scale factor?",a:"2.5",level:1,hint:"New ÷ old",explain:"15÷6=2.5"},
+    {q:"Model car at 1:20 scale is 18cm long. Real car (cm)?",a:"360",level:1,hint:"Multiply by 20.",explain:"18×20=360cm"},
+    {q:"Length scale factor 2. Small shape area 5cm² → large area?",a:"20",level:2,hint:"Area scale factor = (length SF)²",explain:"SF²=4 → 5×4=20cm²"},
+    {q:"Length scale factor 3. Small volume 2cm³ → large volume?",a:"54",level:2,hint:"Volume scale factor = (length SF)³",explain:"SF³=27 → 2×27=54cm³"},
+    {q:"Similar triangles: sides 6 and 9 correspond. Small side 8 → large side?",a:"12",level:2,hint:"Scale factor = 9/6 = 1.5",explain:"8×1.5=12"},
+    {q:"Area scale factor is 25. Length scale factor?",a:"5",level:2,hint:"Length SF = √(area SF)",explain:"√25=5"},
+    {q:"Similar tins: heights 10cm and 20cm. Small holds 400ml. Large holds (ml)?",a:"3200",level:3,hint:"Volume SF = 2³ = 8",explain:"400×8=3200ml"},
+  ]},
+  h_straight:{name:"The Straight Line",icon:"✏️",higher:true,calc:false,questions:[
+    {q:"Gradient of the line through (2,3) and (6,11)?",a:"2",level:1,hint:"m=(y₂−y₁)/(x₂−x₁)",explain:"(11−3)/(6−2)=8/4=2"},
+    {q:"Line makes 45° with positive x-axis. Gradient? (m=tanθ)",a:"1",level:1,hint:"m=tan45°",explain:"tan45°=1"},
+    {q:"Gradient of a line perpendicular to one with m=2?",a:"−0.5,−1/2",level:1,hint:"m₁×m₂=−1",explain:"−1÷2=−½"},
+    {q:"Line y=2x+3: gradient of any parallel line?",a:"2",level:1,hint:"Parallel lines share the same gradient.",explain:"m=2"},
+    {q:"Midpoint of (2,4) and (8,10): x-coordinate?",a:"5",level:1,hint:"Average the x-values.",explain:"(2+8)/2=5"},
+    {q:"A perpendicular bisector passes through the ______ of the line at 90°.",a:"midpoint",level:1,hint:"'Bisect' means cut in half.",explain:"It cuts the line in half at right angles — the midpoint."},
+    {q:"m=tanθ: gradient of a line at 135° to the positive x-axis?",a:"−1",level:2,hint:"tan135° is negative.",explain:"tan135°=−1"},
+    {q:"Lines y=3x+1 and y=kx−2 are perpendicular. k?",a:"−1/3,−0.33",level:2,hint:"3×k=−1",explain:"k=−1/3"},
+    {q:"Median from A(1,2) meets BC at its midpoint. B(3,4), C(7,8): midpoint x-coordinate?",a:"5",level:2,hint:"A median goes to the midpoint of the opposite side.",explain:"(3+7)/2=5"},
+    {q:"Angle a line with gradient √3 makes with the x-axis (degrees)?",a:"60",level:2,hint:"θ=tan⁻¹(√3)",explain:"tan60°=√3 → 60°"},
+  ]},
+  h_functions:{name:"Composite & Inverse Functions",icon:"🔗",higher:true,calc:false,questions:[
+    {q:"f(x)=2x+1, g(x)=x². Find f(g(3)).",a:"19",level:1,hint:"Work inside-out: g(3) first.",explain:"g(3)=9 → f(9)=19"},
+    {q:"f(x)=2x+1, g(x)=x². Find g(f(1)).",a:"9",level:1,hint:"f(1) first.",explain:"f(1)=3 → g(3)=9"},
+    {q:"f(x)=x+4. f⁻¹(x) = ?",a:"x−4",level:1,hint:"Inverse undoes the function.",explain:"f⁻¹(x)=x−4"},
+    {q:"Graph y=f(x)+3 moves y=f(x) how many units up?",a:"3",level:1,hint:"+k outside → slide up k.",explain:"3 units up"},
+    {q:"y=f(x−2) shifts the graph 2 units in which direction? (left/right)",a:"right",level:1,hint:"Inside the brackets works 'backwards'.",explain:"f(x−2) → 2 units right"},
+    {q:"y=k·f(x) with k=2 stretches the graph vertically by factor?",a:"2",level:1,hint:"Multiplying outside stretches vertically.",explain:"Factor 2"},
+    {q:"f(x)=3x−6. Find f⁻¹(9).",a:"5",level:2,hint:"Solve 3x−6=9.",explain:"3x=15 → x=5"},
+    {q:"f(x)=1/(x−5): which x-value is NOT in the domain?",a:"5",level:2,hint:"You can't divide by zero.",explain:"x=5 makes the denominator 0"},
+    {q:"f(x)=2x, g(x)=x−3. Solve f(g(x))=10.",a:"8",level:2,hint:"f(g(x))=2(x−3)",explain:"2(x−3)=10 → x−3=5 → x=8"},
+    {q:"y=−f(x) reflects the graph in which axis? (x/y)",a:"x,x-axis",level:2,hint:"Minus outside flips vertically.",explain:"Reflection in the x-axis"},
+  ]},
+  h_poly:{name:"Polynomials & Quadratics",icon:"🧮",higher:true,calc:false,questions:[
+    {q:"f(x)=x³−7x+6. Find f(1).",a:"0",level:1,hint:"Substitute x=1.",explain:"1−7+6=0"},
+    {q:"f(1)=0 for f(x)=x³−7x+6, so (x−1) is a ______.",a:"factor",level:1,hint:"Factor theorem!",explain:"f(a)=0 ⟺ (x−a) is a factor"},
+    {q:"Quadratic y=(x−2)²+5: minimum value of y?",a:"5",level:1,hint:"(x−2)² is never negative.",explain:"Minimum 5 at x=2"},
+    {q:"Remainder when x³+2x²−5 is divided by (x−2)?",a:"11",level:2,hint:"Remainder theorem: evaluate f(2).",explain:"8+8−5=11"},
+    {q:"Discriminant of 2x²+3x−1=0?",a:"17",level:2,hint:"b²−4ac",explain:"9−4(2)(−1)=9+8=17"},
+    {q:"b²−4ac=17 (positive): nature of roots? (real/equal/none)",a:"real",level:2,hint:">0 means two roots.",explain:"Two real distinct roots"},
+    {q:"x²+8x+3 = (x+4)² + k. Find k.",a:"−13",level:2,hint:"(x+4)²=x²+8x+16",explain:"3−16=−13"},
+    {q:"x³−4x=0: how many real roots?",a:"3",level:2,hint:"Factorise: x(x−2)(x+2).",explain:"x=0, 2, −2 → three roots"},
+    {q:"x²+kx+9=0 has equal roots and k>0. Find k.",a:"6",level:3,hint:"Equal roots: b²−4ac=0.",explain:"k²=36 → k=6"},
+    {q:"x²−2x−15<0 holds for −3<x<a. Find a.",a:"5",level:3,hint:"Factorise: (x+3)(x−5).",explain:"Roots −3 and 5 → true between them"},
+  ]},
+  h_recur:{name:"Recurrence Relations",icon:"🔁",higher:true,calc:true,questions:[
+    {q:"uₙ₊₁=0.5uₙ+10, u₀=20. Find u₁.",a:"20",level:1,hint:"Substitute u₀=20.",explain:"0.5×20+10=20"},
+    {q:"uₙ₊₁=2uₙ+1, u₀=3. Find u₂.",a:"15",level:1,hint:"u₁ first, then u₂.",explain:"u₁=7 → u₂=15"},
+    {q:"A limit exists when |a| is less than ?",a:"1",level:1,hint:"−1<a<1 for a limit.",explain:"|a|<1 → sequence settles to a limit"},
+    {q:"uₙ₊₁=0.6uₙ+8, u₀=10. Find u₁.",a:"14",level:1,hint:"0.6×10+8",explain:"6+8=14"},
+    {q:"uₙ₊₁=0.5uₙ+10. Limit L=b/(1−a)=?",a:"20",level:2,hint:"L=10/(1−0.5)",explain:"10/0.5=20"},
+    {q:"uₙ₊₁=0.8uₙ+6. Limit?",a:"30",level:2,hint:"L=6/(1−0.8)",explain:"6/0.2=30"},
+    {q:"uₙ₊₁=0.6uₙ+8. Limit?",a:"20",level:2,hint:"L=8/(1−0.6)",explain:"8/0.4=20"},
+    {q:"Pond loses 20% of its water daily; 15L added each evening. Long-term level (L)? (uₙ₊₁=0.8uₙ+15)",a:"75",level:3,hint:"L=15/(1−0.8)",explain:"15/0.2=75L"},
+  ]},
+  h_diff:{name:"Differentiation",icon:"📉",higher:true,calc:false,questions:[
+    {q:"f(x)=x³. Find f'(2).",a:"12",level:1,hint:"f'(x)=3x²",explain:"3×4=12"},
+    {q:"f(x)=3x²+2x. Find f'(1).",a:"8",level:1,hint:"f'(x)=6x+2",explain:"6+2=8"},
+    {q:"Tangent to y=x² at x=3: gradient?",a:"6",level:1,hint:"dy/dx=2x",explain:"2×3=6"},
+    {q:"y=x²−4x+7: stationary point at x = ?",a:"2",level:1,hint:"Set dy/dx=2x−4=0.",explain:"2x=4 → x=2"},
+    {q:"f'(x)>0 means f is (increasing/decreasing)?",a:"increasing",level:1,hint:"Positive gradient slopes up.",explain:"f is strictly increasing"},
+    {q:"f(x)=5sin(x). f'(x)=5cos(x). Find f'(0).",a:"5",level:2,hint:"cos(0)=1",explain:"5×1=5"},
+    {q:"f(x)=x³−3x: stationary points at x=±1. Which is the maximum? (1/−1)",a:"−1",level:2,hint:"Check the shape of a positive cubic.",explain:"Max at x=−1, min at x=1"},
+    {q:"y=x³−6x²+9x has stationary points at x=1 and x=?",a:"3",level:2,hint:"dy/dx=3x²−12x+9=0",explain:"x²−4x+3=0 → (x−1)(x−3)=0"},
+    {q:"Ball height h(t)=20t−5t². Speed h'(t) at t=1?",a:"10",level:2,hint:"h'(t)=20−10t",explain:"20−10=10"},
+    {q:"f(x)=(2x+1)³. Chain rule: find f'(0).",a:"6",level:3,hint:"f'(x)=3(2x+1)²×2",explain:"6(2x+1)² at 0 → 6"},
+    {q:"f(x)=1/x=x⁻¹. Find f'(1).",a:"−1",level:3,hint:"f'(x)=−x⁻²",explain:"−1/1²=−1"},
+  ]},
+  h_int:{name:"Integration",icon:"∫",higher:true,calc:false,questions:[
+    {q:"∫2x dx from 0 to 3 = ?",a:"9",level:1,hint:"∫2x dx=x²",explain:"3²−0²=9"},
+    {q:"∫3x² dx from 0 to 2 = ?",a:"8",level:1,hint:"∫3x² dx=x³",explain:"2³−0=8"},
+    {q:"∫(2x+1) dx from 0 to 1 = ?",a:"2",level:1,hint:"=x²+x",explain:"(1+1)−0=2"},
+    {q:"∫x³ dx = x⁴/n + c. Find n.",a:"4",level:1,hint:"Raise the power, divide by the new power.",explain:"x⁴/4 → n=4"},
+    {q:"∫cos(x) dx from 0 to π/2 = ?",a:"1",level:2,hint:"∫cos=sin",explain:"sin(π/2)−sin(0)=1"},
+    {q:"∫sin(x) dx from 0 to π = ?",a:"2",level:2,hint:"∫sin=−cos",explain:"−cosπ+cos0=1+1=2"},
+    {q:"∫4x³ dx from 1 to 2 = ?",a:"15",level:2,hint:"=x⁴",explain:"16−1=15"},
+    {q:"dy/dx=6x², y(0)=1. Then y=2x³+c. Find c.",a:"1",level:2,hint:"Substitute x=0, y=1.",explain:"1=0+c → c=1"},
+    {q:"Area under y=4−x² from x=−2 to 2?",a:"32/3,10.67",level:3,hint:"[4x−x³/3] between −2 and 2.",explain:"(8−8/3)−(−8+8/3)=32/3≈10.67"},
+    {q:"∫(2x+3)⁴ dx = (2x+3)⁵/k + c. Find k.",a:"10",level:3,hint:"Divide by new power AND the bracket's derivative.",explain:"5×2=10"},
+  ]},
+  h_trig:{name:"Trig: Radians & Formulae",icon:"🌊",higher:true,calc:false,questions:[
+    {q:"180° in radians? (type pi)",a:"pi,π",level:1,hint:"180°=π radians.",explain:"π radians"},
+    {q:"π/3 radians in degrees?",a:"60",level:1,hint:"π=180°, so divide by 3.",explain:"180/3=60°"},
+    {q:"Exact value of sin(π/6)?",a:"1/2,0.5",level:1,hint:"π/6=30°",explain:"sin30°=½"},
+    {q:"sin(2A) = k·sinA·cosA. Find k.",a:"2",level:1,hint:"Double angle formula.",explain:"sin2A=2sinAcosA"},
+    {q:"Solve 2sin(x°)=1 for 0<x<90.",a:"30",level:1,hint:"sinx=0.5",explain:"x=30°"},
+    {q:"cos(2A) = 2cos²A − ?",a:"1",level:2,hint:"One of the three cos2A forms.",explain:"cos2A=2cos²A−1"},
+    {q:"3sinx+4cosx = k·sin(x+α). Find k.",a:"5",level:2,hint:"k=√(a²+b²)",explain:"√(9+16)=5"},
+    {q:"5sinx−12cosx = k·sin(x−α). Find k.",a:"13",level:2,hint:"k=√(25+144)",explain:"√169=13"},
+    {q:"Period of y=sin(2x) in radians? (type pi)",a:"pi,π",level:2,hint:"Period=2π/2",explain:"2π÷2=π"},
+    {q:"cos(2A)=1−2sin²A. If sinA=0.6, find cos(2A).",a:"0.28",level:3,hint:"1−2(0.36)",explain:"1−0.72=0.28"},
+    {q:"Solve cos(2x°)=1 for 0<x≤180.",a:"180",level:3,hint:"cos360°=1",explain:"2x=360 → x=180"},
+  ]},
+  h_circle:{name:"The Circle",icon:"⭕",higher:true,calc:false,questions:[
+    {q:"x²+y²=25: radius?",a:"5",level:1,hint:"x²+y²=r²",explain:"r=√25=5"},
+    {q:"(x−3)²+(y+2)²=16: radius?",a:"4",level:1,hint:"r²=16",explain:"r=4"},
+    {q:"(x−3)²+(y+2)²=16: centre x-coordinate?",a:"3",level:1,hint:"Centre (a,b) from (x−a)²+(y−b)².",explain:"Centre (3,−2) → x=3"},
+    {q:"(x−3)²+(y+2)²=16: centre y-coordinate?",a:"−2",level:1,hint:"(y+2)=(y−(−2))",explain:"Centre (3,−2) → y=−2"},
+    {q:"A tangent meets a circle at how many points?",a:"1",level:1,hint:"Definition of tangency.",explain:"Exactly one point"},
+    {q:"Circle centre (0,0), r=5. Is (3,4) on the circle? (yes/no)",a:"yes",level:1,hint:"Check 3²+4²",explain:"9+16=25=r² → yes"},
+    {q:"x²+y²−6x+4y−12=0: radius? (r=√(g²+f²−c))",a:"5",level:2,hint:"g=−3, f=2, c=−12",explain:"√(9+4+12)=√25=5"},
+    {q:"x²+y²+8x−2y+8=0: centre x-coordinate? (−g)",a:"−4",level:2,hint:"2g=8 → g=4, centre (−g,−f).",explain:"−g=−4"},
+    {q:"Distance between centres (0,0) and (8,6)?",a:"10",level:2,hint:"√(8²+6²)",explain:"√100=10"},
+    {q:"Circles r=3 and r=7, centres 10 apart: they touch (externally/internally)?",a:"externally",level:3,hint:"Compare distance with r₁+r₂.",explain:"3+7=10=distance → touch externally"},
+  ]},
+  h_vectors:{name:"Vectors in 3D",icon:"↗️",higher:true,calc:true,questions:[
+    {q:"|(2,3,6)| = ?",a:"7",level:1,hint:"√(4+9+36)",explain:"√49=7"},
+    {q:"a·b=0 means the vectors are?",a:"perpendicular",level:1,hint:"Key scalar product fact.",explain:"Perpendicular (90°)"},
+    {q:"i·i = ?",a:"1",level:2,hint:"i is a unit vector; angle 0.",explain:"|i||i|cos0=1"},
+    {q:"i·j = ?",a:"0",level:2,hint:"i and j are perpendicular.",explain:"cos90°=0 → 0"},
+    {q:"a=(1,2,3), b=(4,0,−2). a·b = ?",a:"−2",level:2,hint:"Multiply matching components, add.",explain:"4+0−6=−2"},
+    {q:"A(0,0,0), B(2,4,6), C(3,6,9): collinear? (yes/no)",a:"yes",level:2,hint:"Is AC a multiple of AB?",explain:"AC=1.5×AB → collinear"},
+    {q:"cosθ=a·b/(|a||b|). a·b=6, |a|=2, |b|=6: cosθ?",a:"0.5",level:2,hint:"6/(2×6)",explain:"6/12=0.5"},
+    {q:"cosθ=0.5: angle between the vectors (degrees)?",a:"60",level:3,hint:"cos⁻¹(0.5)",explain:"θ=60°"},
+    {q:"P divides AB in ratio 2:1. A(0,0,0), B(9,6,3). P's x-coordinate?",a:"6",level:3,hint:"P is ⅔ of the way along AB.",explain:"(2/3)×9=6"},
+    {q:"Unit vector in the direction of (0,0,5)?",a:"(0,0,1)",level:3,hint:"Divide by the magnitude (=5).",explain:"(0,0,5)÷5=(0,0,1)"},
+  ]},
+  h_logs:{name:"Logs & Exponentials",icon:"㏒",higher:true,calc:true,questions:[
+    {q:"log₂8 = ?",a:"3",level:1,hint:"2 to what power gives 8?",explain:"2³=8 → 3"},
+    {q:"log₅25 = ?",a:"2",level:1,hint:"5²=25",explain:"2"},
+    {q:"log₁₀1000 = ?",a:"3",level:1,hint:"10³=1000",explain:"3"},
+    {q:"logₐ1 = ?",a:"0",level:1,hint:"a⁰=1 for any a.",explain:"0"},
+    {q:"Solve: 2ˣ = 32",a:"5",level:1,hint:"Keep doubling.",explain:"2⁵=32 → x=5"},
+    {q:"log₁₀4 + log₁₀25 = ?",a:"2",level:2,hint:"log a + log b = log(ab)",explain:"log₁₀100=2"},
+    {q:"log₃54 − log₃2 = ?",a:"3",level:2,hint:"log a − log b = log(a/b)",explain:"log₃27=3"},
+    {q:"2log₁₀5 + log₁₀4 = ?",a:"2",level:2,hint:"2log5=log25",explain:"log₁₀(25×4)=log₁₀100=2"},
+    {q:"ln(e³) = ?",a:"3",level:2,hint:"ln undoes e.",explain:"3"},
+    {q:"y=abˣ with a=3, b=2, x=4. Find y.",a:"48",level:2,hint:"3×2⁴",explain:"3×16=48"},
+    {q:"Solve 3ˣ = 20 (2dp).",a:"2.73",level:3,hint:"x=log20/log3",explain:"1.301/0.477≈2.73"},
   ]}
 };
 
@@ -840,7 +1050,8 @@ function showPanel(id){
 
 function pickTopic(ov){
   const t=ov||S.currentTopic;
-  if(t==='random'||t==='all'){const k=Object.keys(TOPICS);return k[Math.floor(Math.random()*k.length)];}
+  if(t==='random'||t==='all'){const k=Object.keys(TOPICS).filter(x=>!TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
+  if(t==='random_h'){const k=Object.keys(TOPICS).filter(x=>TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
   return t;
 }
 function getLevel(){
@@ -1033,7 +1244,15 @@ function shuffleFC(){for(let i=S.fcCards.length-1;i>0;i--){const j=Math.floor(Ma
 // TOPICS
 function renderTopics(){
   const g=document.getElementById('topic-grid');g.innerHTML='';
+  let lastHigher=null;
   Object.entries(TOPICS).forEach(([k,t])=>{
+    const isH=!!t.higher;
+    if(isH!==lastHigher){
+      const h=document.createElement('div');
+      h.style.cssText='grid-column:1/-1;font-weight:700;font-size:15px;margin-top:'+(lastHigher===null?'0':'10px');
+      h.textContent=isH?'🎓 Higher':'🏴󠁧󠁢󠁳󠁣󠁴󠁿 National 5';
+      g.appendChild(h);lastHigher=isH;
+    }
     const ts=S.topicStats[k]||{correct:0,total:0};
     const pct=ts.total?Math.round((ts.correct/ts.total)*100):0;
     const d=document.createElement('div');d.className='topic-card';
