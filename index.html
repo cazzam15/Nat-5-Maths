@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Nat 5 Maths Revision — Scotland | nat5mathsscotland.com</title>
-<meta name="description" content="Free Nat 5 Maths revision app for Scottish students. Practice questions, mock exams, AI tutor, flashcards, worksheets and more. Covers the full SQA curriculum.">
+<meta name="description" content="Free Nat 5 and Higher Maths revision app for Scottish students. Practice questions, mock exams, flashcards, worksheets and more. Covers the full SQA curriculum.">
 <meta name="keywords" content="Nat 5 Maths, National 5 Maths Scotland, SQA Maths revision, free maths revision Scotland, Nat 5 revision app">
 <meta name="author" content="nat5mathsscotland.com">
 <meta property="og:title" content="Free Nat 5 Maths Revision Scotland">
-<meta property="og:description" content="Free revision app covering all Nat 5 Maths topics. Mock exams, AI tutor, flashcards and more!">
+<meta property="og:description" content="Free revision app covering all Nat 5 and Higher Maths topics. Mock exams, flashcards, worksheets and more!">
 <meta property="og:url" content="https://nat5mathsscotland.com">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://nat5mathsscotland.com/">
@@ -63,7 +63,6 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
 .fb-ok{background:#ecfdf5;border:1px solid #86efac;color:#166534}
 .fb-no{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
 .fb-hint{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
-.fb-ai{background:#ede9fe;border:1px solid #c4b5fd;color:#3730a3}
 .fb-exp{margin-top:7px;padding:9px;background:rgba(255,255,255,.7);border-radius:7px;font-size:13px}
 .loading{display:flex;align-items:center;gap:8px;padding:10px;color:var(--text2);font-size:13px}
 .spin{width:16px;height:16px;border:2px solid #e2e8f0;border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
@@ -273,7 +272,6 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
       <button class="btn-h" onclick="showPanel('calculator')" id="calc-link" style="display:none">🔢 Calculator</button>
     </div>
     <div id="feedback-area"></div>
-    <div id="ai-loading" class="loading" style="display:none"><div class="spin"></div> AI tutor thinking...</div>
   </div>
 </div>
 
@@ -365,7 +363,6 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <div id="ws-list">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
       <h2 style="font-size:16px;font-weight:700">📄 Worksheets</h2>
-      <button class="btn btn-p" id="gen-ws-btn" onclick="generateWS()" style="font-size:12px;padding:8px 13px">✨ AI Worksheet</button>
     </div>
     <div class="sheet-grid" id="sheet-list"></div>
   </div>
@@ -454,7 +451,6 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
       <button class="btn btn-s" onclick="clearNote()" style="font-size:12px;padding:6px 10px">🗑 Clear</button>
       <button class="btn btn-s" onclick="copyNote()" style="font-size:12px;padding:6px 10px">📋 Copy</button>
       <button class="btn btn-s" onclick="downloadNote()" style="font-size:12px;padding:6px 10px">⬇ Download</button>
-      <button class="btn btn-p" onclick="askAI()" style="font-size:12px;padding:6px 10px">🤖 Ask AI</button>
     </div>
     <textarea id="notepad-text" placeholder="Write your working out here...
 
@@ -464,7 +460,6 @@ Key formulas:
 • sin=opp/hyp  cos=adj/hyp  tan=opp/adj
 • Mean = sum ÷ count
 • Gradient = (y₂-y₁)/(x₂-x₁)"></textarea>
-    <div id="note-ai-res" style="margin-top:9px"></div>
   </div>
 </div>
 
@@ -544,7 +539,7 @@ Key formulas:
   </div>
   <div class="card">
     <h2>ℹ️ About</h2>
-    <p style="font-size:13px;color:var(--text2);line-height:1.7">Covers all Nat 5 Maths Scotland topics with 3 difficulty levels. Questions auto-level up as you earn XP. Wrong answers get full explanations + AI tutor feedback. Calculator topics are clearly marked. Progress saves automatically in your browser.<br><br><strong>Internet required for:</strong> AI explanations, AI worksheets. Everything else works offline.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7">Covers all Nat 5 and Higher Maths Scotland topics with 3 difficulty levels. Questions auto-level up as you earn XP. Wrong answers get full worked explanations. Calculator topics are clearly marked. Progress saves automatically in your browser, and the whole app works offline.</p>
   </div>
 </div>
 
@@ -1070,7 +1065,6 @@ function newQuestion(ov){
   document.getElementById('q-num').textContent=S.questionNum;
   document.getElementById('q-level').textContent='Level '+level+' — '+(level===1?'Easy':level===2?'Medium':'Hard');
   document.getElementById('feedback-area').innerHTML='';
-  document.getElementById('ai-loading').style.display='none';
   const inp2=document.getElementById('q-input');inp2.disabled=false;inp2.style.opacity='1';
   const ca=TOPICS[topic].calc;
   const bd=document.getElementById('calc-badge');
@@ -1080,13 +1074,22 @@ function newQuestion(ov){
   document.getElementById('q-input').focus();
 }
 
-function norm(s){return s.toString().toLowerCase().replace(/\s+/g,'').replace(/[×x]/g,'*').replace(/[−–]/g,'-');}
+function norm(s){return s.toString().toLowerCase().replace(/\s+/g,'').replace(/[×x]/g,'*').replace(/[−–]/g,'-').replace(/\^/g,'').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(d));}
+// split alternative answers on commas, but not commas inside brackets e.g. "(3,2)"
+function splitAlts(s){const out=[];let d=0,cur='';for(const ch of s){if(ch==='(')d++;else if(ch===')')d--;if(ch===','&&d===0){out.push(cur);cur='';}else cur+=ch;}out.push(cur);return out;}
+function stripVar(s){return s.replace(/^[a-z*]=/,'');}
+function isNum(s){return /^-?(\d+\.?\d*|\.\d+)$/.test(s);}
 function match(user,correct){
-  const cs=correct.split(',').map(c=>norm(c));const u=norm(user);
-  return cs.some(c=>{
-    if(c===u)return true;
-    const n1=parseFloat(c.replace(/[^0-9.\-]/g,'')),n2=parseFloat(u.replace(/[^0-9.\-]/g,''));
-    return !isNaN(n1)&&!isNaN(n2)&&Math.abs(n1-n2)<0.12;
+  const u=norm(user);
+  if(u===norm(correct))return true;
+  return splitAlts(correct).map(c=>norm(c)).some(c=>{
+    const cn=stripVar(c),un=stripVar(u);
+    if(c===u||cn===un)return true;
+    if(!isNum(cn)||!isNum(un))return false;
+    // integers must be exact; decimals allowed a half-unit-in-last-place rounding band
+    const dp=(cn.split('.')[1]||'').length;
+    const tol=dp>0?0.5*Math.pow(10,-dp)+1e-9:1e-9;
+    return Math.abs(parseFloat(cn)-parseFloat(un))<=tol;
   });
 }
 
@@ -1113,28 +1116,9 @@ function checkAnswer(){
     S.stats.streak=0;updateHeader();save();showWrong(raw);
   }
 }
-async function showWrong(u){
+function showWrong(u){
   const q=S.currentQ;
-  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-no"><strong>❌ Not quite!</strong> You answered: <em>${u}</em><br><strong>Correct answer:</strong> ${q.a}<div class="fb-exp"><strong>How to do it:</strong> ${q.explain}</div></div>`;
-  document.getElementById('ai-loading').style.display='flex';
-  try{
-    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",
-      headers:{"Content-Type":"application/json","anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:300,
-        messages:[{role:"user",content:`Friendly Nat 5 Maths Scotland tutor, student ~15yrs.
-Q: ${q.q} | Correct: ${q.a} | Student answered: ${u} | Topic: ${TOPICS[q.topic].name}
-Calculator ${TOPICS[q.topic].calc?'IS':'is NOT'} allowed here.
-3 friendly sentences: why wrong, correct method, memory tip. No LaTeX.`}]})});
-    const d=await res.json();
-    document.getElementById('ai-loading').style.display='none';
-    if(d.content&&d.content[0]){
-      document.getElementById('feedback-area').innerHTML+=`<div class="fb fb-ai"><strong>🤖 AI Tutor says:</strong><br><br>${d.content[0].text}<br><br><em style="font-size:12px;opacity:.7">Next question loading in 5 seconds...</em></div>`;
-    }
-  }catch(e){
-    document.getElementById('ai-loading').style.display='none';
-    document.getElementById('feedback-area').innerHTML+=`<div style="font-size:12px;color:var(--text2);margin-top:8px;font-style:italic">Next question loading...</div>`;
-  }
-  // Always move to next question after showing explanation (with or without AI)
+  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-no"><strong>❌ Not quite!</strong> You answered: <em>${u}</em><br><strong>Correct answer:</strong> ${q.a}<div class="fb-exp"><strong>How to do it:</strong> ${q.explain}</div><em style="font-size:12px;opacity:.7">Next question loading in 5 seconds...</em></div>`;
   S.questionNum++;save();setTimeout(newQuestion,5000);
 }
 function skipQuestion(){S.stats.streak=0;S.questionNum++;newQuestion();}
@@ -1321,44 +1305,6 @@ function checkWS(i,correct,explain){
 }
 function checkAllWS(answers){answers.forEach((a,i)=>checkWS(i,a.a,a.e));}
 function closeWS(){document.getElementById('ws-list').style.display='block';document.getElementById('ws-active').style.display='none';}
-async function generateWS(){
-  const btn=document.getElementById('gen-ws-btn');btn.textContent='⏳ Generating...';btn.disabled=true;
-  try{
-    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:900,
-        messages:[{role:"user",content:`Nat 5 Maths Scotland worksheet, 6 questions, mixed topics. Return ONLY valid JSON:
-{"title":"title","questions":[{"q":"question","a":"answer","explain":"explanation","calc":true}]}`}]})});
-    const d=await res.json();
-    const ws=JSON.parse(d.content[0].text.replace(/```json|```/g,'').trim());
-    showAIWS(ws);
-  }catch(e){alert('Could not generate. Check internet connection.');}
-  btn.textContent='✨ AI Worksheet';btn.disabled=false;
-}
-function showAIWS(ws){
-  document.getElementById('ws-list').style.display='none';
-  const av=document.getElementById('ws-active');av.style.display='block';
-  av.innerHTML=`<div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
-      <h2>🤖 ${ws.title}</h2>
-      <button class="btn btn-s" onclick="closeWS()" style="font-size:12px;padding:7px 11px">← Back</button>
-    </div>
-    ${ws.questions.map((q,i)=>`<div class="ws-q"><p>${i+1}. ${q.q} <span style="font-size:11px;color:${q.calc?'#16a34a':'#dc2626'}">${q.calc?'(✅ calc)':'(🚫 no calc)'}</span></p>
-      <input type="text" placeholder="Your answer..." id="waiq${i}">
-      <div id="waifb${i}" style="margin-top:5px;font-size:13px"></div></div>`).join('')}
-    <div class="btn-row" style="margin-top:13px">
-      <button class="btn btn-p" onclick="checkAIWS(${JSON.stringify(ws.questions)})">Check All ✓</button>
-      <button class="btn btn-s" onclick="closeWS()">← Back</button>
-    </div></div>`;
-}
-function checkAIWS(qs){
-  qs.forEach((q,i)=>{
-    const user=(document.getElementById('waiq'+i)||{}).value?.trim()||'';
-    const ok=match(user,q.a);
-    document.getElementById('waifb'+i).innerHTML=ok
-      ?`<span style="color:#16a34a;font-weight:700">✅ Correct!</span>`
-      :`<span style="color:#dc2626;font-weight:700">❌ Answer: ${q.a}</span> <span style="color:#374151">${q.explain||''}</span>`;
-  });
-}
 
 // PROGRESS
 function renderProg(){
@@ -1448,18 +1394,6 @@ function clearNote(){if(confirm('Clear all notes?')){document.getElementById('no
 function copyNote(){navigator.clipboard.writeText(document.getElementById('notepad-text').value).then(()=>alert('Copied!')).catch(()=>alert('Use Ctrl+A then Ctrl+C'));}
 function downloadNote(){const a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(document.getElementById('notepad-text').value);a.download='nat5-notes.txt';a.click();}
 document.addEventListener('input',e=>{if(e.target.id==='notepad-text'){S.notepadContent=e.target.value;save();}});
-async function askAI(){
-  const txt=document.getElementById('notepad-text').value.trim();if(!txt){alert('Write something first!');return;}
-  const el=document.getElementById('note-ai-res');
-  el.innerHTML='<div class="loading"><div class="spin"></div> Reviewing your notes...</div>';
-  try{
-    const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:500,
-        messages:[{role:"user",content:`Nat 5 Maths Scotland tutor. Student's notes:\n${txt}\n\nCheck for errors, give friendly feedback, suggest improvements. 5 sentences max.`}]})});
-    const d=await r.json();
-    el.innerHTML=`<div class="fb fb-ai"><strong>🤖 AI Tutor:</strong><br><br>${d.content[0].text}</div>`;
-  }catch{el.innerHTML='<div class="fb fb-no">Could not connect to AI.</div>';}
-}
 
 // SETTINGS
 function saveName(){

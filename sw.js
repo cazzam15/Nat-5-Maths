@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nat5maths-v1';
+const CACHE_NAME = 'nat5maths-v2';
 const ASSETS = [
   '/',
   '/index.html'
@@ -26,25 +26,33 @@ self.addEventListener('activate', function(event) {
   self.clients.claim();
 });
 
-// Fetch — serve from cache first, fall back to network
+// Fetch — network-first for the app itself (so updates reach users),
+// cache-first for everything else (icons etc.)
 self.addEventListener('fetch', function(event) {
-  // Don't cache API calls (AI tutor needs live internet)
-  if (event.request.url.includes('anthropic.com')) {
-    return fetch(event.request);
+  const isAppShell = event.request.mode === 'navigate' ||
+    event.request.url.endsWith('/index.html');
+  if (isAppShell) {
+    event.respondWith(
+      fetch(event.request).then(function(response) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return response;
+      }).catch(function() {
+        // Offline — serve the cached app
+        return caches.match(event.request).then(c => c || caches.match('/index.html'));
+      })
+    );
+    return;
   }
   event.respondWith(
     caches.match(event.request).then(function(cached) {
       return cached || fetch(event.request).then(function(response) {
-        // Cache new successful responses
         if (response.status === 200) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
         }
         return response;
       });
-    }).catch(function() {
-      // Offline fallback — serve the app
-      return caches.match('/index.html');
     })
   );
 });
