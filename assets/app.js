@@ -456,7 +456,7 @@ function renderMockHome(){
   const el=$('mock-papers');el.innerHTML='';
   Object.entries(MOCK_PAPERS).forEach(([n,p])=>{
     const d=document.createElement('div');d.className='tile paper';
-    d.innerHTML=`<div class="tile-top"><span class="glyph">${n==='3'?'H':'P'+n}</span></div>
+    d.innerHTML=`<div class="tile-top"><span class="glyph">${p.short.startsWith('Higher')?'H'+p.short.slice(-1):'P'+n}</span></div>
       <h3>${esc(p.title)}</h3>
       <div class="paper-facts"><span class="tag">${p.questions.length} questions</span><span class="tag">${p.totalMarks} marks</span><span class="tag">${p.duration/60} min</span>
       <span class="tag ${p.calcAllowed?'tag-calc':'tag-nocalc'}">${p.calcAllowed?'Calculator':'No calculator'}</span></div>
