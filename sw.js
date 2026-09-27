@@ -1,7 +1,13 @@
-const CACHE_NAME = 'nat5maths-v2';
+const CACHE_NAME = 'nat5maths-v5';
 const ASSETS = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/assets/styles.css?v=5',
+  '/assets/data.js?v=5',
+  '/assets/app.js?v=5',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 // Install — cache the app

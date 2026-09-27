@@ -1,1774 +1,581 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Nat 5 Maths Revision — Scotland | nat5mathsscotland.com</title>
-<meta name="description" content="Free Nat 5 and Higher Maths revision app for Scottish students. Practice questions, mock exams, flashcards, worksheets and more. Covers the full SQA curriculum.">
-<meta name="keywords" content="Nat 5 Maths, National 5 Maths Scotland, SQA Maths revision, free maths revision Scotland, Nat 5 revision app">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Nat 5 &amp; Higher Maths Revision — Scotland | nat5mathsscotland.com</title>
+<meta name="description" content="Free Nat 5 and Higher Maths revision for Scottish students. 237 practice questions with worked solutions, mock exams, flashcards, worksheets and a formula sheet — covers the SQA course.">
 <meta name="author" content="nat5mathsscotland.com">
-<meta property="og:title" content="Free Nat 5 Maths Revision Scotland">
-<meta property="og:description" content="Free revision app covering all Nat 5 and Higher Maths topics. Mock exams, flashcards, worksheets and more!">
-<meta property="og:url" content="https://nat5mathsscotland.com">
+<meta property="og:title" content="Free Nat 5 &amp; Higher Maths Revision — Scotland">
+<meta property="og:description" content="Practice questions with worked solutions, mock exams, flashcards and worksheets for SQA National 5 and Higher Maths. Free, works offline.">
+<meta property="og:url" content="https://nat5mathsscotland.com/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://nat5mathsscotland.com/icon-512.png">
 <link rel="canonical" href="https://nat5mathsscotland.com/">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4f46e5">
+<meta name="theme-color" content="#0065bd">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Nat 5 Maths">
 <link rel="apple-touch-icon" href="icon-192.png">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--primary:#4f46e5;--primary2:#7c3aed;--bg:#f0f4ff;--surface:#fff;--surface2:#f8f9ff;--border:#e2e8f0;--text:#1e1b4b;--text2:#64748b;--radius:12px}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.app{max-width:960px;margin:0 auto;padding:12px}
-.header{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:16px;padding:16px 20px;margin-bottom:10px}
-.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.header h1{font-size:21px;font-weight:800}
-.header .sub{font-size:12px;opacity:.8;margin-top:2px}
-.hdr-stats{display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:170px}
-.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-.pill{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600}
-.xp-row{display:flex;align-items:center;gap:6px;width:100%}
-.xp-track{flex:1;height:7px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
-.xp-fill{height:100%;background:#fbbf24;border-radius:4px;transition:width .6s}
-.nav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-.nav button{padding:7px 12px;border:2px solid transparent;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:#fff;color:#64748b;transition:all .2s;white-space:nowrap}
-.nav button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.nav button:hover:not(.active){border-color:var(--primary);color:var(--primary)}
-.panel{display:none;animation:fadeIn .3s}
-.panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.card{background:var(--surface);border-radius:var(--radius);padding:16px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(79,70,229,.08);margin-bottom:10px}
-.card h2{font-size:15px;font-weight:700;margin-bottom:12px}
-.tsel{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
-.tsel label{font-size:12px;font-weight:700;color:var(--text2)}
-.tsel select{padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:#fff;color:var(--text);outline:none;cursor:pointer}
-.calc-badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:4px 10px;border-radius:8px;font-weight:700}
-.cb-yes{background:#dcfce7;color:#166534}
-.cb-no{background:#fef2f2;color:#991b1b}
-.q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:6px}
-.lvl-badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:10px;background:#ede9fe;color:#4f46e5}
-.q-text{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:14px}
-.q-input{width:100%;padding:11px 14px;font-size:16px;border:2px solid var(--border);border-radius:10px;outline:none;background:#fff;color:var(--text);transition:border-color .2s}
-.q-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
-.btn-row{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
-.btn{padding:9px 16px;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s}
-.btn-p{background:var(--primary);color:#fff}.btn-p:hover{background:#4338ca;transform:translateY(-1px)}
-.btn-s{background:#f1f5f9;color:var(--text);border:1px solid var(--border)}.btn-s:hover{background:#e2e8f0}
-.btn-h{background:none;border:none;color:var(--primary);cursor:pointer;font-size:13px;text-decoration:underline;padding:0 4px;font-weight:600}
-.fb{padding:13px;border-radius:10px;margin-top:10px;font-size:14px;line-height:1.7}
-.fb-ok{background:#ecfdf5;border:1px solid #86efac;color:#166534}
-.fb-no{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
-.fb-hint{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
-.fb-exp{margin-top:7px;padding:9px;background:rgba(255,255,255,.7);border-radius:7px;font-size:13px}
-.loading{display:flex;align-items:center;gap:8px;padding:10px;color:var(--text2);font-size:13px}
-.spin{width:16px;height:16px;border:2px solid #e2e8f0;border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
-@keyframes spin{to{transform:rotate(360deg)}}
-.reward-pop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:18px;padding:26px 36px;text-align:center;z-index:999;font-size:20px;font-weight:800;box-shadow:0 20px 60px rgba(79,70,229,.4);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-.reward-pop.show{transform:translate(-50%,-50%) scale(1)}
-.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:9px}
-.topic-card{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:13px;cursor:pointer;text-align:center;transition:all .2s}
-.topic-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 5px 14px rgba(79,70,229,.14)}
-.ticon{font-size:26px;margin-bottom:5px}
-.tprog{font-size:11px;color:var(--text2);margin-top:3px}
-.pb{height:5px;background:#e2e8f0;border-radius:3px;margin-top:6px;overflow:hidden}
-.pf{height:100%;background:var(--primary);border-radius:3px;transition:width .6s}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:10px}
-.stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px;text-align:center}
-.snum{font-size:26px;font-weight:800;color:var(--primary)}
-.slbl{font-size:11px;color:var(--text2);margin-top:2px}
-.calc-display{background:#1e1e2e;color:#a6e3a1;font-family:'Courier New',monospace;font-size:20px;padding:13px;border-radius:10px;text-align:right;min-height:60px;margin-bottom:10px;word-break:break-all}
-.cprev{font-size:12px;color:#6c7086;min-height:17px;margin-bottom:3px}
-.calc-btns{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.cbtn{padding:12px 4px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;transition:all .14s}
-.cbtn:hover{transform:scale(1.05)}.cbtn:active{transform:scale(.95)}
-.cop{background:#4f46e5;color:#fff}.ceq{background:#7c3aed;color:#fff}
-.cnum{background:#f8fafc;border:1px solid var(--border);color:var(--text)}
-.cfn{background:#ede9fe;color:#4f46e5;font-size:11px}.cclr{background:#fef2f2;color:#dc2626}
-.notepad textarea{width:100%;min-height:280px;padding:13px;font-size:13px;border:1px solid var(--border);border-radius:8px;resize:vertical;font-family:'Courier New',monospace;background:#fafafa;color:var(--text);outline:none;line-height:1.8}
-.notepad textarea:focus{border-color:var(--primary);background:#fff}
-.note-tools{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:9px}
-.sheet-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px;cursor:pointer;transition:all .2s}
-.sheet-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(79,70,229,.1)}
-.sheet-card h3{font-size:13px;font-weight:700;margin-bottom:4px}
-.sheet-card p{font-size:12px;color:var(--text2)}
-.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin-top:5px;font-weight:700}
-.be{background:#dcfce7;color:#166534}.bm{background:#fef9c3;color:#854d0e}.bh{background:#fee2e2;color:#991b1b}.bx{background:#ede9fe;color:#4f46e5}
-.ws-q{margin-bottom:11px;padding:12px;background:#f8f9ff;border-radius:8px;border:1px solid #e8ecff}
-.ws-q p{font-size:14px;font-weight:600;margin-bottom:7px}
-.ws-q input{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:#fff;color:var(--text);outline:none}
-.ws-q input:focus{border-color:var(--primary)}
-.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-bottom:14px}
-.fc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:13px;line-height:1.9}
-.fct{font-weight:700;font-size:11px;color:var(--text2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
-.flashcard{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:16px;padding:28px;text-align:center;cursor:pointer;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .3s}
-.flashcard:hover{transform:translateY(-3px)}
-.fc-front .fc-back{width:100%}
-.fc-back{display:none}
-.flashcard.flipped .fc-front{display:none}
-.flashcard.flipped .fc-back{display:block}
-.fc-term{font-size:20px;font-weight:800;margin-bottom:8px}
-.fc-def{font-size:14px;opacity:.95;line-height:1.5;white-space:pre-line}
-.fc-tap{font-size:12px;opacity:.6;margin-top:10px}
-.fc-nav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:11px}
-.timer-display{font-size:48px;font-weight:800;text-align:center;color:var(--primary);margin:8px 0}
-.urgent{color:#dc2626;animation:pulse .5s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.lb-row{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:8px;margin-bottom:5px;background:#f8f9ff;border:1px solid #e8ecff}
-.resource-link{display:flex;align-items:center;gap:10px;padding:10px 13px;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:7px;cursor:pointer;transition:all .2s}
-.resource-link:hover{border-color:var(--primary);background:#f5f3ff}
-.ricon{font-size:20px}.rtext h4{font-size:13px;font-weight:700}.rtext p{font-size:12px;color:var(--text2);margin-top:1px}
-.tip-card{background:#fff;border-left:4px solid var(--primary);border-radius:0 10px 10px 0;padding:11px 13px;margin-bottom:7px;font-size:13px;line-height:1.6}
-.tip-card strong{display:block;font-size:13px;color:var(--primary);margin-bottom:2px}
-.theme-btn{width:34px;height:34px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s}
-.theme-btn.active{border-color:#1e1b4b;transform:scale(1.15)}
-.goal-bar{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin:6px 0}
-.goal-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:6px;transition:width .6s}
-.fs{margin-bottom:12px}
-.fs h3{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:7px}
-
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.shop-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .2s;display:flex;gap:12px;align-items:flex-start}
-.shop-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 5px 14px rgba(79,70,229,.13)}
-.shop-icon{font-size:26px;flex-shrink:0}
-.shop-title{font-size:13px;font-weight:700;margin-bottom:4px}
-.shop-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
-.shop-cta{font-size:12px;font-weight:700;color:var(--primary)}
-
-@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}.calc-btns{gap:4px}.cbtn{padding:9px 3px;font-size:10px}.q-text{font-size:15px}.header h1{font-size:17px}}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=5">
+<script>
+  // Apply saved appearance before first paint to avoid a flash of the wrong theme
+  try{var _s=JSON.parse(localStorage.getItem('nat5_v4')||'{}').settings||{};if(_s.mode==='light'||_s.mode==='dark')document.documentElement.dataset.theme=_s.mode;if(_s.accent)document.documentElement.dataset.accent=_s.accent;}catch(e){}
+</script>
 </head>
 <body>
 
-<!-- PWA Install Banner -->
-<div id="install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:14px 16px;z-index:1000;align-items:center;gap:12px;justify-content:space-between;box-shadow:0 -4px 20px rgba(79,70,229,.3)">
-  <div style="display:flex;align-items:center;gap:10px">
-    <span style="font-size:24px">📱</span>
-    <div>
-      <div style="font-weight:800;font-size:14px">Install Nat 5 Maths App</div>
-      <div style="font-size:12px;opacity:.85">Add to your home screen for quick access!</div>
-    </div>
-  </div>
-  <div style="display:flex;gap:8px;flex-shrink:0">
-    <button id="install-btn" style="background:#fff;color:#4f46e5;border:none;padding:8px 16px;border-radius:8px;font-weight:800;font-size:13px;cursor:pointer">Install ✓</button>
-    <button id="dismiss-install" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer">✕</button>
-  </div>
-</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-practice" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-topics" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-worksheets" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-flashcards" viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></symbol>
+  <symbol id="i-mock" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="14" r="8"/><path d="M12 10v4l2 2M10 2h4"/></symbol>
+  <symbol id="i-formulas" viewBox="0 0 24 24"><path d="M18 7V4H6l6 8-6 8h12v-3"/></symbol>
+  <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18.5h.01M12 18.5h.01M16 18.5h.01"/></symbol>
+  <symbol id="i-notepad" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+  <symbol id="i-progress" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-7"/></symbol>
+  <symbol id="i-resources" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-shop" viewBox="0 0 24 24"><path d="M6 7h12l-1 14H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.8 7-6.8 0-4.2-3-6.2-4.2-10.2-1.8 1.6-2.8 3.6-2.8 5.7-1-.8-1.8-2-2-3.7C7.8 9 5 11.6 5 15.2 5 19.2 8 22 12 22z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+</svg>
 
-<div class="app">
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="header">
-  <div class="header-inner">
-    <div>
-      <h1 id="app-title">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Nat 5 Maths Scotland</h1>
-      <div class="sub">Your fun maths companion — now with 🎓 Higher Maths!</div>
-    </div>
-    <div class="hdr-stats">
-      <div class="pills">
-        <span class="pill">⭐ <span id="hdr-stars">0</span></span>
-        <span class="pill">Lv <span id="hdr-level">1</span></span>
-        <span class="pill">🔥 <span id="hdr-streak">0</span></span>
+<div class="shell">
+
+  <!-- Sidebar (desktop) -->
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="#practice" data-nav="practice">
+      <span class="brand-mark" aria-hidden="true">√</span>
+      <span>
+        <h1 class="brand-name">Nat 5 Maths <span>Scotland</span></h1>
+        <span class="brand-sub">Nat 5 &amp; Higher revision</span>
+      </span>
+    </a>
+    <nav class="side-nav">
+      <div class="nav-group">
+        <div class="nav-label">Learn</div>
+        <a href="#practice" data-nav="practice"><svg class="ico"><use href="#i-practice"/></svg>Practice</a>
+        <a href="#topics" data-nav="topics"><svg class="ico"><use href="#i-topics"/></svg>Topics</a>
+        <a href="#worksheets" data-nav="worksheets"><svg class="ico"><use href="#i-worksheets"/></svg>Worksheets</a>
+        <a href="#flashcards" data-nav="flashcards"><svg class="ico"><use href="#i-flashcards"/></svg>Flashcards</a>
       </div>
-      <div class="xp-row">
-        <span style="font-size:11px">XP</span>
-        <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
-        <span style="font-size:11px"><span id="hdr-xp">0</span></span>
+      <div class="nav-group">
+        <div class="nav-label">Test yourself</div>
+        <a href="#mock" data-nav="mock"><svg class="ico"><use href="#i-mock"/></svg>Mock exams</a>
+        <a href="#timer" data-nav="timer"><svg class="ico"><use href="#i-timer"/></svg>Timed challenge</a>
       </div>
-      <div style="font-size:11px;opacity:.75;text-align:right">Goal: <span id="hdr-daily">0</span>/<span id="hdr-goal">10</span> ✅</div>
-    </div>
-  </div>
-</div>
-
-<div class="nav">
-  <button class="active" onclick="showPanel('practice')">📚 Practice</button>
-  <button onclick="showPanel('timer')">⏱ Timer</button>
-  <button onclick="showPanel('flashcards')">🃏 Flashcards</button>
-  <button onclick="showPanel('topics')">🗂 Topics</button>
-  <button onclick="showPanel('worksheets')">📄 Worksheets</button>
-  <button onclick="showPanel('formulas')">📋 Formulas</button>
-  <button onclick="showPanel('calculator')">🔢 Calculator</button>
-  <button onclick="showPanel('notepad')">📝 Notepad</button>
-  <button onclick="showPanel('progress')">📊 Progress</button>
-  <button onclick="showPanel('resources')">🔗 Links</button>
-  <button onclick="showPanel('mock')">📝 Mock Exam</button>
-  <button onclick="showPanel('shop')">🛒 Shop</button>
-  <button onclick="showPanel('settings')">⚙️ Settings</button>
-</div>
-
-<div class="reward-pop" id="reward-pop"></div>
-
-<!-- PRACTICE -->
-<div class="panel active" id="panel-practice">
-  <div class="tsel">
-    <label>Topic:</label>
-    <select id="topic-select" onchange="changeTopic()">
-      <optgroup label="🏴󠁧󠁢󠁳󠁣󠁴󠁿 National 5">
-        <option value="random">🎲 Random Mix (Nat 5)</option>
-        <option value="smart">🧠 Smart Mix (Nat 5) — targets your weak topics</option>
-        <option value="algebra">Algebra</option>
-        <option value="geometry">Geometry</option>
-        <option value="trigonometry">Trigonometry</option>
-        <option value="statistics">Statistics</option>
-        <option value="fractions">Fractions, % &amp; Interest</option>
-        <option value="surds">Surds &amp; Indices</option>
-        <option value="standardform">Standard Form &amp; Rounding</option>
-        <option value="simultaneous">Simultaneous Equations</option>
-        <option value="algfrac">Algebraic Fractions &amp; Formulae</option>
-        <option value="similarity">Similarity &amp; Scale</option>
-        <option value="functions">Functions &amp; Graphs</option>
-        <option value="vectors">Vectors</option>
-        <option value="circle">Circle Geometry</option>
-      </optgroup>
-      <optgroup label="🎓 Higher">
-        <option value="random_h">🎲 Random Mix (Higher)</option>
-        <option value="smart_h">🧠 Smart Mix (Higher) — targets your weak topics</option>
-        <option value="h_straight">The Straight Line</option>
-        <option value="h_functions">Composite &amp; Inverse Functions</option>
-        <option value="h_poly">Polynomials &amp; Quadratics</option>
-        <option value="h_recur">Recurrence Relations</option>
-        <option value="h_diff">Differentiation</option>
-        <option value="h_int">Integration</option>
-        <option value="h_trig">Trig: Radians &amp; Formulae</option>
-        <option value="h_circle">The Circle</option>
-        <option value="h_vectors">Vectors in 3D</option>
-        <option value="h_logs">Logs &amp; Exponentials</option>
-      </optgroup>
-    </select>
-    <label>Difficulty:</label>
-    <select id="diff-select" onchange="changeTopic()">
-      <option value="auto">Auto (Level Up)</option>
-      <option value="1">Easy</option>
-      <option value="2">Medium</option>
-      <option value="3">Hard</option>
-    </select>
-    <button class="btn btn-s" onclick="newQuestion()" style="padding:7px 11px;font-size:12px">⟳ New</button>
-  </div>
-  <div style="margin-bottom:9px">
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:3px">
-      <span>Daily Goal</span><span><span id="daily-count">0</span>/<span id="daily-goal-lbl">10</span></span>
-    </div>
-    <div class="goal-bar"><div class="goal-fill" id="goal-fill" style="width:0%"></div></div>
-  </div>
-  <div class="card">
-    <div class="q-header">
-      <div>
-        <span style="font-size:12px;color:var(--text2)" id="q-topic-label">Algebra</span>
-        <span style="font-size:11px;color:#94a3b8;margin-left:5px">Q<span id="q-num">1</span></span>
+      <div class="nav-group">
+        <div class="nav-label">Tools</div>
+        <a href="#formulas" data-nav="formulas"><svg class="ico"><use href="#i-formulas"/></svg>Formula sheet</a>
+        <a href="#calculator" data-nav="calculator"><svg class="ico"><use href="#i-calculator"/></svg>Calculator</a>
+        <a href="#notepad" data-nav="notepad"><svg class="ico"><use href="#i-notepad"/></svg>Notepad</a>
       </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <span id="calc-badge" class="calc-badge cb-no">🚫 No Calculator</span>
-        <span class="lvl-badge" id="q-level">Level 1 — Easy</span>
+      <div class="nav-group">
+        <div class="nav-label">You</div>
+        <a href="#progress" data-nav="progress"><svg class="ico"><use href="#i-progress"/></svg>Progress</a>
+        <a href="#resources" data-nav="resources"><svg class="ico"><use href="#i-resources"/></svg>Links &amp; tips</a>
+        <a href="#shop" data-nav="shop"><svg class="ico"><use href="#i-shop"/></svg>Resources shop</a>
+        <a href="#settings" data-nav="settings"><svg class="ico"><use href="#i-settings"/></svg>Settings</a>
       </div>
-    </div>
-    <div class="q-text" id="q-text">Loading...</div>
-    <input class="q-input" id="q-input" type="text" placeholder="Type your answer here..."
-      onkeydown="if(event.key==='Enter')checkAnswer()">
-    <div class="btn-row">
-      <button class="btn btn-p" onclick="checkAnswer()">Check ✓</button>
-      <button class="btn btn-s" onclick="skipQuestion()">Skip →</button>
-      <button class="btn-h" onclick="getHint()">💡 Hint</button>
-      <button class="btn-h" onclick="showPanel('calculator')" id="calc-link" style="display:none">🔢 Calculator</button>
-    </div>
-    <div id="feedback-area"></div>
-  </div>
-</div>
+    </nav>
+  </aside>
 
-<!-- TIMER -->
-<div class="panel" id="panel-timer">
-  <div class="card" id="timer-setup">
-    <h2>⏱ Timer Challenge</h2>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Answer as many questions as you can before time runs out!</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-      <button class="btn btn-p" onclick="startTimer(60)">1 Minute</button>
-      <button class="btn btn-p" onclick="startTimer(120)">2 Minutes</button>
-      <button class="btn btn-p" onclick="startTimer(300)">5 Minutes</button>
-    </div>
-    <div style="font-size:13px;color:var(--text2)">Topic: <select id="timer-topic" style="padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:13px;margin-left:5px">
-      <option value="random">Random Mix (Nat 5)</option>
-      <option value="algebra">Algebra</option>
-      <option value="trigonometry">Trigonometry</option>
-      <option value="statistics">Statistics</option>
-      <option value="fractions">Fractions &amp; %</option>
-      <option value="simultaneous">Simultaneous Equations</option>
-      <option value="standardform">Standard Form</option>
-      <option value="random_h">🎓 Random Mix (Higher)</option>
-      <option value="h_diff">🎓 Differentiation</option>
-      <option value="h_logs">🎓 Logs &amp; Exponentials</option>
-    </select></div>
-  </div>
-  <div class="card" id="timer-game" style="display:none;text-align:center">
-    <div class="timer-display" id="timer-display">60</div>
-    <div style="font-size:15px;font-weight:700;color:var(--text2);margin-bottom:4px">Score: <span id="timer-score-lbl">0</span></div>
-    <div class="q-text" id="timer-q" style="font-size:15px;margin:12px 0;text-align:left"></div>
-    <input class="q-input" id="timer-input" type="text" placeholder="Answer..."
-      onkeydown="if(event.key==='Enter')checkTimerAnswer()" style="max-width:320px;margin:0 auto;display:block">
-    <div class="btn-row" style="justify-content:center;margin-top:9px">
-      <button class="btn btn-p" onclick="checkTimerAnswer()">Submit ✓</button>
-      <button class="btn btn-s" onclick="nextTimerQ()">Skip</button>
-    </div>
-    <div id="timer-fb" style="margin-top:7px;font-size:13px;min-height:18px"></div>
-  </div>
-  <div class="card" id="timer-result" style="display:none;text-align:center">
-    <div style="font-size:38px;margin-bottom:8px">🏆</div>
-    <h2 style="font-size:21px;margin-bottom:5px">Time's up!</h2>
-    <div style="font-size:32px;font-weight:800;color:var(--primary);margin:10px 0" id="timer-final"></div>
-    <div id="timer-msg" style="font-size:14px;color:var(--text2);margin-bottom:13px"></div>
-    <button class="btn btn-p" onclick="resetTimer()">Play Again ↩</button>
-  </div>
-</div>
-
-<!-- FLASHCARDS -->
-<div class="panel" id="panel-flashcards">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
-    <h2 style="font-size:16px;font-weight:700">🃏 Formula Flashcards</h2>
-    <select id="fc-topic" onchange="loadFC()" style="padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px">
-      <option value="all">All Nat 5</option>
-      <option value="algebra">Algebra</option>
-      <option value="trig">Trigonometry</option>
-      <option value="geometry">Geometry</option>
-      <option value="stats">Statistics</option>
-      <option value="surds">Surds</option>
-      <option value="higher">🎓 Higher</option>
-    </select>
-  </div>
-  <div class="flashcard" id="flashcard" onclick="flipCard()">
-    <div class="fc-front">
-      <div class="fc-term" id="fc-term">Loading...</div>
-      <div class="fc-tap">👆 Tap to reveal</div>
-    </div>
-    <div class="fc-back">
-      <div class="fc-def" id="fc-def"></div>
-    </div>
-  </div>
-  <div class="fc-nav">
-    <button class="btn btn-s" onclick="prevFC()">← Prev</button>
-    <span style="font-size:13px;color:var(--text2)"><span id="fc-idx">1</span>/<span id="fc-tot">1</span></span>
-    <button class="btn btn-p" onclick="nextFC()">Next →</button>
-  </div>
-  <div style="text-align:center;margin-top:9px">
-    <button class="btn btn-s" onclick="shuffleFC()" style="font-size:12px">🔀 Shuffle</button>
-  </div>
-</div>
-
-<!-- TOPICS -->
-<div class="panel" id="panel-topics">
-  <p style="font-size:13px;color:var(--text2);margin-bottom:10px">Click a topic to start practising it!</p>
-  <div class="topic-grid" id="topic-grid"></div>
-</div>
-
-<!-- WORKSHEETS -->
-<div class="panel" id="panel-worksheets">
-  <div id="ws-list">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
-      <h2 style="font-size:16px;font-weight:700">📄 Worksheets</h2>
-    </div>
-    <div class="sheet-grid" id="sheet-list"></div>
-  </div>
-  <div id="ws-active" style="display:none"></div>
-</div>
-
-<!-- FORMULAS -->
-<div class="panel" id="panel-formulas">
-  <div class="card">
-    <h2>📋 Key Nat 5 Formulas</h2>
-    <div class="fs"><h3>📐 Algebra</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Quadratic Formula</div>x = (−b ± √(b²−4ac)) / 2a</div>
-        <div class="fc"><div class="fct">Difference of Squares</div>a²−b² = (a+b)(a−b)</div>
-        <div class="fc"><div class="fct">Completing the Square</div>x²+bx = (x+b/2)² − (b/2)²</div>
-        <div class="fc"><div class="fct">Discriminant</div>b²−4ac &gt; 0: 2 roots | = 0: 1 root | &lt; 0: no roots</div>
-      </div>
-    </div>
-    <div class="fs"><h3>📏 Trigonometry</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">SOH-CAH-TOA</div>sin=opp/hyp · cos=adj/hyp · tan=opp/adj</div>
-        <div class="fc"><div class="fct">Sine Rule</div>a/sin A = b/sin B = c/sin C</div>
-        <div class="fc"><div class="fct">Cosine Rule</div>a² = b²+c²−2bc·cos A</div>
-        <div class="fc"><div class="fct">Area of Triangle</div>Area = ½ab·sin C</div>
-        <div class="fc"><div class="fct">Trig Identity</div>sin²θ + cos²θ = 1</div>
-        <div class="fc"><div class="fct">Standard Angles</div>sin30°=½ · cos60°=½ · tan45°=1 · sin90°=1</div>
-      </div>
-    </div>
-    <div class="fs"><h3>🔵 Geometry</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Circle</div>Area = πr² · Circumference = 2πr = πd</div>
-        <div class="fc"><div class="fct">Pythagoras</div>c² = a² + b²</div>
-        <div class="fc"><div class="fct">Volumes</div>Cylinder: πr²h · Cone: ⅓πr²h · Sphere: ⁴⁄₃πr³</div>
-        <div class="fc"><div class="fct">Arc &amp; Sector</div>Arc = θ/360×2πr · Sector = θ/360×πr²</div>
-      </div>
-    </div>
-    <div class="fs"><h3>📊 Statistics</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Averages</div>Mean=Σx/n · Median=middle · Mode=most common</div>
-        <div class="fc"><div class="fct">Std Deviation</div>s = √(Σ(x−x̄)²/(n−1))</div>
-        <div class="fc"><div class="fct">Probability</div>P(A)=fav/total · P(not A)=1−P(A)</div>
-        <div class="fc"><div class="fct">IQR</div>IQR = Q3 − Q1</div>
-      </div>
-    </div>
-    <div class="fs"><h3>√ Surds &amp; Indices</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Index Laws</div>aᵐ×aⁿ=aᵐ⁺ⁿ · aᵐ÷aⁿ=aᵐ⁻ⁿ · (aᵐ)ⁿ=aᵐⁿ</div>
-        <div class="fc"><div class="fct">Special Indices</div>a⁰=1 · a⁻ⁿ=1/aⁿ · a^(1/n)=ⁿ√a · a^(m/n)=(ⁿ√a)ᵐ</div>
-        <div class="fc"><div class="fct">Surds</div>√(ab)=√a×√b · Rationalise: ×√b/√b</div>
-      </div>
-    </div>
-    <div class="fs"><h3>📈 Functions &amp; Graphs</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Straight Line</div>y = mx + c (m=gradient, c=y-intercept)</div>
-        <div class="fc"><div class="fct">Gradient</div>m = (y₂−y₁)/(x₂−x₁)</div>
-        <div class="fc"><div class="fct">Parabola</div>y=(x−a)²+b: turning point (a,b)</div>
-      </div>
-    </div>
-    <div class="fs"><h3>➡ Vectors</h3>
-      <div class="formula-grid">
-        <div class="fc"><div class="fct">Magnitude</div>|a| = √(x²+y²+z²)</div>
-        <div class="fc"><div class="fct">Dot Product</div>a·b=a₁b₁+a₂b₂+a₃b₃ · a·b=0 → perpendicular</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CALCULATOR -->
-<div class="panel" id="panel-calculator">
-  <div class="card">
-    <h2>🔢 Scientific Calculator</h2>
-    <div class="calc-display">
-      <div class="cprev" id="calc-prev"></div>
-      <div id="calc-main">0</div>
-    </div>
-    <div class="calc-btns" id="calc-btns"></div>
-    <div style="margin-top:9px;font-size:12px;color:var(--text2);line-height:1.7">sin/cos/tan = degrees · sin⁻¹/cos⁻¹/tan⁻¹ = inverse · √ = square root · x² = square · xⁿ = any power · π · ln · log</div>
-  </div>
-</div>
-
-<!-- NOTEPAD -->
-<div class="panel" id="panel-notepad">
-  <div class="card notepad">
-    <h2>📝 Notepad</h2>
-    <div class="note-tools">
-      <button class="btn btn-s" onclick="clearNote()" style="font-size:12px;padding:6px 10px">🗑 Clear</button>
-      <button class="btn btn-s" onclick="copyNote()" style="font-size:12px;padding:6px 10px">📋 Copy</button>
-      <button class="btn btn-s" onclick="downloadNote()" style="font-size:12px;padding:6px 10px">⬇ Download</button>
-    </div>
-    <textarea id="notepad-text" placeholder="Write your working out here...
-
-Key formulas:
-• Area circle = πr²    • Pythagoras: a²+b²=c²
-• Quadratic: x=(-b±√(b²-4ac))/2a
-• sin=opp/hyp  cos=adj/hyp  tan=opp/adj
-• Mean = sum ÷ count
-• Gradient = (y₂-y₁)/(x₂-x₁)"></textarea>
-  </div>
-</div>
-
-<!-- PROGRESS -->
-<div class="panel" id="panel-progress">
-  <div class="stats-grid" id="stats-grid"></div>
-  <div class="card">
-    <h2>Topic Progress</h2>
-    <div id="topic-prog"></div>
-  </div>
-  <div class="card">
-    <h2>🏆 Timer High Scores</h2>
-    <div id="leaderboard"></div>
-  </div>
-  <button class="btn btn-s" onclick="resetProg()" style="font-size:12px;margin-top:4px">🔄 Reset All Progress</button>
-</div>
-
-<!-- RESOURCES -->
-<div class="panel" id="panel-resources">
-  <div class="card">
-    <h2>🔗 Helpful Links</h2>
-    <div onclick="openLink('https://www.sqa.org.uk/sqa/47910.html')" class="resource-link">
-      <span class="ricon">🏛</span><div class="rtext"><h4>SQA National 5 Maths</h4><p>Official past papers &amp; marking schemes</p></div>
-    </div>
-    <div onclick="openLink('https://www.bbc.co.uk/bitesize/subjects/zqhs34j')" class="resource-link">
-      <span class="ricon">📺</span><div class="rtext"><h4>BBC Bitesize — Nat 5 Maths</h4><p>Videos, notes and quizzes for every topic</p></div>
-    </div>
-    <div onclick="openLink('https://scholar.hw.ac.uk')" class="resource-link">
-      <span class="ricon">🎓</span><div class="rtext"><h4>SCHOLAR (Heriot-Watt)</h4><p>Detailed online course for Scottish Nat 5</p></div>
-    </div>
-    <div onclick="openLink('https://www.mathsrevision.com/national-5-maths')" class="resource-link">
-      <span class="ricon">📖</span><div class="rtext"><h4>Maths Revision — Nat 5</h4><p>Notes, worksheets and worked examples</p></div>
-    </div>
-    <div onclick="openLink('https://corbettmaths.com')" class="resource-link">
-      <span class="ricon">🎬</span><div class="rtext"><h4>Corbett Maths</h4><p>Videos for every maths topic</p></div>
-    </div>
-  </div>
-  <div class="card">
-    <h2>📝 Exam Tips</h2>
-    <div class="tip-card"><strong>Show ALL working</strong>You get method marks even if the final answer is wrong!</div>
-    <div class="tip-card"><strong>Paper 1 = No Calculator · Paper 2 = Calculator</strong>Know which paper you're on before you start.</div>
-    <div class="tip-card"><strong>Read questions carefully</strong>Key words: "exact value", "round to 2dp", "simplify", "factorise".</div>
-    <div class="tip-card"><strong>Check your answer</strong>Substitute it back in — does it work?</div>
-    <div class="tip-card"><strong>Draw triangles for trig</strong>Label the sides first, then SOH-CAH-TOA / sine rule / cosine rule becomes much easier.</div>
-    <div class="tip-card"><strong>Never leave blanks</strong>Always attempt every question — you can't get marks for nothing!</div>
-  </div>
-</div>
-
-<!-- SETTINGS -->
-<div class="panel" id="panel-settings">
-  <div class="card">
-    <h2>⚙️ Personalise</h2>
-    <div style="margin-bottom:14px">
-      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:5px">Your Name</label>
-      <input type="text" id="student-name" placeholder="Enter your name..." oninput="saveName()"
-        style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;width:100%;max-width:280px;outline:none">
-    </div>
-    <div style="margin-bottom:14px">
-      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:7px">Daily Question Goal</label>
-      <div style="display:flex;gap:7px;flex-wrap:wrap">
-        <button class="btn btn-s" onclick="setGoal(5)" id="goal-5">5</button>
-        <button class="btn btn-p" onclick="setGoal(10)" id="goal-10">10</button>
-        <button class="btn btn-s" onclick="setGoal(20)" id="goal-20">20</button>
-        <button class="btn btn-s" onclick="setGoal(30)" id="goal-30">30</button>
-      </div>
-    </div>
-    <div>
-      <label style="font-size:13px;font-weight:700;display:block;margin-bottom:7px">Colour Theme</label>
-      <div style="display:flex;gap:7px;flex-wrap:wrap">
-        <button class="theme-btn active" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)" onclick="setTheme('purple')" id="theme-purple"></button>
-        <button class="theme-btn" style="background:linear-gradient(135deg,#0891b2,#0e7490)" onclick="setTheme('teal')" id="theme-teal"></button>
-        <button class="theme-btn" style="background:linear-gradient(135deg,#16a34a,#15803d)" onclick="setTheme('green')" id="theme-green"></button>
-        <button class="theme-btn" style="background:linear-gradient(135deg,#dc2626,#db2777)" onclick="setTheme('red')" id="theme-red"></button>
-        <button class="theme-btn" style="background:linear-gradient(135deg,#d97706,#b45309)" onclick="setTheme('amber')" id="theme-amber"></button>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <h2>ℹ️ About</h2>
-    <p style="font-size:13px;color:var(--text2);line-height:1.7">Covers all Nat 5 and Higher Maths Scotland topics with 3 difficulty levels. Questions auto-level up as you earn XP. Wrong answers get full worked explanations. Calculator topics are clearly marked. Progress saves automatically in your browser, and the whole app works offline.</p>
-  </div>
-</div>
-
-
-
-<!-- MOCK EXAM -->
-<div class="panel" id="panel-mock">
-
-  <!-- EXAM HOME -->
-  <div id="mock-home">
-    <div class="card">
-      <h2>📝 Mock Exams</h2>
-      <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px">
-        Based on the official SQA curriculum. Papers just like the real exam.<br>
-        <strong>Nat 5 Paper 1:</strong> Non-calculator · 40 marks · 1 hour<br>
-        <strong>Nat 5 Paper 2:</strong> Calculator allowed · 50 marks · 1 hour 30 mins<br>
-        <strong>🎓 Higher Paper:</strong> Non-calculator · 40 marks · 1 hour
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-p" onclick="startMock(1)">📄 Nat 5 Paper 1 — No Calculator</button>
-        <button class="btn btn-p" onclick="startMock(2)">🔢 Nat 5 Paper 2 — Calculator Allowed</button>
-        <button class="btn btn-p" onclick="startMock(3)">🎓 Higher Paper — No Calculator</button>
-      </div>
-      <div id="mock-prev-scores" style="margin-top:16px"></div>
-    </div>
-    <div class="card" style="font-size:13px;color:var(--text2);line-height:1.8">
-      <h2>📋 Exam Tips</h2>
-      ✏️ <strong>Show ALL working</strong> — method marks are awarded even if the final answer is wrong<br>
-      🕐 <strong>Watch the time</strong> — don't spend too long on one question<br>
-      🔢 <strong>Paper 1 is non-calculator</strong> — use the on-screen calculator for Paper 2 only<br>
-      ✅ <strong>Check your answers</strong> — substitute back in where possible<br>
-      📐 <strong>Draw diagrams</strong> — especially for trig and geometry questions
-    </div>
-  </div>
-
-  <!-- EXAM IN PROGRESS -->
-  <div id="mock-exam" style="display:none">
-    <div class="card" style="padding:14px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-        <div>
-          <span style="font-weight:800;font-size:15px" id="mock-paper-title">Paper 1</span>
-          <span style="font-size:12px;color:var(--text2);margin-left:8px" id="mock-q-counter"></span>
+  <div class="main-col">
+    <!-- Top bar -->
+    <header class="topbar">
+      <a class="brand brand-compact" href="#practice" data-nav="practice" aria-hidden="true" tabindex="-1">
+        <span class="brand-mark">√</span><span class="brand-name">Nat 5 Maths</span>
+      </a>
+      <div class="page-title" id="page-title">Practice</div>
+      <div class="stat-chips">
+        <div class="chip" title="Days in a row you've practised">
+          <svg class="ico ico-flame"><use href="#i-flame"/></svg>
+          <span><b id="hdr-days">0</b> <span class="chip-label">day streak</span></span>
         </div>
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <span id="mock-calc-status" class="calc-badge cb-no">🚫 No Calculator</span>
-          <span style="font-size:14px;font-weight:800;color:var(--primary)" id="mock-timer-display">60:00</span>
-          <span style="font-size:12px;font-weight:700;background:#ede9fe;color:#4f46e5;padding:4px 10px;border-radius:8px">Marks: <span id="mock-marks-so-far">0</span></span>
+        <div class="chip chip-goal" title="Today's goal">
+          <svg class="ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15"/><circle class="ring-fg" id="goal-ring" cx="18" cy="18" r="15" pathLength="100" stroke-dasharray="0 100"/></svg>
+          <span><b id="hdr-daily">0</b>/<span id="hdr-goal">10</span> <span class="chip-label">today</span></span>
         </div>
       </div>
-      <!-- Progress bar -->
-      <div style="height:5px;background:#e2e8f0;border-radius:3px;margin-bottom:14px;overflow:hidden">
-        <div id="mock-prog-bar" style="height:100%;background:var(--primary);border-radius:3px;transition:width .4s;width:0%"></div>
-      </div>
-      <div style="font-size:13px;color:var(--text2);margin-bottom:5px;font-weight:700" id="mock-topic-label"></div>
-      <div style="font-size:16px;font-weight:700;line-height:1.6;margin-bottom:14px" id="mock-q-text"></div>
-      <div style="font-size:12px;color:#94a3b8;margin-bottom:10px" id="mock-marks-label"></div>
-      <input class="q-input" id="mock-answer" type="text" placeholder="Type your answer..."
-        onkeydown="if(event.key==='Enter')submitMockAnswer()">
-      <div class="btn-row" style="margin-top:10px">
-        <button class="btn btn-p" onclick="submitMockAnswer()">Submit Answer ✓</button>
-        <button class="btn btn-s" onclick="skipMockQ()">Skip (leave blank)</button>
-      </div>
-      <div id="mock-fb" style="margin-top:10px"></div>
-    </div>
-  </div>
+    </header>
 
-  <!-- EXAM RESULTS -->
-  <div id="mock-results" style="display:none">
-    <div class="card" style="text-align:center">
-      <div style="font-size:42px;margin-bottom:8px" id="mock-grade-icon">🎓</div>
-      <h2 style="font-size:22px;margin-bottom:4px" id="mock-grade-title">Well done!</h2>
-      <div style="font-size:36px;font-weight:800;color:var(--primary);margin:10px 0" id="mock-score-display"></div>
-      <div style="font-size:15px;color:var(--text2);margin-bottom:6px" id="mock-grade-band"></div>
-      <div style="font-size:13px;color:var(--text2);margin-bottom:16px" id="mock-grade-msg"></div>
-      <div class="btn-row" style="justify-content:center;margin-bottom:14px">
-        <button class="btn btn-p" onclick="showMockReview()">📋 Review Answers</button>
-        <button class="btn btn-s" onclick="resetMock()">↩ Back to Exams</button>
-      </div>
-    </div>
-    <div class="card" id="mock-review-section" style="display:none">
-      <h2>📋 Answer Review</h2>
-      <div id="mock-review-list"></div>
-    </div>
-  </div>
+    <main id="main" tabindex="-1">
 
+      <!-- PRACTICE -->
+      <section class="panel" id="panel-practice" data-title="Practice">
+        <div class="greeting" id="greeting"></div>
+        <div class="toolbar">
+          <label class="field">
+            <span class="field-label">Topic</span>
+            <select id="topic-select"></select>
+          </label>
+          <div class="field">
+            <span class="field-label" id="diff-label">Difficulty</span>
+            <div class="segmented" role="radiogroup" aria-labelledby="diff-label" id="diff-seg">
+              <button role="radio" data-diff="mixed" aria-checked="true">Mixed</button>
+              <button role="radio" data-diff="1" aria-checked="false">Easy</button>
+              <button role="radio" data-diff="2" aria-checked="false">Medium</button>
+              <button role="radio" data-diff="3" aria-checked="false">Hard</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-grid">
+          <article class="card q-card" aria-live="polite">
+            <div class="q-meta">
+              <span class="tag tag-topic" id="q-topic-label">Algebra</span>
+              <span class="tag" id="q-level">Easy</span>
+              <span class="tag" id="calc-badge">No calculator</span>
+              <span class="q-num">Question <span id="q-num">1</span></span>
+            </div>
+            <div class="q-text" id="q-text">Loading…</div>
+            <form class="answer" id="answer-form" autocomplete="off">
+              <label class="sr-only" for="q-input">Your answer</label>
+              <input class="input input-lg" id="q-input" type="text" inputmode="text" placeholder="Type your answer" spellcheck="false" autocapitalize="off">
+              <div class="symbols" data-for="q-input"></div>
+              <div class="btn-row">
+                <button type="submit" class="btn btn-primary" id="check-btn">Check answer</button>
+                <button type="button" class="btn btn-ghost" id="hint-btn"><svg class="ico"><use href="#i-bulb"/></svg>Hint</button>
+                <button type="button" class="btn btn-ghost" id="skip-btn">Skip</button>
+                <a href="#calculator" class="btn btn-ghost" id="calc-link" hidden><svg class="ico"><use href="#i-calculator"/></svg>Calculator</a>
+              </div>
+            </form>
+            <div id="feedback-area"></div>
+          </article>
+
+          <aside class="card side-card">
+            <div class="side-stat">
+              <div class="side-num" id="run-streak">0</div>
+              <div class="side-lbl">correct in a row <span class="muted">· best <span id="best-streak">0</span></span></div>
+            </div>
+            <div class="goal">
+              <div class="goal-head"><span>Today's goal</span><span><b id="daily-count">0</b> / <span id="daily-goal-lbl">10</span></span></div>
+              <div class="bar"><div class="bar-fill" id="goal-fill"></div></div>
+            </div>
+            <p class="side-tip"><b>Tip:</b> choose <em>Smart Mix</em> to get more questions on the topics you find hardest.</p>
+            <details class="howto">
+              <summary>How to type answers</summary>
+              <ul>
+                <li>Two answers: <code>x=2, x=5</code></li>
+                <li>Powers: <code>x^2</code> or use the <code>²</code> button</li>
+                <li>Roots: <code>sqrt3</code> or the <code>√</code> button</li>
+                <li>Fractions: <code>3/4</code> · pi: <code>pi</code></li>
+                <li>Units like cm, £, ° are optional</li>
+              </ul>
+            </details>
+          </aside>
+        </div>
+      </section>
+
+      <!-- TOPICS -->
+      <section class="panel" id="panel-topics" data-title="Topics" hidden>
+        <p class="lede">Pick a topic to practise it. Your accuracy on each topic is shown below.</p>
+        <div id="topic-grid"></div>
+      </section>
+
+      <!-- WORKSHEETS -->
+      <section class="panel" id="panel-worksheets" data-title="Worksheets" hidden>
+        <div id="ws-list">
+          <p class="lede">Short sets of questions on one topic. Answer them all, then check.</p>
+          <div class="grid-cards" id="sheet-list"></div>
+        </div>
+        <div id="ws-active" hidden></div>
+      </section>
+
+      <!-- FLASHCARDS -->
+      <section class="panel" id="panel-flashcards" data-title="Flashcards" hidden>
+        <div class="toolbar">
+          <label class="field">
+            <span class="field-label">Deck</span>
+            <select id="fc-topic">
+              <option value="all">All Nat 5</option>
+              <option value="algebra">Algebra &amp; graphs</option>
+              <option value="trig">Trigonometry</option>
+              <option value="geometry">Geometry &amp; vectors</option>
+              <option value="stats">Statistics</option>
+              <option value="surds">Indices</option>
+              <option value="higher">Higher</option>
+            </select>
+          </label>
+          <button class="btn btn-ghost" id="fc-shuffle"><svg class="ico"><use href="#i-refresh"/></svg>Shuffle</button>
+        </div>
+        <div class="flash-wrap">
+          <button class="flashcard" id="flashcard" aria-live="polite">
+            <span class="fc-face fc-front">
+              <span class="fc-kicker">Formula</span>
+              <span class="fc-term" id="fc-term">Loading…</span>
+              <span class="fc-tap">Tap or press Space to reveal</span>
+            </span>
+            <span class="fc-face fc-back">
+              <span class="fc-kicker" id="fc-term-back"></span>
+              <span class="fc-def" id="fc-def"></span>
+            </span>
+          </button>
+          <div class="fc-nav">
+            <button class="btn btn-ghost" id="fc-prev" aria-label="Previous card"><svg class="ico"><use href="#i-back"/></svg>Prev</button>
+            <span class="fc-count"><span id="fc-idx">1</span> / <span id="fc-tot">1</span></span>
+            <button class="btn btn-primary" id="fc-next">Next<svg class="ico"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MOCK EXAM -->
+      <section class="panel" id="panel-mock" data-title="Mock exams" hidden>
+        <div id="mock-home">
+          <p class="lede">Exam-style papers written to the SQA course. Answers are marked as you go and you get a grade estimate at the end.</p>
+          <div class="grid-cards" id="mock-papers"></div>
+          <div class="card" id="mock-prev-scores" hidden></div>
+          <div class="card">
+            <h2 class="card-title">Before you start</h2>
+            <ul class="tips-list">
+              <li><b>Show all working on paper.</b> In the real exam, method marks are given even when the final answer is wrong.</li>
+              <li><b>Watch the clock.</b> Roughly 1–1½ minutes per mark. Skip and come back later.</li>
+              <li><b>Non-calculator paper means no calculator.</b> Keep the calculator for Paper 2.</li>
+              <li><b>Check answers</b> by substituting back in where you can.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="mock-exam" hidden>
+          <div class="card exam-card">
+            <div class="exam-head">
+              <div>
+                <div class="exam-title" id="mock-paper-title">Paper 1</div>
+                <div class="muted small" id="mock-q-counter"></div>
+              </div>
+              <div class="exam-stats">
+                <span class="tag" id="mock-calc-status">No calculator</span>
+                <span class="exam-clock" id="mock-timer-display">60:00</span>
+                <span class="tag tag-topic">Marks: <b id="mock-marks-so-far">0</b></span>
+              </div>
+            </div>
+            <div class="bar bar-thin"><div class="bar-fill" id="mock-prog-bar"></div></div>
+            <div class="q-meta"><span class="tag tag-topic" id="mock-topic-label"></span><span class="tag" id="mock-marks-label"></span></div>
+            <div class="q-text" id="mock-q-text"></div>
+            <form class="answer" id="mock-form" autocomplete="off">
+              <label class="sr-only" for="mock-answer">Your answer</label>
+              <input class="input input-lg" id="mock-answer" type="text" placeholder="Type your answer" spellcheck="false" autocapitalize="off">
+              <div class="symbols" data-for="mock-answer"></div>
+              <div class="btn-row">
+                <button type="submit" class="btn btn-primary" id="mock-submit">Submit answer</button>
+                <button type="button" class="btn btn-ghost" id="mock-skip">Leave blank</button>
+                <button type="button" class="btn btn-ghost btn-danger" id="mock-end">End exam</button>
+              </div>
+            </form>
+            <div id="mock-fb"></div>
+          </div>
+        </div>
+
+        <div id="mock-results" hidden>
+          <div class="card result-card">
+            <div class="grade-badge" id="mock-grade-icon">A</div>
+            <h2 class="result-title" id="mock-grade-title">Grade A</h2>
+            <div class="result-score" id="mock-score-display"></div>
+            <div class="muted" id="mock-grade-band"></div>
+            <p class="result-msg" id="mock-grade-msg"></p>
+            <div class="btn-row center">
+              <button class="btn btn-primary" id="mock-review-btn">Review answers</button>
+              <button class="btn btn-ghost" id="mock-back">Back to papers</button>
+            </div>
+            <p class="muted small">Grade boundaries are approximate: A 70%, B 60%, C 50%, D 40%.</p>
+          </div>
+          <div class="card" id="mock-review-section" hidden>
+            <h2 class="card-title">Answer review</h2>
+            <div id="mock-review-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMER -->
+      <section class="panel" id="panel-timer" data-title="Timed challenge" hidden>
+        <div class="card" id="timer-setup">
+          <h2 class="card-title">How many can you get right?</h2>
+          <p class="muted">Quick-fire questions against the clock. Great for building speed before an exam.</p>
+          <label class="field">
+            <span class="field-label">Topic</span>
+            <select id="timer-topic"></select>
+          </label>
+          <div class="btn-row">
+            <button class="btn btn-primary" data-secs="60">1 minute</button>
+            <button class="btn btn-primary" data-secs="120">2 minutes</button>
+            <button class="btn btn-primary" data-secs="300">5 minutes</button>
+          </div>
+        </div>
+        <div class="card" id="timer-game" hidden>
+          <div class="timer-head">
+            <div class="timer-display" id="timer-display">60</div>
+            <div class="timer-score">Score <b id="timer-score-lbl">0</b></div>
+          </div>
+          <div class="q-text" id="timer-q"></div>
+          <form class="answer" id="timer-form" autocomplete="off">
+            <label class="sr-only" for="timer-input">Your answer</label>
+            <input class="input input-lg" id="timer-input" type="text" placeholder="Answer" spellcheck="false" autocapitalize="off">
+            <div class="symbols" data-for="timer-input"></div>
+            <div class="btn-row">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-ghost" id="timer-skip">Skip</button>
+              <button type="button" class="btn btn-ghost btn-danger" id="timer-stop">Stop</button>
+            </div>
+          </form>
+          <div id="timer-fb" class="timer-fb" aria-live="polite"></div>
+        </div>
+        <div class="card result-card" id="timer-result" hidden>
+          <div class="muted">Time's up</div>
+          <div class="result-score" id="timer-final"></div>
+          <p class="result-msg" id="timer-msg"></p>
+          <button class="btn btn-primary" id="timer-again">Try again</button>
+        </div>
+      </section>
+
+      <!-- FORMULAS -->
+      <section class="panel" id="panel-formulas" data-title="Formula sheet" hidden>
+        <p class="lede">Formulas marked <span class="tag tag-given">Given</span> are on the SQA exam formula list. Learn the rest.</p>
+        <div class="formula-sections">
+          <div class="fs"><h2>Algebra</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Quadratic formula <span class="tag tag-given">Given</span></div>x = (−b ± √(b² − 4ac)) / 2a</div>
+              <div class="fc"><div class="fct">Difference of squares</div>a² − b² = (a + b)(a − b)</div>
+              <div class="fc"><div class="fct">Completing the square</div>x² + bx = (x + b/2)² − (b/2)²</div>
+              <div class="fc"><div class="fct">Discriminant</div>b² − 4ac &gt; 0: two roots · = 0: one root · &lt; 0: no real roots</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Trigonometry</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">SOH CAH TOA</div>sin = opp/hyp · cos = adj/hyp · tan = opp/adj</div>
+              <div class="fc"><div class="fct">Sine rule <span class="tag tag-given">Given</span></div>a/sin A = b/sin B = c/sin C</div>
+              <div class="fc"><div class="fct">Cosine rule <span class="tag tag-given">Given</span></div>a² = b² + c² − 2bc cos A<br>cos A = (b² + c² − a²) / 2bc</div>
+              <div class="fc"><div class="fct">Area of a triangle <span class="tag tag-given">Given</span></div>A = ½ab sin C</div>
+              <div class="fc"><div class="fct">Identities</div>sin²x + cos²x = 1 · tan x = sin x / cos x</div>
+              <div class="fc"><div class="fct">Exact values</div>sin 30° = ½ · cos 60° = ½ · tan 45° = 1</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Geometry</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Circle</div>A = πr² · C = 2πr = πd</div>
+              <div class="fc"><div class="fct">Pythagoras</div>c² = a² + b²</div>
+              <div class="fc"><div class="fct">Volumes <span class="tag tag-given">Given</span></div>Sphere ⁴⁄₃πr³ · Cone ⅓πr²h · Pyramid ⅓Ah</div>
+              <div class="fc"><div class="fct">Cylinder &amp; prism</div>Cylinder πr²h · Prism A × h</div>
+              <div class="fc"><div class="fct">Arc &amp; sector</div>Arc = (θ/360) × πd · Sector = (θ/360) × πr²</div>
+              <div class="fc"><div class="fct">Similar shapes</div>Area SF = k² · Volume SF = k³</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Statistics</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Averages</div>Mean = Σx / n · Median = middle · Mode = most common</div>
+              <div class="fc"><div class="fct">Standard deviation <span class="tag tag-given">Given</span></div>s = √(Σ(x − x̄)² / (n − 1))</div>
+              <div class="fc"><div class="fct">Quartiles</div>IQR = Q3 − Q1 · SIQR = (Q3 − Q1) / 2</div>
+              <div class="fc"><div class="fct">Probability</div>P(A) = favourable / total · P(not A) = 1 − P(A)</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Surds &amp; indices</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Index laws</div>aᵐ × aⁿ = aᵐ⁺ⁿ · aᵐ ÷ aⁿ = aᵐ⁻ⁿ · (aᵐ)ⁿ = aᵐⁿ</div>
+              <div class="fc"><div class="fct">Special indices</div>a⁰ = 1 · a⁻ⁿ = 1/aⁿ · a^(m/n) = (ⁿ√a)ᵐ</div>
+              <div class="fc"><div class="fct">Surds</div>√(ab) = √a × √b · rationalise: multiply by √b/√b</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Functions, graphs &amp; vectors</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Straight line</div>y = mx + c · y − b = m(x − a)</div>
+              <div class="fc"><div class="fct">Gradient</div>m = (y₂ − y₁) / (x₂ − x₁)</div>
+              <div class="fc"><div class="fct">Parabola</div>y = (x − a)² + b has turning point (a, b)</div>
+              <div class="fc"><div class="fct">Magnitude</div>|a| = √(x² + y² + z²)</div>
+            </div>
+          </div>
+          <div class="fs"><h2>Higher</h2>
+            <div class="formula-grid">
+              <div class="fc"><div class="fct">Circle <span class="tag tag-given">Given</span></div>x² + y² + 2gx + 2fy + c = 0 · centre (−g, −f), r = √(g² + f² − c)</div>
+              <div class="fc"><div class="fct">Scalar product <span class="tag tag-given">Given</span></div>a·b = |a||b| cos θ = a₁b₁ + a₂b₂ + a₃b₃</div>
+              <div class="fc"><div class="fct">Addition formulae <span class="tag tag-given">Given</span></div>sin(A ± B) = sinA cosB ± cosA sinB<br>cos(A ± B) = cosA cosB ∓ sinA sinB</div>
+              <div class="fc"><div class="fct">Double angle <span class="tag tag-given">Given</span></div>sin 2A = 2 sinA cosA · cos 2A = 2cos²A − 1 = 1 − 2sin²A</div>
+              <div class="fc"><div class="fct">Differentiation</div>d/dx xⁿ = nxⁿ⁻¹ · d/dx sin x = cos x · d/dx cos x = −sin x</div>
+              <div class="fc"><div class="fct">Integration</div>∫xⁿ dx = xⁿ⁺¹/(n+1) + C · ∫(ax+b)ⁿ dx = (ax+b)ⁿ⁺¹/(a(n+1)) + C</div>
+              <div class="fc"><div class="fct">Recurrence limit</div>uₙ₊₁ = auₙ + b, −1 &lt; a &lt; 1 → L = b / (1 − a)</div>
+              <div class="fc"><div class="fct">Logs</div>log ab = log a + log b · log(a/b) = log a − log b · log aⁿ = n log a</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALCULATOR -->
+      <section class="panel" id="panel-calculator" data-title="Calculator" hidden>
+        <div class="card calc-card">
+          <div class="calc-display" aria-live="polite">
+            <div class="cprev" id="calc-prev"></div>
+            <div class="cmain" id="calc-main">0</div>
+          </div>
+          <div class="calc-btns" id="calc-btns"></div>
+          <p class="muted small calc-note">Angles in degrees. You can also type with your keyboard — Enter for =, Esc to clear.</p>
+        </div>
+      </section>
+
+      <!-- NOTEPAD -->
+      <section class="panel" id="panel-notepad" data-title="Notepad" hidden>
+        <div class="card">
+          <div class="btn-row notepad-tools">
+            <button class="btn btn-ghost btn-sm" id="note-copy">Copy</button>
+            <button class="btn btn-ghost btn-sm" id="note-download">Download</button>
+            <button class="btn btn-ghost btn-sm btn-danger" id="note-clear">Clear</button>
+            <span class="muted small" id="note-status">Saved on this device</span>
+          </div>
+          <label class="sr-only" for="notepad-text">Notes</label>
+          <textarea id="notepad-text" class="notepad" placeholder="Write your working out here…"></textarea>
+        </div>
+      </section>
+
+      <!-- PROGRESS -->
+      <section class="panel" id="panel-progress" data-title="Progress" hidden>
+        <div class="stats-grid" id="stats-grid"></div>
+        <div class="card">
+          <h2 class="card-title">Topics</h2>
+          <p class="muted small">Sorted weakest first, so you know where to focus.</p>
+          <div id="topic-prog"></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <h2 class="card-title">Timed challenge best scores</h2>
+            <div id="leaderboard"></div>
+          </div>
+          <div class="card">
+            <h2 class="card-title">Mock exam history</h2>
+            <div id="mock-history"></div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-danger btn-sm" id="reset-prog">Reset all progress</button>
+      </section>
+
+      <!-- RESOURCES -->
+      <section class="panel" id="panel-resources" data-title="Links &amp; tips" hidden>
+        <div class="two-col">
+          <div class="card">
+            <h2 class="card-title">Useful websites</h2>
+            <div class="link-list">
+              <a class="link-row" href="https://www.sqa.org.uk/sqa/47910.html" target="_blank" rel="noopener"><span><b>SQA National 5 Maths</b><small>Official past papers and marking instructions</small></span><svg class="ico"><use href="#i-external"/></svg></a>
+              <a class="link-row" href="https://www.bbc.co.uk/bitesize/subjects/zqhs34j" target="_blank" rel="noopener"><span><b>BBC Bitesize — Nat 5 Maths</b><small>Notes, videos and quizzes for every topic</small></span><svg class="ico"><use href="#i-external"/></svg></a>
+              <a class="link-row" href="https://scholar.hw.ac.uk" target="_blank" rel="noopener"><span><b>SCHOLAR (Heriot-Watt)</b><small>Online course material for Scottish qualifications</small></span><svg class="ico"><use href="#i-external"/></svg></a>
+              <a class="link-row" href="https://www.mathsrevision.com/index_files/National5.htm" target="_blank" rel="noopener"><span><b>mathsrevision.com — Nat 5</b><small>Notes, worksheets and worked examples</small></span><svg class="ico"><use href="#i-external"/></svg></a>
+              <a class="link-row" href="https://corbettmaths.com" target="_blank" rel="noopener"><span><b>Corbett Maths</b><small>Videos and practice for every maths topic</small></span><svg class="ico"><use href="#i-external"/></svg></a>
+            </div>
+          </div>
+          <div class="card">
+            <h2 class="card-title">Exam tips</h2>
+            <ul class="tips-list">
+              <li><b>Show all working.</b> You get method marks even if the final answer is wrong.</li>
+              <li><b>Paper 1 is non-calculator, Paper 2 is calculator.</b> Know which one you're sitting.</li>
+              <li><b>Read the question twice.</b> Look for "exact value", "2 decimal places", "simplify", "factorise fully".</li>
+              <li><b>Check your answer.</b> Substitute back in — does it work?</li>
+              <li><b>Sketch the triangle</b> and label the sides before choosing SOH CAH TOA, the sine rule or the cosine rule.</li>
+              <li><b>Never leave a blank.</b> A sensible first step can still earn a mark.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHOP -->
+      <section class="panel" id="panel-shop" data-title="Resources shop" hidden>
+        <p class="lede">Books and kit that help with Nat 5 and Higher Maths. Links go to Amazon — this site may earn a small commission at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</p>
+        <div id="shop-sections"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="panel" id="panel-settings" data-title="Settings" hidden>
+        <div class="card settings">
+          <label class="setting">
+            <span class="setting-label">Your name</span>
+            <input class="input" type="text" id="student-name" placeholder="Enter your name" maxlength="30">
+          </label>
+          <div class="setting">
+            <span class="setting-label" id="goal-label">Daily question goal</span>
+            <div class="segmented" role="radiogroup" aria-labelledby="goal-label" id="goal-seg">
+              <button role="radio" data-goal="5">5</button>
+              <button role="radio" data-goal="10">10</button>
+              <button role="radio" data-goal="20">20</button>
+              <button role="radio" data-goal="30">30</button>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label" id="mode-label">Appearance</span>
+            <div class="segmented" role="radiogroup" aria-labelledby="mode-label" id="mode-seg">
+              <button role="radio" data-mode="system">System</button>
+              <button role="radio" data-mode="light">Light</button>
+              <button role="radio" data-mode="dark">Dark</button>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label" id="accent-label">Colour</span>
+            <div class="swatches" role="radiogroup" aria-labelledby="accent-label" id="accent-seg">
+              <button role="radio" data-accent="saltire" aria-label="Saltire blue"></button>
+              <button role="radio" data-accent="thistle" aria-label="Thistle purple"></button>
+              <button role="radio" data-accent="loch" aria-label="Loch teal"></button>
+              <button role="radio" data-accent="heather" aria-label="Heather pink"></button>
+              <button role="radio" data-accent="whisky" aria-label="Whisky amber"></button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="card-title">About</h2>
+          <p class="muted">Covers the National 5 and Higher Maths courses with 237 practice questions over three difficulty levels. Every question has a hint and a worked solution. Your progress is saved in this browser only — nothing is sent anywhere. Once loaded, the app also works offline.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© nat5mathsscotland.com · Free revision for Scottish students</span>
+      <span>Not affiliated with the SQA</span>
+    </footer>
+  </div>
 </div>
 
-<!-- SHOP -->
-<div class="panel" id="panel-shop">
-  <div class="card">
-    <h2>🛒 Recommended Resources</h2>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:4px;line-height:1.6">Everything your child needs to succeed in Nat 5 Maths. Links go to Amazon — we may earn a small commission at no extra cost to you.</p>
-    <div style="font-size:11px;color:#94a3b8;margin-bottom:14px">As an Amazon Associate we earn from qualifying purchases.</div>
+<!-- Mobile tab bar -->
+<nav class="tabbar" aria-label="Main navigation">
+  <a href="#practice" data-nav="practice"><svg class="ico"><use href="#i-practice"/></svg><span>Practice</span></a>
+  <a href="#topics" data-nav="topics"><svg class="ico"><use href="#i-topics"/></svg><span>Topics</span></a>
+  <a href="#mock" data-nav="mock"><svg class="ico"><use href="#i-mock"/></svg><span>Mock</span></a>
+  <a href="#progress" data-nav="progress"><svg class="ico"><use href="#i-progress"/></svg><span>Progress</span></a>
+  <button id="more-btn" aria-expanded="false" aria-controls="more-sheet"><svg class="ico"><use href="#i-more"/></svg><span>More</span></button>
+</nav>
+<div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+<div class="sheet" id="more-sheet" hidden role="dialog" aria-label="More pages">
+  <a href="#worksheets" data-nav="worksheets"><svg class="ico"><use href="#i-worksheets"/></svg>Worksheets</a>
+  <a href="#flashcards" data-nav="flashcards"><svg class="ico"><use href="#i-flashcards"/></svg>Flashcards</a>
+  <a href="#timer" data-nav="timer"><svg class="ico"><use href="#i-timer"/></svg>Timed challenge</a>
+  <a href="#formulas" data-nav="formulas"><svg class="ico"><use href="#i-formulas"/></svg>Formulas</a>
+  <a href="#calculator" data-nav="calculator"><svg class="ico"><use href="#i-calculator"/></svg>Calculator</a>
+  <a href="#notepad" data-nav="notepad"><svg class="ico"><use href="#i-notepad"/></svg>Notepad</a>
+  <a href="#resources" data-nav="resources"><svg class="ico"><use href="#i-resources"/></svg>Links &amp; tips</a>
+  <a href="#shop" data-nav="shop"><svg class="ico"><use href="#i-shop"/></svg>Shop</a>
+  <a href="#settings" data-nav="settings"><svg class="ico"><use href="#i-settings"/></svg>Settings</a>
+</div>
 
-    <div style="margin-bottom:18px">
-      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">📚 Revision Books</div>
-      <div class="shop-grid">
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=national+5+maths+revision+scotland&tag=cazza09-21')"><div class="shop-icon">📗</div><div class="shop-info"><div class="shop-title">Nat 5 Maths Revision Guide</div><div class="shop-desc">Complete coverage of all SQA topics with worked examples</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=national+5+maths+practice+papers+scotland&tag=cazza09-21')"><div class="shop-icon">📝</div><div class="shop-info"><div class="shop-title">Nat 5 Practice Papers</div><div class="shop-desc">Past paper style questions with full marking schemes</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=hodder+national+5+maths+scotland&tag=cazza09-21')"><div class="shop-icon">📘</div><div class="shop-info"><div class="shop-title">Hodder Nat 5 Maths</div><div class="shop-desc">Popular textbook used in Scottish schools</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=cgp+national+5+maths+scotland&tag=cazza09-21')"><div class="shop-icon">📙</div><div class="shop-info"><div class="shop-title">CGP Nat 5 Maths</div><div class="shop-desc">Clear notes and exam practice — great for quick revision</div><div class="shop-cta">View on Amazon →</div></div></div>
-      </div>
-    </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <div style="margin-bottom:18px">
-      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">🔢 Scientific Calculators</div>
-      <div class="shop-grid">
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=casio+fx-85gtx+scientific+calculator&tag=cazza09-21')"><div class="shop-icon">🧮</div><div class="shop-info"><div class="shop-title">Casio FX-85GTX</div><div class="shop-desc">Most popular calculator for Scottish exams — SQA approved</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=casio+fx-991ex+scientific+calculator&tag=cazza09-21')"><div class="shop-icon">🔬</div><div class="shop-info"><div class="shop-title">Casio FX-991EX</div><div class="shop-desc">Advanced model — great for Higher Maths too</div><div class="shop-cta">View on Amazon →</div></div></div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:18px">
-      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">✏️ Stationery & Study Supplies</div>
-      <div class="shop-grid">
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=maths+geometry+set+compass+protractor&tag=cazza09-21')"><div class="shop-icon">📐</div><div class="shop-info"><div class="shop-title">Geometry Set</div><div class="shop-desc">Compass, protractor, ruler, set squares — everything needed</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=graph+paper+notebook+maths&tag=cazza09-21')"><div class="shop-icon">📓</div><div class="shop-info"><div class="shop-title">Graph Paper Notebook</div><div class="shop-desc">Essential for drawing graphs and geometry questions</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=revision+flashcards+blank+cards&tag=cazza09-21')"><div class="shop-icon">🃏</div><div class="shop-info"><div class="shop-title">Blank Flashcards</div><div class="shop-desc">Write your own formula cards for revision anywhere</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=highlighter+pens+set+revision&tag=cazza09-21')"><div class="shop-icon">🖊️</div><div class="shop-info"><div class="shop-title">Highlighter & Pen Set</div><div class="shop-desc">Colour-code your notes and make key formulas stand out</div><div class="shop-cta">View on Amazon →</div></div></div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:10px">
-      <div style="font-size:14px;font-weight:800;color:var(--primary);margin-bottom:10px">💻 Laptops & Tablets for Study</div>
-      <div class="shop-grid">
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=laptop+for+students+school&tag=cazza09-21')"><div class="shop-icon">💻</div><div class="shop-info"><div class="shop-title">Student Laptops</div><div class="shop-desc">Affordable laptops great for schoolwork and revision</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=ipad+apple+pencil+student&tag=cazza09-21')"><div class="shop-icon">📱</div><div class="shop-info"><div class="shop-title">iPad for Study</div><div class="shop-desc">Great for notes, graphs and revision apps</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=chromebook+student+school&tag=cazza09-21')"><div class="shop-icon">🖥️</div><div class="shop-info"><div class="shop-title">Chromebook</div><div class="shop-desc">Budget-friendly — perfect for schoolwork and web apps</div><div class="shop-cta">View on Amazon →</div></div></div>
-        <div class="shop-card" onclick="openShop('https://www.amazon.co.uk/s?k=laptop+stand+desk+organiser+student&tag=cazza09-21')"><div class="shop-icon">🗂️</div><div class="shop-info"><div class="shop-title">Desk & Study Setup</div><div class="shop-desc">Laptop stands, desk organisers and study accessories</div><div class="shop-cta">View on Amazon →</div></div></div>
-      </div>
-    </div>
-
-    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;font-size:12px;color:#92400e;margin-top:6px">
-      💡 <strong>Action needed:</strong> Replace <strong>cazza09-21</strong> in all links above with your actual Amazon Associates tracking ID to earn commissions on purchases!
-    </div>
+<div class="install-banner" id="install-banner" hidden>
+  <div><b>Install Nat 5 Maths</b><small>Add it to your home screen — works offline.</small></div>
+  <div class="btn-row">
+    <button class="btn btn-primary btn-sm" id="install-btn">Install</button>
+    <button class="btn btn-ghost btn-sm" id="dismiss-install" aria-label="Dismiss">Not now</button>
   </div>
 </div>
 
-</div>
-
-<script>
-const TOPICS={
-  algebra:{name:"Algebra",icon:"📐",calc:false,questions:[
-    {q:"Expand: 3(x + 4)",a:"3x+12",level:1,hint:"Multiply 3 by EACH term inside.",explain:"3×x=3x, 3×4=12 → 3x+12"},
-    {q:"Simplify: 5x + 3x − 2x",a:"6x",level:1,hint:"Collect the x terms.",explain:"(5+3−2)x=6x"},
-    {q:"Solve: 2x + 5 = 13",a:"4",level:1,hint:"Subtract 5, then divide by 2.",explain:"2x=8 → x=4"},
-    {q:"Solve: 3x − 7 = 11",a:"6",level:1,hint:"Add 7 to both sides first.",explain:"3x=18 → x=6"},
-    {q:"Simplify: x⁵ ÷ x²",a:"x³",level:1,hint:"Same base: subtract indices.",explain:"x^(5−2)=x³"},
-    {q:"Expand: (x+3)(x+2)",a:"x²+5x+6",level:2,hint:"FOIL: First, Outer, Inner, Last.",explain:"x²+2x+3x+6=x²+5x+6"},
-    {q:"Expand: (x+5)(x−2)",a:"x²+3x−10",level:2,hint:"FOIL — watch the negative!",explain:"x²−2x+5x−10=x²+3x−10"},
-    {q:"Factorise: x²+5x+6",a:"(x+2)(x+3)",level:2,hint:"Two numbers: multiply to 6, add to 5.",explain:"2×3=6, 2+3=5 → (x+2)(x+3)"},
-    {q:"Factorise: x²−x−12",a:"(x+3)(x−4)",level:2,hint:"Two numbers: multiply to −12, add to −1.",explain:"3×(−4)=−12, 3+(−4)=−1 → (x+3)(x−4)"},
-    {q:"Solve: x²−7x+10=0",a:"x=2,x=5",level:2,hint:"Factorise first.",explain:"(x−2)(x−5)=0 → x=2 or x=5"},
-    {q:"Solve: x²+3x−4=0 (use quadratic formula)",a:"x=1,x=−4",level:3,hint:"a=1,b=3,c=−4. Use x=(−b±√(b²−4ac))/2a",explain:"Disc=25. x=(−3±5)/2 → x=1 or x=−4"},
-    {q:"Simplify: (3x²y)(4xy³)",a:"12x³y⁴",level:2,hint:"Multiply numbers; add indices per letter.",explain:"12·x^3·y^4"},
-    {q:"Solve: 5(x−2)=3x+4",a:"7",level:2,hint:"Expand first, then collect x terms.",explain:"5x−10=3x+4 → 2x=14 → x=7"},
-    {q:"Factorise completely: 2x²+6x",a:"2x(x+3)",level:2,hint:"Take out the HCF.",explain:"HCF=2x → 2x(x+3)"},
-    {q:"Expand: (2x+1)(x−3)",a:"2x²−5x−3",level:2,hint:"FOIL carefully.",explain:"2x²−6x+x−3=2x²−5x−3"},
-    {q:"Factorise: x²−49",a:"(x+7)(x−7),(x−7)(x+7)",level:2,hint:"Difference of squares: a²−b²=(a+b)(a−b)",explain:"x²−49=x²−7²=(x+7)(x−7)"},
-    {q:"Complete the square: x²+6x+2=(x+3)²+k. Find k.",a:"−7",level:3,hint:"(x+3)²=x²+6x+9, so adjust the constant.",explain:"x²+6x+2=(x+3)²−9+2=(x+3)²−7 → k=−7"},
-    {q:"Find the discriminant of x²+4x+1=0.",a:"12",level:3,hint:"Discriminant = b²−4ac",explain:"16−4(1)(1)=12"},
-    {q:"x²−6x+9=0: how many real roots?",a:"1",level:2,hint:"Work out b²−4ac first.",explain:"b²−4ac=36−36=0 → one repeated root"},
-    {q:"Solve 3x+2>11. Smallest whole number solution?",a:"4",level:2,hint:"Solve like an equation: 3x>9.",explain:"x>3, so smallest whole number is 4"},
-  ]},
-  trigonometry:{name:"Trigonometry",icon:"📏",calc:true,questions:[
-    {q:"Right triangle: opp=3, hyp=5. Find sin(θ).",a:"0.6",level:1,hint:"SOH: sin=opp/hyp",explain:"3/5=0.6"},
-    {q:"Right triangle: adj=4, hyp=5. Find cos(θ).",a:"0.8",level:1,hint:"CAH: cos=adj/hyp",explain:"4/5=0.8"},
-    {q:"Find θ if cos(θ)=0.5 (degrees).",a:"60",level:1,hint:"θ=cos⁻¹(0.5). Standard angle!",explain:"cos⁻¹(0.5)=60°"},
-    {q:"Find θ if sin(θ)=0.5 (degrees).",a:"30",level:1,hint:"θ=sin⁻¹(0.5). Standard angle!",explain:"sin⁻¹(0.5)=30°"},
-    {q:"sin²θ + cos²θ = ?",a:"1",level:1,hint:"Fundamental trig identity!",explain:"Always equals 1 — memorise this!"},
-    {q:"Ladder 5m, angle 70° with ground. Height? (2dp)",a:"4.70",level:2,hint:"sin(70°)=height/5",explain:"5×sin(70°)≈4.70m"},
-    {q:"Triangle: A=40°, B=75°, a=10. Find b (2dp).",a:"15.03",level:2,hint:"Sine rule: b/sinB=a/sinA",explain:"10×sin75°/sin40°≈15.03"},
-    {q:"Triangle: a=5, b=7, C=48°. Find c (2dp).",a:"5.21",level:3,hint:"Cosine rule: c²=a²+b²−2ab·cosC",explain:"√(25+49−70cos48°)≈5.21"},
-    {q:"Sides 6 and 8, included angle 35°. Area? (2dp)",a:"13.73",level:3,hint:"Area=½ab·sinC",explain:"½×6×8×sin35°≈13.73"},
-    {q:"Bearing of B from A is 065°. Bearing of A from B?",a:"245",level:2,hint:"Back bearing: add 180° (or subtract if over 360°).",explain:"065+180=245°"},
-    {q:"y=3sin(2x)°: what is the amplitude?",a:"3",level:1,hint:"Amplitude = the number in front of sin.",explain:"y=a·sin(bx) has amplitude a → 3"},
-    {q:"y=3sin(2x)°: what is the period in degrees?",a:"180",level:2,hint:"Period = 360÷b",explain:"360÷2=180°"},
-    {q:"Solve sin(x°)=0.5 for 90<x<180.",a:"150",level:2,hint:"Second quadrant: 180−first answer.",explain:"sin30°=0.5 → 180−30=150°"},
-    {q:"tan θ = sin θ ÷ ?",a:"cosθ,cos",level:1,hint:"Key identity linking sin, cos, tan.",explain:"tanθ=sinθ/cosθ"},
-    {q:"Walk 5km north then 12km east. Distance from start?",a:"13",level:2,hint:"Right angle → Pythagoras.",explain:"√(25+144)=√169=13km"},
-  ]},
-  geometry:{name:"Geometry",icon:"🔵",calc:true,questions:[
-    {q:"Area of circle, r=5cm. (2dp)",a:"78.54",level:1,hint:"A=πr²",explain:"π×25≈78.54"},
-    {q:"Pythagoras: a=3, b=4. Find c.",a:"5",level:1,hint:"c²=a²+b²",explain:"√(9+16)=5"},
-    {q:"Circumference of circle, d=10cm. (2dp)",a:"31.42",level:1,hint:"C=πd",explain:"π×10≈31.42"},
-    {q:"Pythagoras: hyp=13, side=5. Other side?",a:"12",level:1,hint:"a²=c²−b²",explain:"√(169−25)=12"},
-    {q:"Volume of cylinder: r=3, h=8. (2dp)",a:"226.19",level:2,hint:"V=πr²h",explain:"π×9×8≈226.19"},
-    {q:"Volume of cone: r=4, h=9. (1dp)",a:"150.8",level:2,hint:"V=⅓πr²h",explain:"⅓×π×16×9≈150.8"},
-    {q:"Surface area of sphere: r=6. (2dp)",a:"452.39",level:2,hint:"SA=4πr²",explain:"4×π×36≈452.39"},
-    {q:"Volume of sphere: r=3. (2dp)",a:"113.10",level:2,hint:"V=⁴⁄₃πr³",explain:"(4/3)×π×27≈113.10"},
-    {q:"Arc length: r=9, θ=60°. (2dp)",a:"9.42",level:2,hint:"Arc=(θ/360)×2πr",explain:"(1/6)×18π≈9.42"},
-  ]},
-  statistics:{name:"Statistics",icon:"📊",calc:true,questions:[
-    {q:"Mean of: 4, 7, 2, 9, 3",a:"5",level:1,hint:"Sum÷count",explain:"25÷5=5"},
-    {q:"Median of: 3, 7, 1, 9, 4",a:"4",level:1,hint:"Sort, find middle.",explain:"Sorted:1,3,4,7,9 → 4"},
-    {q:"Range of: 12, 5, 18, 3, 20, 8",a:"17",level:1,hint:"Max−min",explain:"20−3=17"},
-    {q:"Mode of: 3,5,5,7,3,5,8,2",a:"5",level:1,hint:"Most frequent value.",explain:"5 appears 3 times"},
-    {q:"P(A)=0.3. Find P(not A).",a:"0.7",level:1,hint:"P(not A)=1−P(A)",explain:"1−0.3=0.7"},
-    {q:"Class of 30, P(left-handed)=0.1. Expected number?",a:"3",level:1,hint:"Probability×total",explain:"0.1×30=3"},
-    {q:"Bag: 3 red, 7 blue. P(red)?",a:"0.3",level:1,hint:"P=favourable/total",explain:"3/10=0.3"},
-    {q:"Median of: 2,5,7,10,13,18",a:"8.5",level:2,hint:"Even count: average of two middle values.",explain:"(7+10)/2=8.5"},
-    {q:"Standard deviation of: 2,4,4,4,5,5,7,9",a:"2",level:3,hint:"Mean=5. SD=√(mean of squared deviations)",explain:"Variance=4 → SD=2"},
-    {q:"Q1=10, Q3=22. Semi-interquartile range?",a:"6",level:2,hint:"SIQR=(Q3−Q1)÷2",explain:"(22−10)÷2=6"},
-    {q:"Data: 2,4,6,8,10,12,14. Find Q1 (lower quartile).",a:"4",level:2,hint:"Median of the lower half (below the middle value).",explain:"Lower half: 2,4,6 → middle is 4"},
-    {q:"Mean of 5 numbers is 8. Four of them are 6,7,9,10. Fifth?",a:"8",level:2,hint:"Total must be 5×8=40.",explain:"40−(6+7+9+10)=40−32=8"},
-  ]},
-  fractions:{name:"Fractions, % & Interest",icon:"½",calc:false,questions:[
-    {q:"35% of 240",a:"84",level:1,hint:"×0.35",explain:"240×0.35=84"},
-    {q:"17.5% of 80",a:"14",level:1,hint:"×0.175",explain:"80×0.175=14"},
-    {q:"Simplify: 24/36",a:"2/3",level:1,hint:"HCF=12",explain:"24÷12=2, 36÷12=3"},
-    {q:"2/5 as a percentage?",a:"40",level:1,hint:"÷5×100",explain:"0.4×100=40%"},
-    {q:"Increase £120 by 15%.",a:"138",level:1,hint:"×1.15",explain:"120×1.15=£138"},
-    {q:"Price £80→£96. % increase?",a:"20",level:2,hint:"(change÷original)×100",explain:"(16÷80)×100=20%"},
-    {q:"3/4 + 2/3 (as improper fraction)",a:"17/12",level:2,hint:"Common denom=12",explain:"9/12+8/12=17/12"},
-    {q:"Coat £63 after 10% off. Original price?",a:"70",level:3,hint:"£63=90%. Divide by 0.9.",explain:"63÷0.9=£70"},
-    {q:"Price drops £200→£170. % decrease?",a:"15",level:2,hint:"(decrease÷original)×100",explain:"(30÷200)×100=15%"},
-    {q:"House worth £150 000 appreciates by 2% in a year. New value (£)?",a:"153000",level:1,hint:"Appreciation: ×1.02",explain:"150000×1.02=£153 000"},
-    {q:"£1000 at 5% compound interest for 2 years. Total (£)?",a:"1102.50,1102.5",level:2,hint:"Multiply by 1.05 twice.",explain:"1000×1.05²=£1102.50"},
-    {q:"Car worth £12 000 depreciates 10% per year. Value after 2 years (£)?",a:"9720",level:2,hint:"Depreciation: ×0.9 each year.",explain:"12000×0.9²=£9720"},
-  ]},
-  surds:{name:"Surds & Indices",icon:"√",calc:false,questions:[
-    {q:"Simplify: √48",a:"4√3",level:2,hint:"Largest perfect square factor of 48 = 16.",explain:"√(16×3)=4√3"},
-    {q:"Evaluate: 2³ × 2⁴",a:"128",level:1,hint:"Add indices: 2^7",explain:"2⁷=128"},
-    {q:"Simplify: (x³)⁴",a:"x¹²",level:2,hint:"Multiply indices.",explain:"x^12"},
-    {q:"Evaluate: 27^(1/3)",a:"3",level:2,hint:"Cube root of 27.",explain:"∛27=3"},
-    {q:"Evaluate: 4^(−2)",a:"1/16",level:2,hint:"Negative index=reciprocal.",explain:"1/4²=1/16"},
-    {q:"Simplify: √75−√27",a:"2√3",level:3,hint:"√75=5√3, √27=3√3",explain:"5√3−3√3=2√3"},
-    {q:"Rationalise: 1/√5",a:"√5/5",level:3,hint:"Multiply top &amp; bottom by √5.",explain:"√5/5"},
-    {q:"Evaluate: 16^(3/4)",a:"8",level:3,hint:"(⁴√16)³",explain:"⁴√16=2, 2³=8"},
-  ]},
-  functions:{name:"Functions & Graphs",icon:"📈",calc:false,questions:[
-    {q:"f(x)=3x−2. Find f(4).",a:"10",level:1,hint:"Substitute x=4.",explain:"3(4)−2=10"},
-    {q:"f(x)=x²+1. Find f(3).",a:"10",level:1,hint:"Substitute x=3.",explain:"9+1=10"},
-    {q:"Gradient of y=5x−3?",a:"5",level:1,hint:"y=mx+c: m is gradient.",explain:"m=5"},
-    {q:"y-intercept of y=2x+7?",a:"7",level:1,hint:"y=mx+c: c is y-intercept.",explain:"c=7"},
-    {q:"Gradient through (1,3) and (4,9)?",a:"2",level:2,hint:"m=(y₂−y₁)/(x₂−x₁)",explain:"6/3=2"},
-    {q:"Rearrange to y=mx+c: 2y=6x+8",a:"y=3x+4",level:2,hint:"Divide everything by 2.",explain:"y=3x+4"},
-    {q:"Line: gradient 3, through (0,−1).",a:"y=3x−1",level:2,hint:"y=mx+c, m=3, c=−1.",explain:"y=3x−1"},
-    {q:"Where does y=x²−4 cross the x-axis?",a:"x=2,x=−2",level:2,hint:"Set y=0.",explain:"x=±2"},
-    {q:"Turning point of y=(x−3)²+2?",a:"(3,2)",level:3,hint:"y=(x−a)²+b: TP=(a,b).",explain:"(3,2) minimum"},
-  ]},
-  vectors:{name:"Vectors",icon:"➡",calc:false,questions:[
-    {q:"Magnitude of (3,4).",a:"5",level:1,hint:"|v|=√(x²+y²)",explain:"√25=5"},
-    {q:"Add: (2,5)+(−1,3)",a:"(1,8)",level:1,hint:"Add each component.",explain:"(1,8)"},
-    {q:"Multiply (3,−2,1) by 4.",a:"(12,−8,4)",level:1,hint:"Multiply each component.",explain:"(12,−8,4)"},
-    {q:"If a·b=0, what does that mean?",a:"perpendicular",level:2,hint:"Zero dot product → ?",explain:"Vectors are perpendicular (90°)."},
-    {q:"Dot product: (1,2,3)·(4,−1,2)",a:"8",level:3,hint:"Multiply pairs and add.",explain:"4−2+6=8"},
-    {q:"Unit vector of (6,8)?",a:"(0.6,0.8)",level:3,hint:"Divide by magnitude (=10).",explain:"(0.6,0.8)"},
-  ]},
-  circle:{name:"Circle Geometry",icon:"⭕",calc:true,questions:[
-    {q:"Tangent meets radius at what angle?",a:"90",level:1,hint:"Key circle theorem!",explain:"Always 90° — perpendicular."},
-    {q:"Angle in a semicircle is always?",a:"90",level:1,hint:"Thales' theorem.",explain:"90° — Thales' theorem."},
-    {q:"Two tangents from external point. One=7cm. Other?",a:"7",level:1,hint:"Tangents from same point are equal.",explain:"Both=7cm."},
-    {q:"Chord=16cm, r=10cm. Distance centre→chord?",a:"6",level:2,hint:"Perp bisects chord. Pythagoras: √(r²−(½chord)²)",explain:"√(100−64)=6"},
-    {q:"Arc: r=9, θ=60°. Arc length? (2dp)",a:"9.42",level:2,hint:"Arc=(θ/360)×2πr",explain:"3π≈9.42"},
-    {q:"Sector: r=5, θ=120°. Area? (2dp)",a:"26.18",level:2,hint:"Area=(θ/360)×πr²",explain:"(1/3)×25π≈26.18"},
-  ]},
-  standardform:{name:"Standard Form & Rounding",icon:"🔬",calc:false,questions:[
-    {q:"Write 3.2×10⁴ as an ordinary number.",a:"32000",level:1,hint:"Move the decimal point 4 places right.",explain:"3.2×10⁴=32 000"},
-    {q:"Write 6.7×10⁻³ as an ordinary number.",a:"0.0067",level:1,hint:"Negative power: move decimal point 3 places left.",explain:"6.7×10⁻³=0.0067"},
-    {q:"45 000 = 4.5×10ⁿ. Find n.",a:"4",level:1,hint:"Count how many places the point moves.",explain:"45 000=4.5×10⁴ → n=4"},
-    {q:"Speed of light is 300 000 000 m/s = 3×10ⁿ. Find n.",a:"8",level:1,hint:"Count the zeros.",explain:"300 000 000=3×10⁸"},
-    {q:"Round 3.4682 to 2 significant figures.",a:"3.5",level:1,hint:"First 2 digits, then check the next one.",explain:"3.4682 → 3.5 (the 6 rounds the 4 up)"},
-    {q:"0.00052 = 5.2×10ⁿ. Find n.",a:"−4",level:2,hint:"Small numbers → negative power.",explain:"0.00052=5.2×10⁻⁴ → n=−4"},
-    {q:"Round 28 462 to 3 significant figures.",a:"28500",level:2,hint:"First 3 digits: 284 — check the 4th.",explain:"28 462 → 28 500 (6 rounds the 4 up)"},
-    {q:"(2×10³)×(4×10⁵) = 8×10ⁿ. Find n.",a:"8",level:2,hint:"Multiply numbers, ADD the powers.",explain:"2×4=8, 10³×10⁵=10⁸ → n=8"},
-    {q:"(6×10⁷)÷(3×10²) = 2×10ⁿ. Find n.",a:"5",level:2,hint:"Divide numbers, SUBTRACT the powers.",explain:"6÷3=2, 10⁷÷10²=10⁵ → n=5"},
-    {q:"Round 0.037846 to 2 significant figures.",a:"0.038",level:2,hint:"Leading zeros don't count as sig figs.",explain:"First sig figs are 3 and 7 → 0.038"},
-  ]},
-  simultaneous:{name:"Simultaneous Equations",icon:"⚖️",calc:false,questions:[
-    {q:"x+y=10 and x−y=4. Find x.",a:"7",level:1,hint:"Add the two equations to eliminate y.",explain:"2x=14 → x=7"},
-    {q:"x+y=10 and x−y=4. Find y.",a:"3",level:1,hint:"Find x first (=7), then substitute.",explain:"7+y=10 → y=3"},
-    {q:"2x+y=7 and x=2. Find y.",a:"3",level:1,hint:"Substitute x=2 into the first equation.",explain:"4+y=7 → y=3"},
-    {q:"3x+2y=12 and x+2y=8. Find x.",a:"2",level:2,hint:"Subtract the equations to eliminate y.",explain:"2x=4 → x=2"},
-    {q:"3x+2y=12 and x+2y=8. Find y.",a:"3",level:2,hint:"x=2, substitute back in.",explain:"2+2y=8 → 2y=6 → y=3"},
-    {q:"5x+2y=16 and 3x+2y=12. Find x.",a:"2",level:2,hint:"Same y coefficients — subtract!",explain:"2x=4 → x=2"},
-    {q:"2x+3y=13 and x−y=4. Find x.",a:"5",level:2,hint:"From 2nd equation x=y+4. Substitute.",explain:"2(y+4)+3y=13 → 5y=5 → y=1, x=5"},
-    {q:"2x+3y=13 and x−y=4. Find y.",a:"1",level:2,hint:"Substitute x=y+4 into the first equation.",explain:"2y+8+3y=13 → y=1"},
-    {q:"Lines y=2x+1 and y=x+5 cross where x = ?",a:"4",level:3,hint:"Set 2x+1=x+5.",explain:"2x+1=x+5 → x=4"},
-    {q:"4 pens + 2 rulers cost 260p; 2 pens + 2 rulers cost 180p. One pen costs (pence)?",a:"40",level:3,hint:"Subtract: 2 pens = 80p.",explain:"2 pens=260−180=80p → one pen 40p"},
-  ]},
-  algfrac:{name:"Algebraic Fractions & Formulae",icon:"🔀",calc:false,questions:[
-    {q:"Change the subject to x: y = x + 5",a:"x=y−5",level:1,hint:"Subtract 5 from both sides.",explain:"x=y−5"},
-    {q:"Change the subject to x: y = 3x",a:"x=y/3",level:1,hint:"Divide both sides by 3.",explain:"x=y/3"},
-    {q:"Change the subject to x: y = 2x − 3",a:"x=(y+3)/2",level:2,hint:"Add 3, then divide by 2.",explain:"y+3=2x → x=(y+3)/2"},
-    {q:"v=u+at. Find a when v=20, u=8, t=3.",a:"4",level:1,hint:"Rearrange: a=(v−u)/t",explain:"(20−8)/3=4"},
-    {q:"P=2L+2W. Find W when P=26, L=8.",a:"5",level:1,hint:"Rearrange: W=(P−2L)/2",explain:"(26−16)/2=5"},
-    {q:"Simplify: 2/x + 3/x",a:"5/x",level:1,hint:"Same denominator — just add the tops.",explain:"(2+3)/x=5/x"},
-    {q:"Simplify: (x²−9)/(x+3)",a:"x−3",level:2,hint:"Factorise the top: difference of squares.",explain:"(x+3)(x−3)/(x+3)=x−3"},
-    {q:"Simplify: (x²−4)/(x−2)",a:"x+2",level:2,hint:"x²−4=(x+2)(x−2)",explain:"(x+2)(x−2)/(x−2)=x+2"},
-    {q:"Simplify: 2/(x+1) + 3/(x+1)",a:"5/(x+1)",level:2,hint:"Same denominator.",explain:"(2+3)/(x+1)=5/(x+1)"},
-    {q:"Simplify: 3/x × x/6",a:"1/2,0.5",level:2,hint:"Multiply tops and bottoms — the x cancels.",explain:"3x/6x=1/2"},
-    {q:"a/3 ÷ a/6 = ?",a:"2",level:2,hint:"Dividing = multiply by the flipped fraction.",explain:"a/3 × 6/a = 6/3 = 2"},
-  ]},
-  similarity:{name:"Similarity & Scale",icon:"🔍",calc:true,questions:[
-    {q:"Similar triangles, scale factor 3. Small side 4cm → matching large side?",a:"12",level:1,hint:"Multiply by the scale factor.",explain:"4×3=12cm"},
-    {q:"Photo 6cm wide enlarged to 15cm wide. Scale factor?",a:"2.5",level:1,hint:"New ÷ old",explain:"15÷6=2.5"},
-    {q:"Model car at 1:20 scale is 18cm long. Real car (cm)?",a:"360",level:1,hint:"Multiply by 20.",explain:"18×20=360cm"},
-    {q:"Length scale factor 2. Small shape area 5cm² → large area?",a:"20",level:2,hint:"Area scale factor = (length SF)²",explain:"SF²=4 → 5×4=20cm²"},
-    {q:"Length scale factor 3. Small volume 2cm³ → large volume?",a:"54",level:2,hint:"Volume scale factor = (length SF)³",explain:"SF³=27 → 2×27=54cm³"},
-    {q:"Similar triangles: sides 6 and 9 correspond. Small side 8 → large side?",a:"12",level:2,hint:"Scale factor = 9/6 = 1.5",explain:"8×1.5=12"},
-    {q:"Area scale factor is 25. Length scale factor?",a:"5",level:2,hint:"Length SF = √(area SF)",explain:"√25=5"},
-    {q:"Similar tins: heights 10cm and 20cm. Small holds 400ml. Large holds (ml)?",a:"3200",level:3,hint:"Volume SF = 2³ = 8",explain:"400×8=3200ml"},
-  ]},
-  h_straight:{name:"The Straight Line",icon:"✏️",higher:true,calc:false,questions:[
-    {q:"Gradient of the line through (2,3) and (6,11)?",a:"2",level:1,hint:"m=(y₂−y₁)/(x₂−x₁)",explain:"(11−3)/(6−2)=8/4=2"},
-    {q:"Line makes 45° with positive x-axis. Gradient? (m=tanθ)",a:"1",level:1,hint:"m=tan45°",explain:"tan45°=1"},
-    {q:"Gradient of a line perpendicular to one with m=2?",a:"−0.5,−1/2",level:1,hint:"m₁×m₂=−1",explain:"−1÷2=−½"},
-    {q:"Line y=2x+3: gradient of any parallel line?",a:"2",level:1,hint:"Parallel lines share the same gradient.",explain:"m=2"},
-    {q:"Midpoint of (2,4) and (8,10): x-coordinate?",a:"5",level:1,hint:"Average the x-values.",explain:"(2+8)/2=5"},
-    {q:"A perpendicular bisector passes through the ______ of the line at 90°.",a:"midpoint",level:1,hint:"'Bisect' means cut in half.",explain:"It cuts the line in half at right angles — the midpoint."},
-    {q:"m=tanθ: gradient of a line at 135° to the positive x-axis?",a:"−1",level:2,hint:"tan135° is negative.",explain:"tan135°=−1"},
-    {q:"Lines y=3x+1 and y=kx−2 are perpendicular. k?",a:"−1/3,−0.33",level:2,hint:"3×k=−1",explain:"k=−1/3"},
-    {q:"Median from A(1,2) meets BC at its midpoint. B(3,4), C(7,8): midpoint x-coordinate?",a:"5",level:2,hint:"A median goes to the midpoint of the opposite side.",explain:"(3+7)/2=5"},
-    {q:"Angle a line with gradient √3 makes with the x-axis (degrees)?",a:"60",level:2,hint:"θ=tan⁻¹(√3)",explain:"tan60°=√3 → 60°"},
-  ]},
-  h_functions:{name:"Composite & Inverse Functions",icon:"🔗",higher:true,calc:false,questions:[
-    {q:"f(x)=2x+1, g(x)=x². Find f(g(3)).",a:"19",level:1,hint:"Work inside-out: g(3) first.",explain:"g(3)=9 → f(9)=19"},
-    {q:"f(x)=2x+1, g(x)=x². Find g(f(1)).",a:"9",level:1,hint:"f(1) first.",explain:"f(1)=3 → g(3)=9"},
-    {q:"f(x)=x+4. f⁻¹(x) = ?",a:"x−4",level:1,hint:"Inverse undoes the function.",explain:"f⁻¹(x)=x−4"},
-    {q:"Graph y=f(x)+3 moves y=f(x) how many units up?",a:"3",level:1,hint:"+k outside → slide up k.",explain:"3 units up"},
-    {q:"y=f(x−2) shifts the graph 2 units in which direction? (left/right)",a:"right",level:1,hint:"Inside the brackets works 'backwards'.",explain:"f(x−2) → 2 units right"},
-    {q:"y=k·f(x) with k=2 stretches the graph vertically by factor?",a:"2",level:1,hint:"Multiplying outside stretches vertically.",explain:"Factor 2"},
-    {q:"f(x)=3x−6. Find f⁻¹(9).",a:"5",level:2,hint:"Solve 3x−6=9.",explain:"3x=15 → x=5"},
-    {q:"f(x)=1/(x−5): which x-value is NOT in the domain?",a:"5",level:2,hint:"You can't divide by zero.",explain:"x=5 makes the denominator 0"},
-    {q:"f(x)=2x, g(x)=x−3. Solve f(g(x))=10.",a:"8",level:2,hint:"f(g(x))=2(x−3)",explain:"2(x−3)=10 → x−3=5 → x=8"},
-    {q:"y=−f(x) reflects the graph in which axis? (x/y)",a:"x,x-axis",level:2,hint:"Minus outside flips vertically.",explain:"Reflection in the x-axis"},
-  ]},
-  h_poly:{name:"Polynomials & Quadratics",icon:"🧮",higher:true,calc:false,questions:[
-    {q:"f(x)=x³−7x+6. Find f(1).",a:"0",level:1,hint:"Substitute x=1.",explain:"1−7+6=0"},
-    {q:"f(1)=0 for f(x)=x³−7x+6, so (x−1) is a ______.",a:"factor",level:1,hint:"Factor theorem!",explain:"f(a)=0 ⟺ (x−a) is a factor"},
-    {q:"Quadratic y=(x−2)²+5: minimum value of y?",a:"5",level:1,hint:"(x−2)² is never negative.",explain:"Minimum 5 at x=2"},
-    {q:"Remainder when x³+2x²−5 is divided by (x−2)?",a:"11",level:2,hint:"Remainder theorem: evaluate f(2).",explain:"8+8−5=11"},
-    {q:"Discriminant of 2x²+3x−1=0?",a:"17",level:2,hint:"b²−4ac",explain:"9−4(2)(−1)=9+8=17"},
-    {q:"b²−4ac=17 (positive): nature of roots? (real/equal/none)",a:"real",level:2,hint:">0 means two roots.",explain:"Two real distinct roots"},
-    {q:"x²+8x+3 = (x+4)² + k. Find k.",a:"−13",level:2,hint:"(x+4)²=x²+8x+16",explain:"3−16=−13"},
-    {q:"x³−4x=0: how many real roots?",a:"3",level:2,hint:"Factorise: x(x−2)(x+2).",explain:"x=0, 2, −2 → three roots"},
-    {q:"x²+kx+9=0 has equal roots and k>0. Find k.",a:"6",level:3,hint:"Equal roots: b²−4ac=0.",explain:"k²=36 → k=6"},
-    {q:"x²−2x−15<0 holds for −3<x<a. Find a.",a:"5",level:3,hint:"Factorise: (x+3)(x−5).",explain:"Roots −3 and 5 → true between them"},
-  ]},
-  h_recur:{name:"Recurrence Relations",icon:"🔁",higher:true,calc:true,questions:[
-    {q:"uₙ₊₁=0.5uₙ+10, u₀=20. Find u₁.",a:"20",level:1,hint:"Substitute u₀=20.",explain:"0.5×20+10=20"},
-    {q:"uₙ₊₁=2uₙ+1, u₀=3. Find u₂.",a:"15",level:1,hint:"u₁ first, then u₂.",explain:"u₁=7 → u₂=15"},
-    {q:"A limit exists when |a| is less than ?",a:"1",level:1,hint:"−1<a<1 for a limit.",explain:"|a|<1 → sequence settles to a limit"},
-    {q:"uₙ₊₁=0.6uₙ+8, u₀=10. Find u₁.",a:"14",level:1,hint:"0.6×10+8",explain:"6+8=14"},
-    {q:"uₙ₊₁=0.5uₙ+10. Limit L=b/(1−a)=?",a:"20",level:2,hint:"L=10/(1−0.5)",explain:"10/0.5=20"},
-    {q:"uₙ₊₁=0.8uₙ+6. Limit?",a:"30",level:2,hint:"L=6/(1−0.8)",explain:"6/0.2=30"},
-    {q:"uₙ₊₁=0.6uₙ+8. Limit?",a:"20",level:2,hint:"L=8/(1−0.6)",explain:"8/0.4=20"},
-    {q:"Pond loses 20% of its water daily; 15L added each evening. Long-term level (L)? (uₙ₊₁=0.8uₙ+15)",a:"75",level:3,hint:"L=15/(1−0.8)",explain:"15/0.2=75L"},
-  ]},
-  h_diff:{name:"Differentiation",icon:"📉",higher:true,calc:false,questions:[
-    {q:"f(x)=x³. Find f'(2).",a:"12",level:1,hint:"f'(x)=3x²",explain:"3×4=12"},
-    {q:"f(x)=3x²+2x. Find f'(1).",a:"8",level:1,hint:"f'(x)=6x+2",explain:"6+2=8"},
-    {q:"Tangent to y=x² at x=3: gradient?",a:"6",level:1,hint:"dy/dx=2x",explain:"2×3=6"},
-    {q:"y=x²−4x+7: stationary point at x = ?",a:"2",level:1,hint:"Set dy/dx=2x−4=0.",explain:"2x=4 → x=2"},
-    {q:"f'(x)>0 means f is (increasing/decreasing)?",a:"increasing",level:1,hint:"Positive gradient slopes up.",explain:"f is strictly increasing"},
-    {q:"f(x)=5sin(x). f'(x)=5cos(x). Find f'(0).",a:"5",level:2,hint:"cos(0)=1",explain:"5×1=5"},
-    {q:"f(x)=x³−3x: stationary points at x=±1. Which is the maximum? (1/−1)",a:"−1",level:2,hint:"Check the shape of a positive cubic.",explain:"Max at x=−1, min at x=1"},
-    {q:"y=x³−6x²+9x has stationary points at x=1 and x=?",a:"3",level:2,hint:"dy/dx=3x²−12x+9=0",explain:"x²−4x+3=0 → (x−1)(x−3)=0"},
-    {q:"Ball height h(t)=20t−5t². Speed h'(t) at t=1?",a:"10",level:2,hint:"h'(t)=20−10t",explain:"20−10=10"},
-    {q:"f(x)=(2x+1)³. Chain rule: find f'(0).",a:"6",level:3,hint:"f'(x)=3(2x+1)²×2",explain:"6(2x+1)² at 0 → 6"},
-    {q:"f(x)=1/x=x⁻¹. Find f'(1).",a:"−1",level:3,hint:"f'(x)=−x⁻²",explain:"−1/1²=−1"},
-  ]},
-  h_int:{name:"Integration",icon:"∫",higher:true,calc:false,questions:[
-    {q:"∫2x dx from 0 to 3 = ?",a:"9",level:1,hint:"∫2x dx=x²",explain:"3²−0²=9"},
-    {q:"∫3x² dx from 0 to 2 = ?",a:"8",level:1,hint:"∫3x² dx=x³",explain:"2³−0=8"},
-    {q:"∫(2x+1) dx from 0 to 1 = ?",a:"2",level:1,hint:"=x²+x",explain:"(1+1)−0=2"},
-    {q:"∫x³ dx = x⁴/n + c. Find n.",a:"4",level:1,hint:"Raise the power, divide by the new power.",explain:"x⁴/4 → n=4"},
-    {q:"∫cos(x) dx from 0 to π/2 = ?",a:"1",level:2,hint:"∫cos=sin",explain:"sin(π/2)−sin(0)=1"},
-    {q:"∫sin(x) dx from 0 to π = ?",a:"2",level:2,hint:"∫sin=−cos",explain:"−cosπ+cos0=1+1=2"},
-    {q:"∫4x³ dx from 1 to 2 = ?",a:"15",level:2,hint:"=x⁴",explain:"16−1=15"},
-    {q:"dy/dx=6x², y(0)=1. Then y=2x³+c. Find c.",a:"1",level:2,hint:"Substitute x=0, y=1.",explain:"1=0+c → c=1"},
-    {q:"Area under y=4−x² from x=−2 to 2?",a:"32/3,10.67",level:3,hint:"[4x−x³/3] between −2 and 2.",explain:"(8−8/3)−(−8+8/3)=32/3≈10.67"},
-    {q:"∫(2x+3)⁴ dx = (2x+3)⁵/k + c. Find k.",a:"10",level:3,hint:"Divide by new power AND the bracket's derivative.",explain:"5×2=10"},
-  ]},
-  h_trig:{name:"Trig: Radians & Formulae",icon:"🌊",higher:true,calc:false,questions:[
-    {q:"180° in radians? (type pi)",a:"pi,π",level:1,hint:"180°=π radians.",explain:"π radians"},
-    {q:"π/3 radians in degrees?",a:"60",level:1,hint:"π=180°, so divide by 3.",explain:"180/3=60°"},
-    {q:"Exact value of sin(π/6)?",a:"1/2,0.5",level:1,hint:"π/6=30°",explain:"sin30°=½"},
-    {q:"sin(2A) = k·sinA·cosA. Find k.",a:"2",level:1,hint:"Double angle formula.",explain:"sin2A=2sinAcosA"},
-    {q:"Solve 2sin(x°)=1 for 0<x<90.",a:"30",level:1,hint:"sinx=0.5",explain:"x=30°"},
-    {q:"cos(2A) = 2cos²A − ?",a:"1",level:2,hint:"One of the three cos2A forms.",explain:"cos2A=2cos²A−1"},
-    {q:"3sinx+4cosx = k·sin(x+α). Find k.",a:"5",level:2,hint:"k=√(a²+b²)",explain:"√(9+16)=5"},
-    {q:"5sinx−12cosx = k·sin(x−α). Find k.",a:"13",level:2,hint:"k=√(25+144)",explain:"√169=13"},
-    {q:"Period of y=sin(2x) in radians? (type pi)",a:"pi,π",level:2,hint:"Period=2π/2",explain:"2π÷2=π"},
-    {q:"cos(2A)=1−2sin²A. If sinA=0.6, find cos(2A).",a:"0.28",level:3,hint:"1−2(0.36)",explain:"1−0.72=0.28"},
-    {q:"Solve cos(2x°)=1 for 0<x≤180.",a:"180",level:3,hint:"cos360°=1",explain:"2x=360 → x=180"},
-  ]},
-  h_circle:{name:"The Circle",icon:"⭕",higher:true,calc:false,questions:[
-    {q:"x²+y²=25: radius?",a:"5",level:1,hint:"x²+y²=r²",explain:"r=√25=5"},
-    {q:"(x−3)²+(y+2)²=16: radius?",a:"4",level:1,hint:"r²=16",explain:"r=4"},
-    {q:"(x−3)²+(y+2)²=16: centre x-coordinate?",a:"3",level:1,hint:"Centre (a,b) from (x−a)²+(y−b)².",explain:"Centre (3,−2) → x=3"},
-    {q:"(x−3)²+(y+2)²=16: centre y-coordinate?",a:"−2",level:1,hint:"(y+2)=(y−(−2))",explain:"Centre (3,−2) → y=−2"},
-    {q:"A tangent meets a circle at how many points?",a:"1",level:1,hint:"Definition of tangency.",explain:"Exactly one point"},
-    {q:"Circle centre (0,0), r=5. Is (3,4) on the circle? (yes/no)",a:"yes",level:1,hint:"Check 3²+4²",explain:"9+16=25=r² → yes"},
-    {q:"x²+y²−6x+4y−12=0: radius? (r=√(g²+f²−c))",a:"5",level:2,hint:"g=−3, f=2, c=−12",explain:"√(9+4+12)=√25=5"},
-    {q:"x²+y²+8x−2y+8=0: centre x-coordinate? (−g)",a:"−4",level:2,hint:"2g=8 → g=4, centre (−g,−f).",explain:"−g=−4"},
-    {q:"Distance between centres (0,0) and (8,6)?",a:"10",level:2,hint:"√(8²+6²)",explain:"√100=10"},
-    {q:"Circles r=3 and r=7, centres 10 apart: they touch (externally/internally)?",a:"externally",level:3,hint:"Compare distance with r₁+r₂.",explain:"3+7=10=distance → touch externally"},
-  ]},
-  h_vectors:{name:"Vectors in 3D",icon:"↗️",higher:true,calc:true,questions:[
-    {q:"|(2,3,6)| = ?",a:"7",level:1,hint:"√(4+9+36)",explain:"√49=7"},
-    {q:"a·b=0 means the vectors are?",a:"perpendicular",level:1,hint:"Key scalar product fact.",explain:"Perpendicular (90°)"},
-    {q:"i·i = ?",a:"1",level:2,hint:"i is a unit vector; angle 0.",explain:"|i||i|cos0=1"},
-    {q:"i·j = ?",a:"0",level:2,hint:"i and j are perpendicular.",explain:"cos90°=0 → 0"},
-    {q:"a=(1,2,3), b=(4,0,−2). a·b = ?",a:"−2",level:2,hint:"Multiply matching components, add.",explain:"4+0−6=−2"},
-    {q:"A(0,0,0), B(2,4,6), C(3,6,9): collinear? (yes/no)",a:"yes",level:2,hint:"Is AC a multiple of AB?",explain:"AC=1.5×AB → collinear"},
-    {q:"cosθ=a·b/(|a||b|). a·b=6, |a|=2, |b|=6: cosθ?",a:"0.5",level:2,hint:"6/(2×6)",explain:"6/12=0.5"},
-    {q:"cosθ=0.5: angle between the vectors (degrees)?",a:"60",level:3,hint:"cos⁻¹(0.5)",explain:"θ=60°"},
-    {q:"P divides AB in ratio 2:1. A(0,0,0), B(9,6,3). P's x-coordinate?",a:"6",level:3,hint:"P is ⅔ of the way along AB.",explain:"(2/3)×9=6"},
-    {q:"Unit vector in the direction of (0,0,5)?",a:"(0,0,1)",level:3,hint:"Divide by the magnitude (=5).",explain:"(0,0,5)÷5=(0,0,1)"},
-  ]},
-  h_logs:{name:"Logs & Exponentials",icon:"㏒",higher:true,calc:true,questions:[
-    {q:"log₂8 = ?",a:"3",level:1,hint:"2 to what power gives 8?",explain:"2³=8 → 3"},
-    {q:"log₅25 = ?",a:"2",level:1,hint:"5²=25",explain:"2"},
-    {q:"log₁₀1000 = ?",a:"3",level:1,hint:"10³=1000",explain:"3"},
-    {q:"logₐ1 = ?",a:"0",level:1,hint:"a⁰=1 for any a.",explain:"0"},
-    {q:"Solve: 2ˣ = 32",a:"5",level:1,hint:"Keep doubling.",explain:"2⁵=32 → x=5"},
-    {q:"log₁₀4 + log₁₀25 = ?",a:"2",level:2,hint:"log a + log b = log(ab)",explain:"log₁₀100=2"},
-    {q:"log₃54 − log₃2 = ?",a:"3",level:2,hint:"log a − log b = log(a/b)",explain:"log₃27=3"},
-    {q:"2log₁₀5 + log₁₀4 = ?",a:"2",level:2,hint:"2log5=log25",explain:"log₁₀(25×4)=log₁₀100=2"},
-    {q:"ln(e³) = ?",a:"3",level:2,hint:"ln undoes e.",explain:"3"},
-    {q:"y=abˣ with a=3, b=2, x=4. Find y.",a:"48",level:2,hint:"3×2⁴",explain:"3×16=48"},
-    {q:"Solve 3ˣ = 20 (2dp).",a:"2.73",level:3,hint:"x=log20/log3",explain:"1.301/0.477≈2.73"},
-  ]}
-};
-
-const FLASHCARDS={
-  all:[
-    {term:"Quadratic Formula",def:"x = (−b ± √(b²−4ac)) / 2a\nUsed when ax²+bx+c=0"},
-    {term:"SOH",def:"sin θ = Opposite ÷ Hypotenuse"},
-    {term:"CAH",def:"cos θ = Adjacent ÷ Hypotenuse"},
-    {term:"TOA",def:"tan θ = Opposite ÷ Adjacent"},
-    {term:"Pythagoras",def:"a² + b² = c²\nc is always the hypotenuse"},
-    {term:"Sine Rule",def:"a/sin A = b/sin B = c/sin C"},
-    {term:"Cosine Rule",def:"a² = b² + c² − 2bc·cos A"},
-    {term:"Triangle Area (trig)",def:"Area = ½ab·sin C"},
-    {term:"Area of Circle",def:"A = πr²"},
-    {term:"Circumference",def:"C = 2πr = πd"},
-    {term:"Volume of Cylinder",def:"V = πr²h"},
-    {term:"Volume of Cone",def:"V = ⅓πr²h"},
-    {term:"Volume of Sphere",def:"V = ⁴⁄₃πr³"},
-    {term:"Mean",def:"Mean = sum of values ÷ number of values"},
-    {term:"Standard Deviation",def:"s = √(Σ(x−x̄)² ÷ (n−1))"},
-    {term:"Trig Identity",def:"sin²θ + cos²θ = 1\nAlways true!"},
-    {term:"Gradient Formula",def:"m = (y₂−y₁) ÷ (x₂−x₁)"},
-    {term:"Straight Line",def:"y = mx + c\nm = gradient, c = y-intercept"},
-    {term:"Index Law: Multiply",def:"aᵐ × aⁿ = aᵐ⁺ⁿ\nSame base → add powers"},
-    {term:"Index Law: Divide",def:"aᵐ ÷ aⁿ = aᵐ⁻ⁿ\nSame base → subtract powers"},
-    {term:"Negative Index",def:"a⁻ⁿ = 1/aⁿ\ne.g. 2⁻³ = 1/8"},
-    {term:"Fractional Index",def:"a^(1/n) = ⁿ√a\ne.g. 27^(1/3) = 3"},
-    {term:"Dot Product",def:"a·b = a₁b₁ + a₂b₂ + a₃b₃\nIf a·b = 0 → perpendicular"},
-    {term:"Probability",def:"P(A) = favourable ÷ total\nP(not A) = 1 − P(A)"},
-    {term:"IQR",def:"IQR = Q3 − Q1\n(upper − lower quartile)"},
-  ]
-};
-FLASHCARDS.algebra=FLASHCARDS.all.slice(0,5);
-FLASHCARDS.trig=FLASHCARDS.all.slice(1,8);
-FLASHCARDS.geometry=FLASHCARDS.all.slice(8,13);
-FLASHCARDS.stats=FLASHCARDS.all.slice(13,17);
-FLASHCARDS.surds=FLASHCARDS.all.slice(18,22);
-FLASHCARDS.higher=[
-  {term:"Differentiation: Power Rule",def:"f(x) = xⁿ → f′(x) = nxⁿ⁻¹\nMultiply by the power, drop the power by 1"},
-  {term:"Derivatives of Trig",def:"d/dx (sin x) = cos x\nd/dx (cos x) = −sin x\n(x in radians!)"},
-  {term:"Chain Rule",def:"d/dx f(g(x)) = f′(g(x)) × g′(x)\nDifferentiate outside, multiply by derivative of inside"},
-  {term:"Stationary Points",def:"Solve f′(x) = 0\nThen use a nature table to classify (max / min / inflection)"},
-  {term:"Integration: Power Rule",def:"∫xⁿ dx = xⁿ⁺¹/(n+1) + C\nRaise the power by 1, divide by the new power"},
-  {term:"Integrals of Trig",def:"∫sin x dx = −cos x + C\n∫cos x dx = sin x + C"},
-  {term:"Area Between Curves",def:"Area = ∫(upper − lower) dx\nbetween the points of intersection"},
-  {term:"Gradient & Angle",def:"m = tan θ\nθ is the angle the line makes with the positive x-axis"},
-  {term:"Perpendicular Lines",def:"m₁ × m₂ = −1\nFlip the fraction and change the sign"},
-  {term:"Distance Formula",def:"d = √((x₂−x₁)² + (y₂−y₁)²)"},
-  {term:"Circle (centre-radius form)",def:"(x−a)² + (y−b)² = r²\nCentre (a,b), radius r"},
-  {term:"Circle (general form)",def:"x² + y² + 2gx + 2fy + c = 0\nCentre (−g,−f), radius √(g²+f²−c)"},
-  {term:"Recurrence Relations",def:"uₙ₊₁ = auₙ + b\nLimit exists if −1 < a < 1:\nL = b/(1−a)"},
-  {term:"Addition Formulae",def:"sin(A±B) = sinA cosB ± cosA sinB\ncos(A±B) = cosA cosB ∓ sinA sinB"},
-  {term:"Double Angle Formulae",def:"sin 2A = 2 sinA cosA\ncos 2A = cos²A − sin²A = 2cos²A − 1 = 1 − 2sin²A"},
-  {term:"Radians",def:"180° = π radians\ndegrees → radians: × π/180"},
-  {term:"Discriminant",def:"b² − 4ac\n> 0: two real roots · = 0: equal roots · < 0: no real roots"},
-  {term:"Remainder & Factor Theorem",def:"Dividing f(x) by (x−h): remainder = f(h)\nIf f(h) = 0 then (x−h) is a factor"},
-  {term:"Composite Functions",def:"f(g(x)) — apply g first, then f\nWork from the inside out"},
-  {term:"Laws of Logarithms",def:"log a + log b = log ab\nlog a − log b = log(a/b)\nn·log a = log aⁿ"},
-  {term:"Logs & Exponentials",def:"y = aˣ ⟺ x = logₐy\nlogₐa = 1, logₐ1 = 0"},
-  {term:"Magnitude of a Vector",def:"|a| = √(a₁² + a₂² + a₃²)"},
-  {term:"Scalar (Dot) Product",def:"a·b = |a||b|cos θ = a₁b₁ + a₂b₂ + a₃b₃\na·b = 0 → perpendicular"},
-];
-
-let S={
-  panel:'practice',currentQ:null,currentTopic:'random',currentDiff:'auto',
-  questionNum:1,notepadContent:'',
-  stats:{answered:0,correct:0,streak:0,bestStreak:0,xp:0,level:1,dailyCount:0,dailyDate:''},
-  topicStats:{},settings:{name:'',goal:10,theme:'purple'},
-  timerScores:[],fcIdx:0,fcCards:[],
-  timerLeft:0,timerScore:0,timerTopic:'random',timerQ:null
-};
-let timerInterval=null;
-
-try{
-  const sv=localStorage.getItem('nat5_v4');
-  if(sv){
-    const p=JSON.parse(sv);
-    if(p.stats)S.stats={...S.stats,...p.stats};
-    if(p.topicStats)S.topicStats=p.topicStats;
-    if(p.notepadContent)S.notepadContent=p.notepadContent;
-    if(p.questionNum)S.questionNum=p.questionNum;
-    if(p.settings)S.settings={...S.settings,...p.settings};
-    if(p.timerScores)S.timerScores=p.timerScores;
-    const today=new Date().toDateString();
-    if(S.stats.dailyDate!==today){S.stats.dailyCount=0;S.stats.dailyDate=today;}
-  }
-}catch(e){}
-
-function save(){try{localStorage.setItem('nat5_v4',JSON.stringify({stats:S.stats,topicStats:S.topicStats,notepadContent:S.notepadContent,questionNum:S.questionNum,settings:S.settings,timerScores:S.timerScores}));}catch(e){}}
-
-function showPanel(id){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
-  document.getElementById('panel-'+id).classList.add('active');
-  const ps=['practice','timer','flashcards','topics','worksheets','formulas','calculator','notepad','progress','resources','mock','shop','settings'];
-  const i=ps.indexOf(id);if(i>=0)document.querySelectorAll('.nav button')[i].classList.add('active');
-  S.panel=id;
-  if(id==='progress')renderProg();
-  if(id==='topics')renderTopics();
-  if(id==='worksheets')renderWS();
-  if(id==='notepad')document.getElementById('notepad-text').value=S.notepadContent;
-  if(id==='flashcards')loadFC();
-  if(id==='mock'){renderMockPrevScores();}
-  if(id==='settings')applySettings();
-}
-
-// Smart Mix: pick topics weighted by weakness — low accuracy = seen more often.
-// Topics with under 3 attempts get a medium weight so everything gets covered.
-function weightedPick(keys){
-  const w=keys.map(k=>{const ts=S.topicStats[k];if(!ts||ts.total<3)return 2;return 0.5+3*(1-ts.correct/ts.total);});
-  let r=Math.random()*w.reduce((a,b)=>a+b,0);
-  for(let i=0;i<keys.length;i++){r-=w[i];if(r<=0)return keys[i];}
-  return keys[keys.length-1];
-}
-function pickTopic(ov){
-  const t=ov||S.currentTopic;
-  if(t==='random'||t==='all'){const k=Object.keys(TOPICS).filter(x=>!TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
-  if(t==='random_h'){const k=Object.keys(TOPICS).filter(x=>TOPICS[x].higher);return k[Math.floor(Math.random()*k.length)];}
-  if(t==='smart'||t==='smart_h'){return weightedPick(Object.keys(TOPICS).filter(x=>!!TOPICS[x].higher===(t==='smart_h')));}
-  return t;
-}
-function getLevel(){
-  if(S.currentDiff!=='auto')return parseInt(S.currentDiff);
-  return S.stats.xp<10?1:S.stats.xp<35?2:3;
-}
-function newQuestion(ov){
-  const topic=pickTopic(ov);
-  const level=getLevel();
-  const pool=TOPICS[topic].questions.filter(q=>q.level<=level);
-  const q=pool[Math.floor(Math.random()*pool.length)];
-  S.currentQ={...q,topic};
-  document.getElementById('q-text').textContent=q.q;
-  document.getElementById('q-input').value='';
-  document.getElementById('q-topic-label').textContent=TOPICS[topic].name;
-  document.getElementById('q-num').textContent=S.questionNum;
-  document.getElementById('q-level').textContent='Level '+level+' — '+(level===1?'Easy':level===2?'Medium':'Hard');
-  document.getElementById('feedback-area').innerHTML='';
-  const inp2=document.getElementById('q-input');inp2.disabled=false;inp2.style.opacity='1';
-  const ca=TOPICS[topic].calc;
-  const bd=document.getElementById('calc-badge');
-  bd.textContent=ca?'✅ Calculator Allowed':'🚫 No Calculator';
-  bd.className='calc-badge '+(ca?'cb-yes':'cb-no');
-  document.getElementById('calc-link').style.display=ca?'inline':'none';
-  document.getElementById('q-input').focus();
-}
-
-function norm(s){return s.toString().toLowerCase().replace(/\s+/g,'').replace(/[×x]/g,'*').replace(/[−–]/g,'-').replace(/\^/g,'').replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(d));}
-// split alternative answers on commas, but not commas inside brackets e.g. "(3,2)"
-function splitAlts(s){const out=[];let d=0,cur='';for(const ch of s){if(ch==='(')d++;else if(ch===')')d--;if(ch===','&&d===0){out.push(cur);cur='';}else cur+=ch;}out.push(cur);return out;}
-function stripVar(s){return s.replace(/^[a-z*]=/,'');}
-function isNum(s){return /^-?(\d+\.?\d*|\.\d+)$/.test(s);}
-function match(user,correct){
-  const u=norm(user);
-  if(u===norm(correct))return true;
-  return splitAlts(correct).map(c=>norm(c)).some(c=>{
-    const cn=stripVar(c),un=stripVar(u);
-    if(c===u||cn===un)return true;
-    if(!isNum(cn)||!isNum(un))return false;
-    // integers must be exact; decimals allowed a half-unit-in-last-place rounding band
-    const dp=(cn.split('.')[1]||'').length;
-    const tol=dp>0?0.5*Math.pow(10,-dp)+1e-9:1e-9;
-    return Math.abs(parseFloat(cn)-parseFloat(un))<=tol;
-  });
-}
-
-function checkAnswer(){
-  if(!S.currentQ)return;
-  const raw=document.getElementById('q-input').value.trim();if(!raw)return;
-  const ok=match(raw,S.currentQ.a);
-  S.stats.answered++;S.stats.dailyCount++;
-  if(!S.stats.dailyDate)S.stats.dailyDate=new Date().toDateString();
-  const tk=S.currentQ.topic;
-  if(!S.topicStats[tk])S.topicStats[tk]={correct:0,total:0};
-  S.topicStats[tk].total++;
-  // Disable input immediately so student can't retry
-  const inp=document.getElementById('q-input');
-  inp.disabled=true;inp.style.opacity='0.5';
-  if(ok){
-    S.stats.correct++;S.topicStats[tk].correct++;
-    S.stats.streak++;if(S.stats.streak>S.stats.bestStreak)S.stats.bestStreak=S.stats.streak;
-    S.stats.xp+=S.currentQ.level*2;updateLevel();updateHeader();checkMilestones();
-    const sm=S.stats.streak>=3?`🔥 ${S.stats.streak} in a row!`:'';
-    document.getElementById('feedback-area').innerHTML=`<div class="fb fb-ok"><strong>✅ Correct!</strong> ${sm}<div class="fb-exp"><strong>Why:</strong> ${S.currentQ.explain}</div></div>`;
-    S.questionNum++;save();setTimeout(newQuestion,2500);
-  }else{
-    S.stats.streak=0;updateHeader();save();showWrong(raw);
-  }
-}
-function showWrong(u){
-  const q=S.currentQ;
-  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-no"><strong>❌ Not quite!</strong> You answered: <em>${u}</em><br><strong>Correct answer:</strong> ${q.a}<div class="fb-exp"><strong>How to do it:</strong> ${q.explain}</div><em style="font-size:12px;opacity:.7">Next question loading in 5 seconds...</em></div>`;
-  S.questionNum++;save();setTimeout(newQuestion,5000);
-}
-function skipQuestion(){S.stats.streak=0;S.questionNum++;newQuestion();}
-function getHint(){
-  if(!S.currentQ)return;
-  const inp=document.getElementById('q-input');
-  if(inp.disabled)return;
-  document.getElementById('feedback-area').innerHTML=`<div class="fb fb-hint"><strong>💡 Hint:</strong> ${S.currentQ.hint}</div>`;
-}
-function updateLevel(){S.stats.level=S.stats.xp<10?1:S.stats.xp<35?2:S.stats.xp<70?3:S.stats.xp<120?4:5;}
-function updateHeader(){
-  document.getElementById('hdr-stars').textContent=S.stats.correct;
-  document.getElementById('hdr-level').textContent=S.stats.level;
-  document.getElementById('hdr-streak').textContent=S.stats.streak;
-  document.getElementById('hdr-xp').textContent=S.stats.xp;
-  const lv=[0,10,35,70,120,200];const l=S.stats.level-1;
-  const base=lv[Math.min(l,4)]||0,next=lv[Math.min(l+1,4)]||200;
-  document.getElementById('xp-fill').style.width=Math.min(100,((S.stats.xp-base)/(next-base))*100)+'%';
-  const g=S.settings.goal||10,dc=S.stats.dailyCount||0;
-  document.getElementById('hdr-daily').textContent=dc;document.getElementById('hdr-goal').textContent=g;
-  document.getElementById('daily-count').textContent=dc;document.getElementById('daily-goal-lbl').textContent=g;
-  document.getElementById('goal-fill').style.width=Math.min(100,(dc/g)*100)+'%';
-}
-function changeTopic(){S.currentTopic=document.getElementById('topic-select').value;S.currentDiff=document.getElementById('diff-select').value;newQuestion();}
-
-function checkMilestones(){
-  const c=S.stats.correct;
-  const m={5:'🎉 5 correct! Great start!',10:'⭐ 10 correct! On fire!',25:'🚀 25 correct! Incredible!',50:'🏆 50 correct! Maths master!',100:'👑 100 correct! LEGEND!'};
-  if(m[c])showReward(m[c]);
-  if(S.stats.streak===5)showReward('🔥 5 streak! Amazing!');
-  if(S.stats.streak===10)showReward('💫 10 streak! Unstoppable!');
-  if(S.stats.dailyCount===(S.settings.goal||10))showReward('✅ Daily goal reached! 🎯');
-}
-function showReward(msg){const el=document.getElementById('reward-pop');el.innerHTML=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
-
-// TIMER
-function startTimer(secs){
-  S.timerTopic=document.getElementById('timer-topic').value;
-  document.getElementById('timer-setup').style.display='none';
-  document.getElementById('timer-result').style.display='none';
-  document.getElementById('timer-game').style.display='block';
-  S.timerLeft=secs;S.timerScore=0;
-  document.getElementById('timer-score-lbl').textContent='0';
-  document.getElementById('timer-display').textContent=secs;
-  document.getElementById('timer-display').className='timer-display';
-  newTimerQ();
-  timerInterval=setInterval(()=>{
-    S.timerLeft--;
-    document.getElementById('timer-display').textContent=S.timerLeft;
-    if(S.timerLeft<=10)document.getElementById('timer-display').className='timer-display urgent';
-    if(S.timerLeft<=0){clearInterval(timerInterval);endTimer(secs);}
-  },1000);
-}
-function newTimerQ(){
-  const t=pickTopic(S.timerTopic);
-  const pool=TOPICS[t].questions.filter(q=>q.level<=2);
-  S.timerQ={...pool[Math.floor(Math.random()*pool.length)],topic:t};
-  document.getElementById('timer-q').textContent=S.timerQ.q;
-  document.getElementById('timer-input').value='';
-  document.getElementById('timer-fb').textContent='';
-  document.getElementById('timer-input').focus();
-}
-function checkTimerAnswer(){
-  const raw=document.getElementById('timer-input').value.trim();if(!raw||!S.timerQ)return;
-  if(match(raw,S.timerQ.a)){
-    S.timerScore++;
-    document.getElementById('timer-score-lbl').textContent=S.timerScore;
-    document.getElementById('timer-fb').innerHTML='<span style="color:#16a34a;font-weight:700">✅ Correct!</span>';
-    newTimerQ();
-  }else{
-    document.getElementById('timer-fb').innerHTML=`<span style="color:#dc2626;font-weight:700">❌ Answer: ${S.timerQ.a}</span>`;
-    setTimeout(newTimerQ,900);
-  }
-}
-function nextTimerQ(){newTimerQ();}
-function endTimer(secs){
-  clearInterval(timerInterval);
-  document.getElementById('timer-game').style.display='none';
-  document.getElementById('timer-result').style.display='block';
-  document.getElementById('timer-final').textContent=S.timerScore+' correct!';
-  const best=S.timerScores.length?Math.max(...S.timerScores.map(s=>s.score)):0;
-  document.getElementById('timer-msg').textContent=S.timerScore>best?'🏆 New personal best!':S.timerScore>=10?'Excellent!':S.timerScore>=5?'Good effort!':'Keep practising!';
-  S.timerScores.push({score:S.timerScore,secs,date:new Date().toLocaleDateString()});
-  if(S.timerScores.length>10)S.timerScores=S.timerScores.slice(-10);
-  save();
-}
-function resetTimer(){clearInterval(timerInterval);document.getElementById('timer-setup').style.display='block';document.getElementById('timer-game').style.display='none';document.getElementById('timer-result').style.display='none';}
-
-// FLASHCARDS
-function loadFC(){
-  const t=document.getElementById('fc-topic')?.value||'all';
-  S.fcCards=[...(FLASHCARDS[t]||FLASHCARDS.all)];S.fcIdx=0;showFC();
-}
-function showFC(){
-  const c=S.fcCards[S.fcIdx];if(!c)return;
-  document.getElementById('fc-term').textContent=c.term;
-  document.getElementById('fc-def').textContent=c.def;
-  document.getElementById('fc-idx').textContent=S.fcIdx+1;
-  document.getElementById('fc-tot').textContent=S.fcCards.length;
-  document.getElementById('flashcard').classList.remove('flipped');
-}
-function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
-function nextFC(){S.fcIdx=(S.fcIdx+1)%S.fcCards.length;showFC();}
-function prevFC(){S.fcIdx=(S.fcIdx-1+S.fcCards.length)%S.fcCards.length;showFC();}
-function shuffleFC(){for(let i=S.fcCards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[S.fcCards[i],S.fcCards[j]]=[S.fcCards[j],S.fcCards[i]];}S.fcIdx=0;showFC();}
-
-// TOPICS
-function renderTopics(){
-  const g=document.getElementById('topic-grid');g.innerHTML='';
-  let lastHigher=null;
-  Object.entries(TOPICS).forEach(([k,t])=>{
-    const isH=!!t.higher;
-    if(isH!==lastHigher){
-      const h=document.createElement('div');
-      h.style.cssText='grid-column:1/-1;font-weight:700;font-size:15px;margin-top:'+(lastHigher===null?'0':'10px');
-      h.textContent=isH?'🎓 Higher':'🏴󠁧󠁢󠁳󠁣󠁴󠁿 National 5';
-      g.appendChild(h);lastHigher=isH;
-    }
-    const ts=S.topicStats[k]||{correct:0,total:0};
-    const pct=ts.total?Math.round((ts.correct/ts.total)*100):0;
-    const d=document.createElement('div');d.className='topic-card';
-    d.innerHTML=`<div class="ticon">${t.icon}</div><h3>${t.name}</h3>
-      <div class="tprog">${ts.total?pct+'% ('+ts.total+' done)':'Not started'}</div>
-      <div style="font-size:11px;margin-top:3px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calc allowed':'🚫 No calc'}</div>
-      <div class="pb"><div class="pf" style="width:${pct}%"></div></div>`;
-    d.onclick=()=>{document.getElementById('topic-select').value=k;S.currentTopic=k;showPanel('practice');newQuestion();};
-    g.appendChild(d);
-  });
-}
-
-// WORKSHEETS
-const WORKSHEETS=[
-  {title:'Algebra Basics',topic:'algebra',diff:'Easy',qs:[0,1,2,3,4]},
-  {title:'Algebra Challenge',topic:'algebra',diff:'Hard',qs:[5,6,7,8,9,10,13]},
-  {title:'Trig — No Calc',topic:'trigonometry',diff:'Easy',qs:[0,1,2,3,4]},
-  {title:'Trig — Calculator',topic:'trigonometry',diff:'Hard',qs:[5,6,7,8]},
-  {title:'Statistics',topic:'statistics',diff:'Mixed',qs:[0,1,2,3,4,5,6,7]},
-  {title:'Fractions & %',topic:'fractions',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
-  {title:'Surds & Indices',topic:'surds',diff:'Mixed',qs:[0,1,2,3,4,5,6,7]},
-  {title:'Functions & Graphs',topic:'functions',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
-  {title:'Geometry',topic:'geometry',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
-  {title:'Circle Geometry',topic:'circle',diff:'Mixed',qs:[0,1,2,3,4,5]},
-  {title:'Vectors',topic:'vectors',diff:'Mixed',qs:[0,1,2,3,4,5]},
-];
-const BC={Easy:'be',Medium:'bm',Hard:'bh',Mixed:'bx'};
-function renderWS(){
-  const el=document.getElementById('sheet-list');el.innerHTML='';
-  WORKSHEETS.forEach((ws,i)=>{
-    const t=TOPICS[ws.topic];const d=document.createElement('div');d.className='sheet-card';
-    d.innerHTML=`<h3>${ws.title}</h3><p>${t.icon} ${t.name}</p>
-      <span class="badge ${BC[ws.diff]||'bx'}">${ws.diff}</span>
-      <span style="font-size:11px;margin-left:5px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calc':'🚫 No calc'}</span>`;
-    d.onclick=()=>openWS(i);el.appendChild(d);
-  });
-}
-function openWS(idx){
-  const ws=WORKSHEETS[idx];const t=TOPICS[ws.topic];
-  const qs=ws.qs.map(qi=>t.questions[qi]).filter(Boolean);
-  document.getElementById('ws-list').style.display='none';
-  const av=document.getElementById('ws-active');av.style.display='block';
-  av.innerHTML=`<div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;flex-wrap:wrap;gap:7px">
-      <div><h2>${t.icon} ${ws.title}</h2>
-        <div style="font-size:12px;margin-top:2px;color:${t.calc?'#16a34a':'#dc2626'}">${t.calc?'✅ Calculator Allowed':'🚫 No Calculator for this topic'}</div>
-      </div>
-      <button class="btn btn-s" onclick="closeWS()" style="font-size:12px;padding:7px 11px">← Back</button>
-    </div>
-    <p style="font-size:12px;color:var(--text2);margin-bottom:11px">Answer all questions then click "Check All".</p>
-    ${qs.map((q,i)=>`<div class="ws-q"><p>${i+1}. ${q.q}</p>
-      <input type="text" placeholder="Your answer..." id="wsq${i}"
-        onkeydown="if(event.key==='Enter')checkWS(${i},'${q.a.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}','${q.explain.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">
-      <div id="wsfb${i}" style="margin-top:5px;font-size:13px"></div></div>`).join('')}
-    <div class="btn-row" style="margin-top:13px">
-      <button class="btn btn-p" onclick="checkAllWS(${JSON.stringify(qs.map(q=>({a:q.a,e:q.explain})))})">Check All ✓</button>
-      <button class="btn btn-s" onclick="closeWS()">← Back</button>
-    </div></div>`;
-}
-function checkWS(i,correct,explain){
-  const user=(document.getElementById('wsq'+i)||{}).value?.trim()||'';
-  const ok=match(user,correct);
-  document.getElementById('wsfb'+i).innerHTML=ok
-    ?`<span style="color:#16a34a;font-weight:700">✅ Correct!</span> <span style="color:#374151">${explain}</span>`
-    :`<span style="color:#dc2626;font-weight:700">❌ Answer: ${correct}</span> <span style="color:#374151">${explain}</span>`;
-}
-function checkAllWS(answers){answers.forEach((a,i)=>checkWS(i,a.a,a.e));}
-function closeWS(){document.getElementById('ws-list').style.display='block';document.getElementById('ws-active').style.display='none';}
-
-// PROGRESS
-function renderProg(){
-  const items=[
-    {n:S.stats.answered,l:'Answered'},{n:S.stats.correct,l:'Correct'},
-    {n:S.stats.answered?Math.round((S.stats.correct/S.stats.answered)*100)+'%':'0%',l:'Accuracy'},
-    {n:S.stats.bestStreak,l:'Best Streak 🔥'},{n:S.stats.level,l:'Level'},{n:S.stats.xp,l:'XP ⭐'},
-  ];
-  document.getElementById('stats-grid').innerHTML=items.map(s=>`<div class="stat-card"><div class="snum">${s.n}</div><div class="slbl">${s.l}</div></div>`).join('');
-  const list=document.getElementById('topic-prog');list.innerHTML='';
-  Object.entries(TOPICS).forEach(([k,t])=>{
-    const ts=S.topicStats[k]||{correct:0,total:0};
-    const pct=ts.total?Math.round((ts.correct/ts.total)*100):0;
-    list.innerHTML+=`<div style="margin-bottom:9px">
-      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px">
-        <span style="font-weight:700">${t.icon} ${t.name}</span>
-        <span style="color:var(--text2)">${ts.correct}/${ts.total} (${pct}%)</span>
-      </div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
-  });
-  const lb=document.getElementById('leaderboard');
-  if(S.timerScores.length){
-    const sorted=[...S.timerScores].sort((a,b)=>b.score-a.score).slice(0,5);
-    lb.innerHTML=sorted.map((s,i)=>`<div class="lb-row">
-      <span style="font-size:16px;min-width:28px">${['🥇','🥈','🥉','4️⃣','5️⃣'][i]}</span>
-      <span style="flex:1;font-weight:600">${s.secs}s challenge</span>
-      <span style="font-weight:700;color:var(--primary)">${s.score} correct</span>
-      <span style="font-size:11px;color:var(--text2);margin-left:5px">${s.date}</span></div>`).join('');
-  }else{lb.innerHTML='<p style="font-size:13px;color:var(--text2)">No timer scores yet — try the Timer Challenge!</p>';}
-}
-function resetProg(){
-  if(confirm('Reset ALL progress? Cannot be undone.')){
-    S.stats={answered:0,correct:0,streak:0,bestStreak:0,xp:0,level:1,dailyCount:0,dailyDate:new Date().toDateString()};
-    S.topicStats={};S.questionNum=1;S.timerScores=[];
-    save();renderProg();updateHeader();
-  }
-}
-
-// CALCULATOR
-let calcExpr='',calcPrevStr='';
-function buildCalc(){
-  const btns=[
-    {l:'sin',t:'cfn'},{l:'cos',t:'cfn'},{l:'tan',t:'cfn'},{l:'(',t:'cnum'},{l:')',t:'cnum'},
-    {l:'sin⁻¹',t:'cfn'},{l:'cos⁻¹',t:'cfn'},{l:'tan⁻¹',t:'cfn'},{l:'π',t:'cfn'},{l:'e',t:'cfn'},
-    {l:'x²',t:'cfn'},{l:'xⁿ',t:'cfn'},{l:'√',t:'cfn'},{l:'log',t:'cfn'},{l:'ln',t:'cfn'},
-    {l:'7',t:'cnum'},{l:'8',t:'cnum'},{l:'9',t:'cnum'},{l:'÷',t:'cop'},{l:'AC',t:'cclr'},
-    {l:'4',t:'cnum'},{l:'5',t:'cnum'},{l:'6',t:'cnum'},{l:'×',t:'cop'},{l:'⌫',t:'cclr'},
-    {l:'1',t:'cnum'},{l:'2',t:'cnum'},{l:'3',t:'cnum'},{l:'-',t:'cop'},{l:'=',t:'ceq'},
-    {l:'0',t:'cnum'},{l:'.',t:'cnum'},{l:'%',t:'cfn'},{l:'+',t:'cop'},{l:'=',t:'ceq'},
-  ];
-  const g=document.getElementById('calc-btns');g.innerHTML='';
-  btns.forEach(b=>{const btn=document.createElement('button');btn.className='cbtn '+b.t;btn.textContent=b.l;btn.onclick=()=>calcPress(b.l);g.appendChild(btn);});
-}
-function calcPress(v){
-  const d=document.getElementById('calc-main');
-  if(v==='AC'){calcExpr='';calcPrevStr='';d.textContent='0';document.getElementById('calc-prev').textContent='';return;}
-  if(v==='⌫'){calcExpr=calcExpr.slice(0,-1)||'';d.textContent=calcExpr||'0';return;}
-  if(v==='='){
-    try{
-      let e=calcExpr
-        .replace(/π/g,'Math.PI').replace(/e(?![xpn])/g,'Math.E')
-        .replace(/sin⁻¹\(/g,'(180/Math.PI)*Math.asin(')
-        .replace(/cos⁻¹\(/g,'(180/Math.PI)*Math.acos(')
-        .replace(/tan⁻¹\(/g,'(180/Math.PI)*Math.atan(')
-        .replace(/sin\(/g,'Math.sin((Math.PI/180)*(')
-        .replace(/cos\(/g,'Math.cos((Math.PI/180)*(')
-        .replace(/tan\(/g,'Math.tan((Math.PI/180)*(')
-        .replace(/√\(/g,'Math.sqrt(').replace(/log\(/g,'Math.log10(').replace(/ln\(/g,'Math.log(')
-        .replace(/÷/g,'/').replace(/×/g,'*').replace(/x²/g,'**2').replace(/xⁿ/g,'**').replace(/%/g,'/100');
-      const op=(e.match(/\(/g)||[]).length,cl=(e.match(/\)/g)||[]).length;
-      e+=')'.repeat(Math.max(0,op-cl));
-      const r=Function('"use strict";return ('+e+')')();
-      calcPrevStr=calcExpr+' =';
-      document.getElementById('calc-prev').textContent=calcPrevStr;
-      calcExpr=String(parseFloat(r.toFixed(9)));d.textContent=calcExpr;
-    }catch{d.textContent='Error';calcExpr='';}
-    return;
-  }
-  const fns=['sin','cos','tan','sin⁻¹','cos⁻¹','tan⁻¹','√','log','ln'];
-  if(fns.includes(v)){calcExpr+=v+'(';d.textContent=calcExpr;return;}
-  if(v==='x²'){calcExpr+='**2';d.textContent=calcExpr;return;}
-  if(v==='xⁿ'){calcExpr+='**';d.textContent=calcExpr;return;}
-  calcExpr+=v;d.textContent=calcExpr;
-}
-
-// NOTEPAD
-function clearNote(){if(confirm('Clear all notes?')){document.getElementById('notepad-text').value='';S.notepadContent='';save();}}
-function copyNote(){navigator.clipboard.writeText(document.getElementById('notepad-text').value).then(()=>alert('Copied!')).catch(()=>alert('Use Ctrl+A then Ctrl+C'));}
-function downloadNote(){const a=document.createElement('a');a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(document.getElementById('notepad-text').value);a.download='nat5-notes.txt';a.click();}
-document.addEventListener('input',e=>{if(e.target.id==='notepad-text'){S.notepadContent=e.target.value;save();}});
-
-// SETTINGS
-function saveName(){
-  const n=document.getElementById('student-name').value.trim();S.settings.name=n;save();
-  document.getElementById('app-title').textContent=n?'🏴󠁧󠁢󠁳󠁣󠁴󠁿 '+n+"'s Nat 5 Maths":'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Nat 5 Maths Scotland';
-}
-function setGoal(n){
-  S.settings.goal=n;save();
-  ['5','10','20','30'].forEach(v=>{const el=document.getElementById('goal-'+v);if(el){el.className=v==n?'btn btn-p':'btn btn-s';}});
-  updateHeader();
-}
-const THEMES={purple:{p:'#4f46e5',p2:'#7c3aed',bg:'#f0f4ff'},teal:{p:'#0891b2',p2:'#0e7490',bg:'#f0fbff'},green:{p:'#16a34a',p2:'#15803d',bg:'#f0fdf4'},red:{p:'#dc2626',p2:'#db2777',bg:'#fff0f0'},amber:{p:'#d97706',p2:'#b45309',bg:'#fffbeb'}};
-function setTheme(name,sv=true){
-  const t=THEMES[name]||THEMES.purple;
-  document.documentElement.style.setProperty('--primary',t.p);
-  document.documentElement.style.setProperty('--primary2',t.p2);
-  document.documentElement.style.setProperty('--bg',t.bg);
-  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));
-  const el=document.getElementById('theme-'+name);if(el)el.classList.add('active');
-  if(sv){S.settings.theme=name;save();}
-}
-function applySettings(){
-  if(S.settings.name){document.getElementById('app-title').textContent='🏴󠁧󠁢󠁳󠁣󠁴󠁿 '+S.settings.name+"'s Nat 5 Maths";const i=document.getElementById('student-name');if(i)i.value=S.settings.name;}
-  setTheme(S.settings.theme,false);
-  ['5','10','20','30'].forEach(v=>{const el=document.getElementById('goal-'+v);if(el)el.className=String(S.settings.goal||10)===v?'btn btn-p':'btn btn-s';});
-}
-function openLink(url){window.open(url,'_blank');}
-function openShop(url){window.open(url,'_blank');}
-
-
-// ===================== MOCK EXAM =====================
-const MOCK_PAPERS = {
-  1: {
-    title: "Nat 5 Paper 1 — Non-Calculator",
-    short: "Nat 5 P1",
-    totalMarks: 40,
-    duration: 3600, // 60 mins in seconds
-    calcAllowed: false,
-    questions: [
-      // NUMERICAL SKILLS (no calc)
-      {topic:"Numerical Skills",q:"Evaluate: 3/4 + 2/3",a:"17/12",marks:2,explain:"Common denom=12: 9/12+8/12=17/12"},
-      {topic:"Numerical Skills",q:"Simplify: √72",a:"6√2",marks:2,explain:"√(36×2)=6√2"},
-      {topic:"Numerical Skills",q:"Evaluate: 3² × 3⁻¹",a:"3",marks:1,explain:"3^(2+(-1))=3^1=3"},
-      {topic:"Numerical Skills",q:"Find 12.5% of 640.",a:"80",marks:2,explain:"12.5%=1/8. 640÷8=80"},
-      {topic:"Numerical Skills",q:"Rationalise: 6/√3",a:"2√3",marks:2,explain:"6/√3 × √3/√3 = 6√3/3 = 2√3"},
-      // ALGEBRA (no calc)
-      {topic:"Algebra",q:"Expand and simplify: (x+4)(x−3)",a:"x²+x−12",marks:2,explain:"x²−3x+4x−12=x²+x−12"},
-      {topic:"Algebra",q:"Factorise: x²−9",a:"(x+3)(x−3)",marks:2,explain:"Difference of squares: (x+3)(x−3)"},
-      {topic:"Algebra",q:"Factorise fully: 3x²−12x",a:"3x(x−4)",marks:2,explain:"HCF=3x: 3x(x−4)"},
-      {topic:"Algebra",q:"Solve: 3x+7=x+19",a:"6",marks:2,explain:"2x=12 → x=6"},
-      {topic:"Algebra",q:"Factorise: x²+7x+12",a:"(x+3)(x+4)",marks:2,explain:"3×4=12, 3+4=7 → (x+3)(x+4)"},
-      {topic:"Algebra",q:"Simplify: (2x³)(3x²)",a:"6x⁵",marks:1,explain:"2×3=6, x^(3+2)=x⁵"},
-      {topic:"Algebra",q:"Complete the square: x²+6x+2",a:"(x+3)²−7",marks:3,explain:"(x+3)²−9+2=(x+3)²−7"},
-      // GEOMETRY (no calc)
-      {topic:"Geometry",q:"A right-angled triangle has legs 5cm and 12cm. Find the hypotenuse.",a:"13",marks:2,explain:"√(25+144)=√169=13cm"},
-      {topic:"Geometry",q:"Find the gradient of the line joining (2,1) and (6,9).",a:"2",marks:2,explain:"(9−1)/(6−2)=8/4=2"},
-      {topic:"Geometry",q:"Write the equation of the line with gradient 3 and y-intercept −2.",a:"y=3x−2",marks:1,explain:"y=mx+c: y=3x−2"},
-      // TRIG (no calc — exact values)
-      {topic:"Trigonometry",q:"Write the exact value of sin 30°.",a:"1/2",marks:1,explain:"sin 30°=1/2 (standard value)"},
-      {topic:"Trigonometry",q:"Write the exact value of cos 60°.",a:"1/2",marks:1,explain:"cos 60°=1/2 (standard value)"},
-      {topic:"Trigonometry",q:"Write the exact value of tan 45°.",a:"1",marks:1,explain:"tan 45°=1 (standard value)"},
-      // STATISTICS (no calc)
-      {topic:"Statistics",q:"Find the median of: 3, 8, 4, 1, 6, 7, 2",a:"4",marks:2,explain:"Sorted: 1,2,3,4,6,7,8 → median=4"},
-      {topic:"Statistics",q:"Find the range of: 15, 3, 22, 8, 19",a:"19",marks:1,explain:"22−3=19"},
-    ]
-  },
-  2: {
-    title: "Nat 5 Paper 2 — Calculator Allowed",
-    short: "Nat 5 P2",
-    totalMarks: 50,
-    duration: 5400, // 90 mins in seconds
-    calcAllowed: true,
-    questions: [
-      // NUMERICAL SKILLS
-      {topic:"Numerical Skills",q:"A car was bought for £12,000. It depreciates by 15% per year. What is its value after 2 years? (to nearest £)",a:"8670",marks:3,explain:"Year1: 12000×0.85=10200. Year2: 10200×0.85=8670"},
-      {topic:"Numerical Skills",q:"£5,000 is invested at 3.5% compound interest per year. Find the value after 3 years. (2dp)",a:"5543.60",marks:3,explain:"5000×(1.035)³=5000×1.10872≈5543.60"},
-      {topic:"Numerical Skills",q:"A jacket costs £85 after a 32% reduction. Find the original price. (2dp)",a:"125.00",marks:3,explain:"£85=68% of original. 85÷0.68=£125.00"},
-      // ALGEBRA
-      {topic:"Algebra",q:"Solve: x²+5x−6=0",a:"x=1,x=−6",marks:3,explain:"Factorise: (x+6)(x−1)=0 → x=1 or x=−6"},
-      {topic:"Algebra",q:"Solve using the quadratic formula: 2x²−3x−2=0",a:"x=2,x=−0.5",marks:4,explain:"a=2,b=−3,c=−2. Disc=9+16=25. x=(3±5)/4 → x=2 or x=−1/2"},
-      {topic:"Algebra",q:"Change the subject to x: y = 3x + 7",a:"x=(y−7)/3",marks:2,explain:"y−7=3x → x=(y−7)/3"},
-      {topic:"Algebra",q:"Simplify the algebraic fraction: (x²−4)/(x+2)",a:"x−2",marks:2,explain:"(x+2)(x−2)/(x+2)=x−2"},
-      {topic:"Algebra",q:"Solve the simultaneous equations: 2x+y=7 and x−y=2",a:"x=3,y=1",marks:3,explain:"Add: 3x=9→x=3. Sub: y=7−6=1"},
-      // GEOMETRY
-      {topic:"Geometry",q:"Calculate the volume of a cone with radius 6cm and height 10cm. (2dp)",a:"376.99",marks:3,explain:"V=⅓πr²h=⅓×π×36×10≈376.99cm³"},
-      {topic:"Geometry",q:"Calculate the surface area of a sphere with radius 5cm. (2dp)",a:"314.16",marks:3,explain:"SA=4πr²=4×π×25≈314.16cm²"},
-      {topic:"Geometry",q:"A sector has radius 8cm and angle 135°. Calculate its area. (2dp)",a:"75.40",marks:3,explain:"Area=(135/360)×π×64≈75.40cm²"},
-      {topic:"Geometry",q:"Find the length of arc with radius 12cm and angle 80°. (2dp)",a:"16.76",marks:3,explain:"Arc=(80/360)×2π×12≈16.76cm"},
-      {topic:"Geometry",q:"Point A is at (1,2,3) and B is at (4,6,3). Calculate |AB|. (2dp)",a:"5.00",marks:3,explain:"√((4−1)²+(6−2)²+(3−3)²)=√(9+16+0)=√25=5"},
-      // TRIGONOMETRY
-      {topic:"Trigonometry",q:"In triangle ABC, AB=10cm, BC=8cm, angle B=62°. Find AC. (2dp)",a:"9.38",marks:4,explain:"Cosine rule: AC²=100+64−160cos62°≈88.0 → AC≈9.38cm"},
-      {topic:"Trigonometry",q:"In triangle PQR, PQ=7cm, angle P=48°, angle Q=65°. Find QR. (2dp)",a:"5.67",marks:4,explain:"Angle R=67°. Sine rule: QR/sin48°=7/sin67° → QR≈5.67cm"},
-      {topic:"Trigonometry",q:"Calculate the area of triangle with sides 9cm and 11cm, included angle 72°. (2dp)",a:"47.14",marks:3,explain:"Area=½×9×11×sin72°≈47.14cm²"},
-      {topic:"Trigonometry",q:"Solve for x (0≤x≤360): sin x = 0.6 (2 solutions)",a:"x=36.87,x=143.13",marks:3,explain:"x=sin⁻¹(0.6)≈36.87°. Second solution: 180−36.87=143.13°"},
-      // STATISTICS
-      {topic:"Statistics",q:"Data set: 4, 7, 7, 9, 11, 13. Calculate the standard deviation. (2dp)",a:"3.21,3.2",marks:4,explain:"Mean=51/6=8.5. Deviations²: 20.25,2.25,2.25,0.25,6.25,20.25. Variance=51.5/5=10.3. SD=√10.3≈3.21"},
-      {topic:"Statistics",q:"Find the interquartile range of: 2,5,7,8,11,14,16,20",a:"9",marks:3,explain:"Q1=(5+7)/2=6. Q3=(14+16)/2=15. IQR=15−6=9"},
-    ]
-  },
-  3: {
-    title: "Higher Paper — Non-Calculator",
-    short: "Higher",
-    totalMarks: 40,
-    duration: 3600,
-    calcAllowed: false,
-    questions: [
-      // STRAIGHT LINE
-      {topic:"The Straight Line",q:"Write the gradient of a line perpendicular to y = 2x + 3.",a:"-1/2,-0.5",marks:2,explain:"Perpendicular gradients multiply to −1: m = −1/2"},
-      {topic:"The Straight Line",q:"Calculate the distance between (1,2) and (4,6).",a:"5",marks:2,explain:"√((4−1)²+(6−2)²)=√(9+16)=√25=5"},
-      // FUNCTIONS
-      {topic:"Functions",q:"f(x) = x² + 1 and g(x) = 3x. Evaluate f(g(2)).",a:"37",marks:2,explain:"g(2)=6, then f(6)=36+1=37"},
-      {topic:"Functions",q:"Find the inverse of f(x) = 2x − 4.",a:"(x+4)/2,x/2+2",marks:3,explain:"y=2x−4 → x=(y+4)/2 → f⁻¹(x)=(x+4)/2"},
-      // POLYNOMIALS
-      {topic:"Polynomials",q:"Find the remainder when f(x) = x³ − 2x² + x − 1 is divided by (x − 2).",a:"1",marks:2,explain:"Remainder theorem: f(2)=8−8+2−1=1"},
-      {topic:"Polynomials",q:"Find the discriminant of x² + 4x + 5 = 0.",a:"-4",marks:2,explain:"b²−4ac=16−20=−4 (no real roots)"},
-      // RECURRENCE
-      {topic:"Recurrence Relations",q:"uₙ₊₁ = 0.5uₙ + 10. Find the limit as n → ∞.",a:"20",marks:2,explain:"L=b/(1−a)=10/(1−0.5)=20"},
-      // DIFFERENTIATION
-      {topic:"Differentiation",q:"Differentiate: x³ − 4x",a:"3x²-4",marks:2,explain:"Power rule: 3x²−4"},
-      {topic:"Differentiation",q:"f(x) = 2x³. Evaluate f′(2).",a:"24",marks:2,explain:"f′(x)=6x², f′(2)=6×4=24"},
-      {topic:"Differentiation",q:"Find the x-coordinate of the stationary point of y = x² − 6x + 1.",a:"3,x=3",marks:3,explain:"dy/dx=2x−6=0 → x=3"},
-      // INTEGRATION
-      {topic:"Integration",q:"Integrate: ∫6x² dx",a:"2x³+c,2x³",marks:2,explain:"6x³/3 + C = 2x³ + C"},
-      {topic:"Integration",q:"Evaluate: ∫₀² 3x² dx",a:"8",marks:2,explain:"[x³]₀² = 8 − 0 = 8"},
-      // TRIG
-      {topic:"Trig (Radians)",q:"Convert 150° to radians. (in terms of π)",a:"5π/6,5pi/6",marks:1,explain:"150×π/180 = 5π/6"},
-      {topic:"Trig (Radians)",q:"Write the exact value of sin(π/3).",a:"√3/2",marks:1,explain:"π/3 = 60°, sin 60° = √3/2"},
-      {topic:"Trig Formulae",q:"sin A = 3/5 and cos A = 4/5 (A acute). Evaluate sin 2A.",a:"24/25,0.96",marks:3,explain:"sin2A=2sinAcosA=2×(3/5)×(4/5)=24/25"},
-      // CIRCLE
-      {topic:"The Circle",q:"Find the radius of the circle x² + y² − 4x + 6y − 12 = 0.",a:"5",marks:3,explain:"g=−2, f=3, c=−12. r=√(4+9+12)=√25=5"},
-      {topic:"The Circle",q:"Write the centre of the circle (x−3)² + (y+1)² = 16.",a:"(3,-1)",marks:1,explain:"Centre (3,−1), radius 4"},
-      // VECTORS
-      {topic:"Vectors in 3D",q:"Calculate the magnitude of vector (2,−1,2).",a:"3",marks:2,explain:"√(4+1+4)=√9=3"},
-      // LOGS
-      {topic:"Logs & Exponentials",q:"Evaluate: log₂32",a:"5",marks:1,explain:"2⁵=32 → log₂32=5"},
-      {topic:"Logs & Exponentials",q:"Solve: log₄x = 3",a:"64,x=64",marks:2,explain:"x=4³=64"},
-    ]
-  }
-};
-
-let mockState = {
-  paper: null,
-  questions: [],
-  currentIdx: 0,
-  answers: [],
-  score: 0,
-  timerLeft: 0,
-  timerInterval: null,
-  started: false
-};
-
-function startMock(paperNum) {
-  const paper = MOCK_PAPERS[paperNum];
-  mockState = {
-    paper: paperNum,
-    questions: [...paper.questions],
-    currentIdx: 0,
-    answers: new Array(paper.questions.length).fill(null),
-    score: 0,
-    timerLeft: paper.duration,
-    timerInterval: null,
-    started: true
-  };
-  document.getElementById('mock-home').style.display = 'none';
-  document.getElementById('mock-exam').style.display = 'block';
-  document.getElementById('mock-results').style.display = 'none';
-  document.getElementById('mock-paper-title').textContent = paper.title;
-  const cb = document.getElementById('mock-calc-status');
-  cb.textContent = paper.calcAllowed ? '✅ Calculator Allowed' : '🚫 No Calculator';
-  cb.className = 'calc-badge ' + (paper.calcAllowed ? 'cb-yes' : 'cb-no');
-  mockState.timerInterval = setInterval(mockTick, 1000);
-  showMockQ();
-}
-
-function mockTick() {
-  mockState.timerLeft--;
-  const m = Math.floor(mockState.timerLeft / 60);
-  const s = mockState.timerLeft % 60;
-  const disp = m + ':' + (s < 10 ? '0' : '') + s;
-  document.getElementById('mock-timer-display').textContent = disp;
-  if (mockState.timerLeft <= 300) document.getElementById('mock-timer-display').style.color = '#dc2626';
-  if (mockState.timerLeft <= 0) { clearInterval(mockState.timerInterval); endMock(); }
-}
-
-function showMockQ() {
-  const qs = mockState.questions;
-  const i = mockState.currentIdx;
-  if (i >= qs.length) { endMock(); return; }
-  const q = qs[i];
-  const total = qs.length;
-  document.getElementById('mock-q-counter').textContent = 'Question ' + (i+1) + ' of ' + total;
-  document.getElementById('mock-topic-label').textContent = '📌 ' + q.topic;
-  document.getElementById('mock-q-text').textContent = q.q;
-  document.getElementById('mock-marks-label').textContent = q.marks + (q.marks === 1 ? ' mark' : ' marks');
-  document.getElementById('mock-answer').value = mockState.answers[i] || '';
-  document.getElementById('mock-answer').disabled = false;
-  document.getElementById('mock-answer').style.opacity = '1';
-  document.getElementById('mock-fb').innerHTML = '';
-  document.getElementById('mock-prog-bar').style.width = (i / total * 100) + '%';
-  document.getElementById('mock-answer').focus();
-}
-
-function submitMockAnswer() {
-  const raw = document.getElementById('mock-answer').value.trim();
-  const i = mockState.currentIdx;
-  const q = mockState.questions[i];
-  mockState.answers[i] = raw || '(blank)';
-  const correct = raw && match(raw, q.a);
-  if (correct) mockState.score += q.marks;
-  document.getElementById('mock-marks-so-far').textContent = mockState.score;
-  document.getElementById('mock-answer').disabled = true;
-  document.getElementById('mock-answer').style.opacity = '0.6';
-  document.getElementById('mock-fb').innerHTML = correct
-    ? `<div class="fb fb-ok" style="padding:8px 12px;font-size:13px">✅ Correct! (+${q.marks} mark${q.marks>1?'s':''})</div>`
-    : `<div class="fb fb-no" style="padding:8px 12px;font-size:13px">❌ Answer: <strong>${q.a}</strong> — ${q.explain}</div>`;
-  setTimeout(() => {
-    mockState.currentIdx++;
-    if (mockState.currentIdx >= mockState.questions.length) endMock();
-    else showMockQ();
-  }, 1800);
-}
-
-function skipMockQ() {
-  mockState.answers[mockState.currentIdx] = '(blank)';
-  mockState.currentIdx++;
-  if (mockState.currentIdx >= mockState.questions.length) endMock();
-  else showMockQ();
-}
-
-function endMock() {
-  clearInterval(mockState.timerInterval);
-  document.getElementById('mock-exam').style.display = 'none';
-  document.getElementById('mock-results').style.display = 'block';
-  const paper = MOCK_PAPERS[mockState.paper];
-  const score = mockState.score;
-  const total = paper.totalMarks;
-  const pct = Math.round((score / total) * 100);
-  // SQA grade boundaries (approximate)
-  let grade, icon, msg;
-  if (pct >= 70) { grade = 'A'; icon = '🏆'; msg = 'Outstanding! That\'s an A pass — excellent work!'; }
-  else if (pct >= 60) { grade = 'B'; icon = '⭐'; msg = 'Great work! A solid B pass.'; }
-  else if (pct >= 50) { grade = 'C'; icon = '✅'; msg = 'Good effort! A C pass — keep practising to push higher!'; }
-  else if (pct >= 40) { grade = 'D'; icon = '📚'; msg = 'Nearly there! A D pass — more revision needed on weak topics.'; }
-  else { grade = 'No Award'; icon = '💪'; msg = 'Keep going! Review the topics you found hardest and try again.'; }
-  document.getElementById('mock-grade-icon').textContent = icon;
-  document.getElementById('mock-grade-title').textContent = grade === 'No Award' ? 'Keep Practising!' : 'Grade ' + grade;
-  document.getElementById('mock-score-display').textContent = score + ' / ' + total + ' (' + pct + '%)';
-  document.getElementById('mock-grade-band').textContent = paper.title;
-  document.getElementById('mock-grade-msg').textContent = msg;
-  // Save to state
-  if (!S.mockScores) S.mockScores = [];
-  S.mockScores.push({ paper: mockState.paper, score, total, pct, grade, date: new Date().toLocaleDateString() });
-  save();
-  renderMockPrevScores();
-}
-
-function showMockReview() {
-  const sec = document.getElementById('mock-review-section');
-  sec.style.display = 'block';
-  const list = document.getElementById('mock-review-list');
-  list.innerHTML = mockState.questions.map((q, i) => {
-    const given = mockState.answers[i] || '(blank)';
-    const correct = given !== '(blank)' && match(given, q.a);
-    return `<div style="margin-bottom:12px;padding:12px;border-radius:8px;background:${correct?'#ecfdf5':'#fef2f2'};border:1px solid ${correct?'#86efac':'#fca5a5'}">
-      <div style="font-size:12px;color:var(--text2);margin-bottom:3px">${i+1}. ${q.topic} — ${q.marks} mark${q.marks>1?'s':''}</div>
-      <div style="font-weight:700;font-size:14px;margin-bottom:5px">${q.q}</div>
-      <div style="font-size:13px">Your answer: <strong>${given}</strong></div>
-      ${!correct ? `<div style="font-size:13px;margin-top:3px">Correct answer: <strong>${q.a}</strong></div>
-      <div style="font-size:12px;color:#6b7280;margin-top:3px">${q.explain}</div>` : ''}
-    </div>`;
-  }).join('');
-  sec.scrollIntoView({ behavior: 'smooth' });
-}
-
-function resetMock() {
-  clearInterval(mockState.timerInterval);
-  mockState = { paper: null, questions: [], currentIdx: 0, answers: [], score: 0, timerLeft: 0, timerInterval: null, started: false };
-  document.getElementById('mock-home').style.display = 'block';
-  document.getElementById('mock-exam').style.display = 'none';
-  document.getElementById('mock-results').style.display = 'none';
-  document.getElementById('mock-timer-display').style.color = '';
-  renderMockPrevScores();
-}
-
-function renderMockPrevScores() {
-  const el = document.getElementById('mock-prev-scores');
-  if (!el) return;
-  if (!S.mockScores || !S.mockScores.length) { el.innerHTML = ''; return; }
-  const recent = [...S.mockScores].slice(-6).reverse();
-  el.innerHTML = `<h3 style="font-size:14px;font-weight:700;margin-bottom:8px">📊 Previous Scores</h3>` +
-    recent.map(s => `<div class="lb-row" style="font-size:13px">
-      <span style="font-weight:700;color:var(--primary);min-width:30px">${s.grade}</span>
-      <span style="flex:1">${(MOCK_PAPERS[s.paper]&&MOCK_PAPERS[s.paper].short)||'Paper '+s.paper} — ${s.score}/${s.total} (${s.pct}%)</span>
-      <span style="color:var(--text2);font-size:11px">${s.date}</span>
-    </div>`).join('');
-}
-
-
-// PWA Service Worker Registration
-if('serviceWorker' in navigator){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').then(function(reg){
-      console.log('SW registered');
-    }).catch(function(err){
-      console.log('SW failed: ', err);
-    });
-  });
-}
-
-// PWA Install prompt
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  // Show install banner after 30 seconds
-  setTimeout(() => {
-    const banner = document.getElementById('install-banner');
-    if(banner) banner.style.display = 'flex';
-  }, 30000);
-});
-document.addEventListener('click', function(e){
-  if(e.target.id === 'install-btn'){
-    if(deferredPrompt){
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        deferredPrompt = null;
-        document.getElementById('install-banner').style.display = 'none';
-      });
-    }
-  }
-  if(e.target.id === 'dismiss-install'){
-    document.getElementById('install-banner').style.display = 'none';
-  }
-});
-
-// INIT
-buildCalc();loadFC();applySettings();newQuestion();updateHeader();renderWS();
-</script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/app.js?v=5"></script>
 </body>
 </html>
