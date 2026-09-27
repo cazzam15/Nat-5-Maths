@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Free Nat 5 &amp; Higher Maths Revision — Scotland | nat5mathsscotland.com</title>
+<title>Nat 5 &amp; Higher Maths Revision — Free SQA Practice Questions &amp; Mock Exams</title>
 <meta name="description" content="Free Nat 5 and Higher Maths revision for Scottish students. 334 practice questions with worked solutions, mock exams, flashcards, worksheets and a formula sheet — covers the SQA course.">
 <meta name="author" content="nat5mathsscotland.com">
 <meta property="og:title" content="Free Nat 5 &amp; Higher Maths Revision — Scotland">
@@ -22,10 +22,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=6">
+<link rel="stylesheet" href="assets/styles.css?v=7">
 <script>
   // Apply saved appearance before first paint to avoid a flash of the wrong theme
   try{var _s=JSON.parse(localStorage.getItem('nat5_v4')||'{}').settings||{};if(_s.mode==='light'||_s.mode==='dark')document.documentElement.dataset.theme=_s.mode;if(_s.accent)document.documentElement.dataset.accent=_s.accent;}catch(e){}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://nat5mathsscotland.com/#site","url":"https://nat5mathsscotland.com/","name":"Nat 5 Maths Scotland","inLanguage":"en-GB"},
+ {"@type":"WebApplication","name":"Nat 5 Maths Scotland","url":"https://nat5mathsscotland.com/","applicationCategory":"EducationalApplication","operatingSystem":"Any","isAccessibleForFree":true,
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},
+  "description":"Free revision app for SQA National 5 and Higher Maths: practice questions with worked solutions, mock exam papers, flashcards, worksheets and a formula sheet.",
+  "audience":{"@type":"EducationalAudience","educationalRole":"student"},
+  "about":[{"@type":"Thing","name":"SQA National 5 Mathematics"},{"@type":"Thing","name":"SQA Higher Mathematics"}]}
+]}
 </script>
 </head>
 <body>
@@ -52,6 +62,7 @@
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></symbol>
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
 </svg>
 
@@ -538,8 +549,16 @@
     </main>
 
     <footer class="site-footer">
-      <span>© nat5mathsscotland.com · Free revision for Scottish students</span>
-      <span>Not affiliated with the SQA</span>
+      <div class="footer-about">
+        <h2>Free Nat 5 and Higher Maths revision for Scottish pupils</h2>
+        <p>Practise for your SQA exams with questions that are marked instantly and come with worked solutions, plus mock exam papers for Paper 1 (non-calculator) and Paper 2 (calculator).</p>
+        <p><b>National 5 topics:</b> algebra, factorising and quadratics, simultaneous equations, algebraic fractions and changing the subject, surds and indices, standard form, fractions, percentages and compound interest, functions and straight-line graphs, geometry and volumes, Pythagoras, similarity, circle geometry, arcs and sectors, trigonometry (SOH CAH TOA, sine rule, cosine rule, area of a triangle), vectors and statistics (standard deviation, quartiles).</p>
+        <p><b>Higher topics:</b> the straight line, composite and inverse functions, polynomials and quadratics, recurrence relations, differentiation, integration, radians and trig formulae, the wave function, the circle, vectors in 3D, and logs and exponentials.</p>
+      </div>
+      <div class="footer-base">
+        <span>© nat5mathsscotland.com · Free revision for Scottish students</span>
+        <span>Not affiliated with the SQA</span>
+      </div>
     </footer>
   </div>
 </div>
@@ -568,14 +587,15 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="install-banner" id="install-banner" hidden>
-  <div><b>Install Nat 5 Maths</b><small>Add it to your home screen — works offline.</small></div>
+  <div id="install-text"><b>Install Nat 5 Maths</b><small>Add it to your home screen — works offline.</small></div>
+  <div id="ios-text" hidden><b>Add to your Home Screen</b><small>Tap <svg class="ico ios-share" aria-label="Share"><use href="#i-share"/></svg> <b>Share</b>, then <b>Add to Home Screen</b>. It works like an app, even offline.</small></div>
   <div class="btn-row">
     <button class="btn btn-primary btn-sm" id="install-btn">Install</button>
     <button class="btn btn-ghost btn-sm" id="dismiss-install" aria-label="Dismiss">Not now</button>
   </div>
 </div>
 
-<script src="assets/data.js?v=6"></script>
-<script src="assets/app.js?v=6"></script>
+<script src="assets/data.js?v=7"></script>
+<script src="assets/app.js?v=7"></script>
 </body>
 </html>

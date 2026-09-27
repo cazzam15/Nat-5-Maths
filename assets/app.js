@@ -70,7 +70,7 @@ function showPanel(id,{focus=false}={}){
   });
   const panel=$('panel-'+id);
   $('page-title').textContent=panel.dataset.title;
-  document.title=(id==='practice'?'Free Nat 5 & Higher Maths Revision — Scotland':panel.dataset.title+' — Nat 5 Maths Scotland')+' | nat5mathsscotland.com';
+  document.title=id==='practice'?'Nat 5 & Higher Maths Revision — Free SQA Practice Questions & Mock Exams':panel.dataset.title+' — Nat 5 & Higher Maths Revision | nat5mathsscotland.com';
   S.panel=id;
   closeSheet();
   if(id==='progress')renderProg();
@@ -770,6 +770,17 @@ $('install-btn').addEventListener('click',()=>{
   deferredPrompt.prompt();deferredPrompt.userChoice.finally(()=>{deferredPrompt=null;$('install-banner').hidden=true;});
 });
 $('dismiss-install').addEventListener('click',()=>{$('install-banner').hidden=true;try{localStorage.setItem('nat5_install_dismissed','1');}catch(_){}});
+// iPhone/iPad Safari has no install prompt, so show how to do it by hand (once, until dismissed)
+(function(){
+  const ua=navigator.userAgent;
+  const iOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches;
+  let dismissed=false;try{dismissed=localStorage.getItem('nat5_install_dismissed')==='1';}catch(_){}
+  if(!iOS||standalone||dismissed)return;
+  $('install-text').hidden=true;$('ios-text').hidden=false;
+  $('install-btn').hidden=true;$('dismiss-install').textContent='Got it';
+  setTimeout(()=>{$('install-banner').hidden=false;},20000);
+})();
 
 // ---------------- Init ----------------
 fillTopicSelect($('topic-select'));

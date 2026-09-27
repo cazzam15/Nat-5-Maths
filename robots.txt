@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nat5mathsscotland.com/sitemap.xml
