@@ -20,14 +20,14 @@ const TOPICS={
     {q:"Factorise: x²−49",a:"(x+7)(x−7)",level:2,hint:"Difference of squares: a²−b²=(a+b)(a−b)",explain:"x²−49=x²−7²=(x+7)(x−7)"},
     {q:"Complete the square: x²+6x+2=(x+3)²+k. Find k.",a:"−7",level:3,hint:"(x+3)²=x²+6x+9, so adjust the constant.",explain:"x²+6x+2=(x+3)²−9+2=(x+3)²−7 → k=−7"},
     {q:"Find the discriminant of x²+4x+1=0.",a:"12",level:3,hint:"Discriminant = b²−4ac",explain:"16−4(1)(1)=12"},
-    {q:"x²−6x+9=0: how many real roots?",a:"1",level:2,hint:"Work out b²−4ac first.",explain:"b²−4ac=36−36=0 → one repeated root"},
+    {q:"x²−6x+9=0: how many distinct real roots?",a:"1",level:2,hint:"Work out b²−4ac first.",explain:"b²−4ac=36−36=0 → one repeated real root (two equal real roots)"},
     {q:"Solve 3x+2>11. Smallest whole number solution?",a:"4",level:2,hint:"Solve like an equation: 3x>9.",explain:"x>3, so smallest whole number is 4"},
   ]},
   trigonometry:{name:"Trigonometry",icon:"📏",calc:true,questions:[
     {q:"Right triangle: opp=3, hyp=5. Find sin(θ).",a:"0.6",level:1,hint:"SOH: sin=opp/hyp",explain:"3/5=0.6"},
     {q:"Right triangle: adj=4, hyp=5. Find cos(θ).",a:"0.8",level:1,hint:"CAH: cos=adj/hyp",explain:"4/5=0.8"},
-    {q:"Find θ if cos(θ)=0.5 (degrees).",a:"60",level:1,hint:"θ=cos⁻¹(0.5). Standard angle!",explain:"cos⁻¹(0.5)=60°"},
-    {q:"Find θ if sin(θ)=0.5 (degrees).",a:"30",level:1,hint:"θ=sin⁻¹(0.5). Standard angle!",explain:"sin⁻¹(0.5)=30°"},
+    {q:"Find the acute angle θ if cos(θ)=0.5 (degrees).",a:"60",level:1,hint:"θ=cos⁻¹(0.5). Standard angle!",explain:"cos⁻¹(0.5)=60°"},
+    {q:"Find the acute angle θ if sin(θ)=0.5 (degrees).",a:"30",level:1,hint:"θ=sin⁻¹(0.5). Standard angle!",explain:"sin⁻¹(0.5)=30°"},
     {q:"sin²θ + cos²θ = ?",a:"1",level:1,hint:"Fundamental trig identity!",explain:"Always equals 1 — memorise this!"},
     {q:"Ladder 5m, angle 70° with ground. Height? (2dp)",a:"4.70",level:2,hint:"sin(70°)=height/5",explain:"5×sin(70°)≈4.70m"},
     {q:"Triangle: A=40°, B=75°, a=10. Find b (2dp).",a:"15.03",level:2,hint:"Sine rule: b/sinB=a/sinA",explain:"10×sin75°/sin40°≈15.03"},
@@ -61,7 +61,7 @@ const TOPICS={
     {q:"Bag: 3 red, 7 blue. P(red)?",a:"0.3",level:1,hint:"P=favourable/total",explain:"3/10=0.3"},
     {q:"Median of: 2,5,7,10,13,18",a:"8.5",level:2,hint:"Even count: average of two middle values.",explain:"(7+10)/2=8.5"},
     {q:"Standard deviation of: 2,4,4,4,5,5,7,9 (2dp)",a:"2.14",level:3,hint:"Mean=5. s=√(Σ(x−x̄)²÷(n−1))",explain:"Σ(x−x̄)²=32. 32÷7≈4.571 → s=√4.571≈2.14"},
-    {q:"Q1=10, Q3=22. Semi-interquartile range?",a:"6",level:2,hint:"SIQR=(Q3−Q1)÷2",explain:"(22−10)÷2=6"},
+    {q:"Q1=10, Q3=22. Interquartile range?",a:"12",level:2,hint:"IQR=Q3−Q1",explain:"22−10=12"},
     {q:"Data: 2,4,6,8,10,12,14. Find Q1 (lower quartile).",a:"4",level:2,hint:"Median of the lower half (below the middle value).",explain:"Lower half: 2,4,6 → middle is 4"},
     {q:"Mean of 5 numbers is 8. Four of them are 6,7,9,10. Fifth?",a:"8",level:2,hint:"Total must be 5×8=40.",explain:"40−(6+7+9+10)=40−32=8"},
   ]},
@@ -104,9 +104,6 @@ const TOPICS={
     {q:"Magnitude of (3,4).",a:"5",level:1,hint:"|v|=√(x²+y²)",explain:"√25=5"},
     {q:"Add: (2,5)+(−1,3)",a:"(1,8)",level:1,hint:"Add each component.",explain:"(1,8)"},
     {q:"Multiply (3,−2,1) by 4.",a:"(12,−8,4)",level:1,hint:"Multiply each component.",explain:"(12,−8,4)"},
-    {q:"If a·b=0, what does that mean?",a:"perpendicular",level:2,hint:"Zero dot product → ?",explain:"Vectors are perpendicular (90°)."},
-    {q:"Dot product: (1,2,3)·(4,−1,2)",a:"8",level:3,hint:"Multiply pairs and add.",explain:"4−2+6=8"},
-    {q:"Unit vector of (6,8)?",a:"(0.6,0.8)",level:3,hint:"Divide by magnitude (=10).",explain:"(0.6,0.8)"},
   ]},
   circle:{name:"Circle Geometry",icon:"⭕",calc:true,questions:[
     {q:"Tangent meets radius at what angle?",a:"90",level:1,hint:"Key circle theorem!",explain:"Always 90° — perpendicular."},
@@ -193,7 +190,7 @@ const TOPICS={
     {q:"Quadratic y=(x−2)²+5: minimum value of y?",a:"5",level:1,hint:"(x−2)² is never negative.",explain:"Minimum 5 at x=2"},
     {q:"Remainder when x³+2x²−5 is divided by (x−2)?",a:"11",level:2,hint:"Remainder theorem: evaluate f(2).",explain:"8+8−5=11"},
     {q:"Discriminant of 2x²+3x−1=0?",a:"17",level:2,hint:"b²−4ac",explain:"9−4(2)(−1)=9+8=17"},
-    {q:"b²−4ac=17 (positive): nature of roots? (real/equal/none)",a:"real",level:2,hint:">0 means two roots.",explain:"Two real distinct roots"},
+    {q:"b²−4ac=17 (positive): nature of roots? (real/equal/none)",a:"real|distinct",level:2,hint:">0 means two roots.",explain:"Two real distinct roots"},
     {q:"x²+8x+3 = (x+4)² + k. Find k.",a:"−13",level:2,hint:"(x+4)²=x²+8x+16",explain:"3−16=−13"},
     {q:"x³−4x=0: how many real roots?",a:"3",level:2,hint:"Factorise: x(x−2)(x+2).",explain:"x=0, 2, −2 → three roots"},
     {q:"x²+kx+9=0 has equal roots and k>0. Find k.",a:"6",level:3,hint:"Equal roots: b²−4ac=0.",explain:"k²=36 → k=6"},
@@ -310,7 +307,6 @@ const FLASHCARDS={
     {term:"Index Law: Divide",t:"surds",def:"aᵐ ÷ aⁿ = aᵐ⁻ⁿ\nSame base → subtract powers"},
     {term:"Negative Index",t:"surds",def:"a⁻ⁿ = 1/aⁿ\ne.g. 2⁻³ = 1/8"},
     {term:"Fractional Index",t:"surds",def:"a^(1/n) = ⁿ√a\ne.g. 27^(1/3) = 3"},
-    {term:"Dot Product",t:"geometry",def:"a·b = a₁b₁ + a₂b₂ + a₃b₃\nIf a·b = 0 → perpendicular"},
     {term:"Probability",t:"stats",def:"P(A) = favourable ÷ total\nP(not A) = 1 − P(A)"},
     {term:"IQR",t:"stats",def:"IQR = Q3 − Q1\n(upper − lower quartile)"},
   ]
@@ -352,7 +348,7 @@ const WORKSHEETS=[
   {title:'Functions & Graphs',topic:'functions',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
   {title:'Geometry',topic:'geometry',diff:'Mixed',qs:[0,1,2,3,4,5,6]},
   {title:'Circle Geometry',topic:'circle',diff:'Mixed',qs:[0,1,2,3,4,5]},
-  {title:'Vectors',topic:'vectors',diff:'Mixed',qs:[0,1,2,3,4,5]},
+  {title:'Vectors',topic:'vectors',diff:'Mixed',qs:[0,1,2]},
 ];
 
 const MOCK_PAPERS = {
@@ -424,7 +420,7 @@ const MOCK_PAPERS = {
   3: {
     title: "Higher Paper 1 — Non-Calculator",
     short: "Higher P1",
-    duration: 3600,
+    duration: 4500, // 75 mins: SQA Higher Paper 1 is 1 hour 15 minutes
     calcAllowed: false,
     questions: [
       // STRAIGHT LINE
@@ -569,6 +565,8 @@ const MORE_HIGHER={
     {q:"Angle between (1,0,0) and (1,1,0) (degrees)?",a:"45",level:2,hint:"cosθ=a·b/(|a||b|)",explain:"cosθ=1/(1×√2) → θ=45°"},
     {q:"a=(2,−1,3) and b=(1,4,k) are perpendicular. Find k.",a:"2/3|0.67",level:3,hint:"a·b=0",explain:"2−4+3k=0 → k=2/3"},
     {q:"Angle between (1,2,3) and (4,0,−2) to 1dp (degrees)?",a:"96.9",level:3,hint:"a·b=−2, |a|=√14, |b|=√20",explain:"cosθ=−2/√280≈−0.1195 → θ≈96.9°"},
+    {q:"Scalar product: (1,2,3)·(4,−1,2)",a:"8",level:2,hint:"Multiply pairs and add.",explain:"4−2+6=8"},
+    {q:"Unit vector of (6,8)?",a:"(0.6,0.8)",level:2,hint:"Divide by magnitude (=10).",explain:"(0.6,0.8)"},
   ],
   h_logs:[
     {q:"log₆9 + log₆4 = ?",a:"2",level:1,hint:"log a + log b = log ab",explain:"log₆36=2"},
