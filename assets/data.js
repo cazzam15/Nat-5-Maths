@@ -582,6 +582,52 @@ const MORE_HIGHER={
 };
 Object.entries(MORE_HIGHER).forEach(([k,qs])=>TOPICS[k].questions.push(...qs));
 
+// Higher prelim focus set (25 Nov 2026): Quadratics, Differentiation and Trig equations.
+// Added at the end of each list so saved worksheets keep pointing at the right questions.
+const PRELIM_EXTRA={
+  h_poly:[
+    {q:"Write x²−6x+11 in the form (x−a)²+b.",a:"(x−3)²+2",level:1,hint:"Halve the x coefficient: (x−3)²=x²−6x+9.",explain:"x²−6x+11=(x−3)²−9+11=(x−3)²+2"},
+    {q:"y=x²−6x+11. Coordinates of the turning point? Give (x,y).",a:"(3,2)",level:2,hint:"Complete the square first.",explain:"y=(x−3)²+2 → minimum turning point (3,2)"},
+    {q:"Write 2x²+12x+5 in the form a(x+b)²+c.",a:"2(x+3)²−13",level:2,hint:"Take out the 2 from the x terms: 2(x²+6x)+5.",explain:"2(x²+6x)+5=2[(x+3)²−9]+5=2(x+3)²−18+5=2(x+3)²−13"},
+    {q:"x²+4x+k=0 has no real roots. Find the range of values of k.",a:"k>4|4<k",level:2,hint:"No real roots: b²−4ac<0.",explain:"16−4k<0 → 4k>16 → k>4"},
+    {q:"Solve x²+2x−8≥0.",a:"x≤−4,x≥2|x<=−4,x>=2",level:2,hint:"Factorise: (x+4)(x−2). Sketch the parabola: where is it above the x-axis?",explain:"Roots −4 and 2. The graph is ∪-shaped, so it is ≥0 outside the roots: x≤−4 or x≥2"},
+    {q:"2x²+kx+8=0 has equal roots. Find the values of k.",a:"k=8,k=−8|k=±8|±8",level:3,hint:"Equal roots: b²−4ac=0.",explain:"k²−4(2)(8)=0 → k²=64 → k=8 or k=−8"},
+    {q:"Find the values of p for which x²+px+(p+3)=0 has real roots.",a:"p≤−2,p≥6|p<=−2,p>=6",level:3,hint:"Real roots: b²−4ac≥0. Then solve the quadratic inequation in p.",explain:"p²−4(p+3)≥0 → p²−4p−12≥0 → (p−6)(p+2)≥0 → p≤−2 or p≥6"},
+    {q:"The line y=2x−1 is a tangent to the curve y=x²+kx+3. Find the possible values of k.",a:"k=6,k=−2",level:3,hint:"Set x²+kx+3=2x−1 and use b²−4ac=0.",explain:"x²+(k−2)x+4=0. Tangent: (k−2)²−16=0 → k−2=±4 → k=6 or k=−2"},
+  ],
+  h_diff:[
+    {q:"Gradient of the tangent to y=2x³−5x at x=2?",a:"19",level:1,hint:"dy/dx=6x²−5",explain:"6(4)−5=19"},
+    {q:"Find the equation of the tangent to y=x³−4x+1 at x=2.",a:"y=8x−15",level:2,hint:"Find the point (2, y), then the gradient from dy/dx=3x²−4.",explain:"y=8−8+1=1, so the point is (2,1). m=3(4)−4=8. y−1=8(x−2) → y=8x−15"},
+    {q:"y=x³−3x²−9x+5. Coordinates of the maximum turning point? Give (x,y).",a:"(−1,10)",level:2,hint:"dy/dx=3x²−6x−9=3(x−3)(x+1). Use a nature table.",explain:"Stationary at x=−1 and x=3. Nature table: dy/dx goes + 0 − at x=−1, so maximum. y=−1−3+9+5=10 → (−1,10)"},
+    {q:"Find the x-coordinates of the stationary points of y=2x³+3x²−12x.",a:"x=−2,x=1",level:2,hint:"Set dy/dx=6x²+6x−12=0.",explain:"6(x²+x−2)=0 → 6(x+2)(x−1)=0 → x=−2 or x=1"},
+    {q:"y=(x²+3)⁵. Find dy/dx when x=1.",a:"2560",level:2,hint:"Chain rule: 5(x²+3)⁴×2x",explain:"5(4)⁴×2=5×256×2=2560"},
+    {q:"f(x)=x³−6x²+9x+2. For which values of x is f decreasing?",a:"1<x<3",level:3,hint:"Decreasing when f′(x)<0. f′(x)=3(x−1)(x−3).",explain:"3(x−1)(x−3)<0 between the roots → 1<x<3"},
+    {q:"y=1/(2x−3)². Find dy/dx when x=2.",a:"−4",level:3,hint:"Write as (2x−3)⁻², then use the chain rule.",explain:"dy/dx=−2(2x−3)⁻³×2=−4/(2x−3)³ → −4/1=−4"},
+    {q:"An open box with a square base of side x cm holds 32 cm³. Its surface area is A=x²+128/x. Find x for the minimum surface area.",a:"4",level:3,hint:"A′(x)=2x−128/x². Set A′(x)=0.",explain:"2x=128/x² → x³=64 → x=4. A′ goes − 0 + so it is a minimum (A=16+32=48 cm²)"},
+  ],
+  h_trig:[
+    {q:"Solve sin x°=1/2 for 0≤x<360.",a:"x=30,x=150",level:1,hint:"Sin is positive in quadrants 1 and 2.",explain:"x=30° or 180−30=150°"},
+    {q:"Solve cos x°=−1/2 for 0≤x<360.",a:"x=120,x=240",level:1,hint:"Acute angle 60°. Cos is negative in quadrants 2 and 3.",explain:"x=180−60=120° or 180+60=240°"},
+    {q:"Solve 2sin x°−√3=0 for 0≤x<360.",a:"x=60,x=120",level:1,hint:"sin x=√3/2",explain:"x=60° or 180−60=120°"},
+    {q:"Solve tan x=√3 for 0≤x<2π. (type pi)",a:"x=π/3,x=4π/3",level:2,hint:"tan(π/3)=√3. Tan repeats every π.",explain:"x=π/3 or π+π/3=4π/3"},
+    {q:"Solve √2cos x=1 for 0≤x<2π. (type pi)",a:"x=π/4,x=7π/4",level:2,hint:"cos x=1/√2. Cos is positive in quadrants 1 and 4.",explain:"x=π/4 or 2π−π/4=7π/4"},
+    {q:"Solve 2sin 2x°=√3 for 0≤x<360.",a:"x=30,x=60,x=210,x=240",level:2,hint:"Solve for 2x first, with 0≤2x<720.",explain:"2x=60, 120, 420, 480 → x=30, 60, 210, 240"},
+    {q:"Solve 2cos 3x°=1 for 0≤x<180.",a:"x=20,x=100,x=140",level:2,hint:"Solve for 3x first, with 0≤3x<540.",explain:"3x=60, 300, 420 → x=20, 100, 140"},
+    {q:"Solve 4sin²x°=3 for 0≤x<360.",a:"x=60,x=120,x=240,x=300",level:2,hint:"sin x=±√3/2. Don't forget the negative root.",explain:"sin x=√3/2 → 60, 120. sin x=−√3/2 → 240, 300"},
+    {q:"Solve 2sin²x°−sin x°−1=0 for 0≤x<360.",a:"x=90,x=210,x=330",level:3,hint:"Factorise like a quadratic in sin x: (2sin x+1)(sin x−1)=0.",explain:"sin x=1 → x=90. sin x=−½ → x=210, 330"},
+    {q:"Solve 2cos²x+3cos x+1=0 for 0≤x<2π. (type pi)",a:"x=2π/3,x=π,x=4π/3",level:3,hint:"(2cos x+1)(cos x+1)=0",explain:"cos x=−½ → x=2π/3, 4π/3. cos x=−1 → x=π"},
+    {q:"Solve cos 2x°+cos x°=0 for 0≤x<360.",a:"x=60,x=180,x=300",level:3,hint:"Use cos 2x=2cos²x−1 to get a quadratic in cos x.",explain:"2cos²x+cos x−1=0 → (2cos x−1)(cos x+1)=0 → cos x=½: 60, 300; cos x=−1: 180"},
+    {q:"Solve sin 2x°=sin x° for 0≤x<360.",a:"x=0,x=60,x=180,x=300",level:3,hint:"Use sin 2x=2sin x cos x, then take out the common factor. Don't divide by sin x.",explain:"2sin x cos x−sin x=0 → sin x(2cos x−1)=0 → sin x=0: 0, 180; cos x=½: 60, 300"},
+    {q:"Solve cos 2x−3cos x+2=0 for 0≤x<2π. (type pi)",a:"x=0,x=π/3,x=5π/3",level:3,hint:"cos 2x=2cos²x−1 gives 2cos²x−3cos x+1=0.",explain:"(2cos x−1)(cos x−1)=0 → cos x=½: π/3, 5π/3; cos x=1: 0"},
+    {q:"Solve 3sin x°−cos 2x°=1 for 0≤x<360.",a:"x=30,x=150",level:3,hint:"Use cos 2x=1−2sin²x to get a quadratic in sin x.",explain:"3sin x−1+2sin²x=1 → 2sin²x+3sin x−2=0 → (2sin x−1)(sin x+2)=0 → sin x=½ (sin x=−2 has no solutions) → 30, 150"},
+    {q:"√3cos x°+sin x°=2cos(x−30)°. Use this to solve √3cos x°+sin x°=1 for 0≤x<360.",a:"x=90,x=330",level:3,hint:"cos(x−30)=½, with −30≤x−30<330.",explain:"x−30=60 or 300 → x=90 or 330"},
+    {q:"cos x°+sin x°=√2cos(x−45)°. Use this to solve cos x°+sin x°=1 for 0≤x<360.",a:"x=0,x=90",level:3,hint:"cos(x−45)=1/√2, with −45≤x−45<315.",explain:"x−45=−45 or 45 → x=0 or 90"},
+  ],
+};
+Object.entries(PRELIM_EXTRA).forEach(([k,qs])=>TOPICS[k].questions.push(...qs));
+// Topics mixed by the "Higher prelim focus" option in Practice and Timed challenge.
+const PRELIM_FOCUS=['h_diff','h_poly','h_trig'];
+
 WORKSHEETS.push(
   {title:'Higher: Straight Line',topic:'h_straight',diff:'Mixed',qs:[0,2,6,10,11,13,14,16,18]},
   {title:'Higher: Differentiation',topic:'h_diff',diff:'Mixed',qs:[0,1,3,11,13,14,16,19,20,22]},
@@ -589,6 +635,9 @@ WORKSHEETS.push(
   {title:'Higher: Trig & Radians',topic:'h_trig',diff:'Mixed',qs:[1,2,5,11,14,16,17,19,20]},
   {title:'Higher: The Circle',topic:'h_circle',diff:'Mixed',qs:[0,1,6,10,11,13,14,16,17]},
   {title:'Higher: Logs & Exponentials',topic:'h_logs',diff:'Mixed',qs:[0,4,5,11,12,13,14,15,17]},
+  {title:'Higher prelim: Trig equations',topic:'h_trig',diff:'Mixed',qs:[22,24,26,27,29,30,31,33,34,36]},
+  {title:'Higher prelim: Quadratics',topic:'h_poly',diff:'Mixed',qs:[4,6,8,9,19,20,22,23,24,25,26,27]},
+  {title:'Higher prelim: Differentiation',topic:'h_diff',diff:'Mixed',qs:[16,18,21,22,24,25,26,27,29,30,31]},
 );
 
 MOCK_PAPERS[4]={

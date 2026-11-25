@@ -1,10 +1,10 @@
-const CACHE_NAME = 'nat5maths-v7';
+const CACHE_NAME = 'nat5maths-v8';
 const ASSETS = [
   '/',
   '/index.html',
-  '/assets/styles.css?v=7',
-  '/assets/data.js?v=7',
-  '/assets/app.js?v=7',
+  '/assets/styles.css?v=8',
+  '/assets/data.js?v=8',
+  '/assets/app.js?v=8',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'

@@ -99,6 +99,7 @@ function fillTopicSelect(sel,{smart=true,all=true}={}){
     const sfx=higher?'_h':'';
     if(all)g.append(new Option('Random mix ('+(higher?'Higher':'Nat 5')+')','random'+sfx));
     if(smart)g.append(new Option('Smart Mix — focuses on your weakest topics','smart'+sfx));
+    if(higher)g.append(new Option('Prelim focus: Diff, Quadratics, Trig','prelim_h'));
     topicKeys(higher).forEach(k=>g.append(new Option(TOPICS[k].name,k)));
     sel.append(g);
   };
@@ -115,6 +116,7 @@ function weightedPick(keys){
 function pickTopic(t){
   if(t==='random'||t==='random_h'){const k=topicKeys(t==='random_h');return k[Math.floor(Math.random()*k.length)];}
   if(t==='smart'||t==='smart_h')return weightedPick(topicKeys(t==='smart_h'));
+  if(t==='prelim_h')return weightedPick(PRELIM_FOCUS);
   return TOPICS[t]?t:'algebra';
 }
 function pickQuestion(topic,filter){
